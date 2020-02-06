@@ -1,0 +1,455 @@
+<div class="table-with-bulk-action" data-top-distance="99">
+  <div class="table-filter">
+    <div class="filter-header-wrapper">
+      <ul class="filter-header">
+        <li class="list-left-side">
+          <div class="list-left-item">
+            <a href="#">
+              <i class="fa fa-plus list-icon blue-icon"></i> Global Action
+            </a>
+          </div>
+
+          <div class="list-left-item">
+            <a href="#">
+              <i class="fa fa-plus list-icon blue-icon"></i> Global Action
+            </a>
+          </div>
+        </li>
+
+        <li class="list-right-side">
+          <div class="list-right-item filter-search">
+            <div class="filter-search-icon-wrapper" data-tooltip="Search">
+              <i class="fa fa-search list-icon filter-search-icon" aria-hidden="true"></i>
+            </div>
+
+            <input class="form-control filter-search-input" placeholder="Search">
+          </div>
+
+          <div class="list-right-item" data-tooltip="Download">
+            <i class="fa fa-download list-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="list-right-item" data-tooltip="Settings">
+            <i class="fa fa-cog list-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="list-right-item" data-tooltip="Filters">
+            <i class="fa fa-filter list-icon"
+               aria-hidden="true"
+               data-toggle="collapse"
+               href="#filters-content-wrapper-collapse-2"
+               aria-expanded="false"></i>
+          </div>
+
+          <div class="list-right-item" data-tooltip="Edit" data-tooltip-pos="top-left">
+            <i class="fa fa-pencil list-icon" aria-hidden="true"></i>
+          </div>
+        </li>
+      </ul>
+
+      <div class="bulk-action-menu">
+        <ul class="filter-header">
+          <li class="list-left-side">
+            <div class="list-left-item">
+              <a href="#">
+                <ui-icon icon="pencil-1" aria-hidden="true"></ui-icon> Edit Record
+              </a>
+            </div>
+
+            <div class="list-left-item">
+              <a href="#">
+                <ui-icon icon="bin" aria-hidden="true"></ui-icon> Delete Record
+              </a>
+            </div>
+          </li>
+
+          <li class="list-right-side">
+            <div class="list-right-item table-font-size-small">
+              <span class="checkboxes-selected">0</span>&nbsp;Selected
+            </div>
+
+            <div class="list-right-item mx-2" data-tooltip="Clear Selection" data-tooltip-pos="top-left">
+              <a href="#" class="deselect-all-checkboxes">
+                <i class="fa fa-times list-icon" aria-hidden="true"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="filter-content-wrapper collapse" id="filters-content-wrapper-collapse-2">
+      <div class="form-row filter-content">
+        <div class="col-6 col-md-4 col-xl-3 filter-content-item">
+          <%- include('/components/partials/dropdowns/html/single-select', {additionalClasses: ''}) %>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-3 filter-content-item">
+          <div class="form-group">
+            <div class="form-control-wrapper">
+              <div class="form-control">
+                <div class="custom-control custom-checkbox custom-control-right">
+                  <input type="checkbox" class="custom-control-input" id="bulk-custom-check-1">
+                  <label class="custom-control-label" for="bulk-custom-check-1">Filter</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-3 filter-content-item filter-content-actions-item">
+          <a href="#" class="filter-content-clear-filters">CLEAR</a>
+
+          <a href="#" class="filter-content-apply-filters">APPLY</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% const dummyImageSrc = 's.realpage.com/wp-content/themes/realpage/images/card-assets/news-9-24-2017.jpg' %>
+  <table class="table raul-table table-font-size-small">
+    <thead>
+    <tr>
+      <th>
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input check-all"
+            id="check-all-checkbox"
+          >
+          <label class="custom-control-label" for="check-all-checkbox"></label>
+        </div>
+      </th>
+
+      <th>
+        <div class="table-item-wrapper">
+          <div class="table-item-details ascending">
+            Caption
+          </div>
+        </div>
+      </th>
+
+      <th>
+        <div class="table-item-wrapper">
+          <div class="table-item-details descending">
+            Caption
+          </div>
+        </div>
+      </th>
+
+      <th>
+        <div class="table-item-wrapper">
+          <div class="table-item-details descending">
+            Caption
+          </div>
+        </div>
+      </th>
+
+      <th>
+        <div class="table-item-wrapper">
+          <div class="table-item-details descending">
+            Caption
+          </div>
+        </div>
+      </th>
+
+      <th></th>
+    </tr>
+    </thead>
+
+    <tfoot>
+    <tr>
+      <th></th>
+
+      <th>Total Count Left</th>
+
+      <th>Total Count Left</th>
+
+      <th>Total Count Left</th>
+
+      <th></th>
+
+      <th></th>
+    </tr>
+    </tfoot>
+
+    <tbody class="table-font-size-medium row-padding-bg">
+    <tr>
+      <td>
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input action-checkbox"
+            id="action-checkbox-1"
+            checked
+          >
+          <label class="custom-control-label" for="action-checkbox-1"></label>
+        </div>
+      </td>
+
+      <td>
+        <div class="table-item-wrapper">
+          <a href="#" class="pr-3 text-decoration-none">
+            <img src="https://<%= dummyImageSrc %>" alt="Image" style="width:2.5rem;height:2.5rem">
+          </a>
+
+          <div class="table-item-details">
+            <a href="#" class="text-decoration-none text-primary">Property Name</a>
+
+            <div class="text-muted">123 Main Street Dallas TX 75084</div>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        First Line Text
+
+        <div class="text-muted">Lorem ipsum dolor</div>
+      </td>
+
+      <td>
+        First Line Text
+
+        <div class="text-muted">Lorem ipsum dolor</div>
+      </td>
+
+      <td>
+        First Line Text
+      </td>
+
+      <td>
+        <div class="action-items-wrapper">
+          <div class="action-item">
+            <i class="fa fa-pencil action-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="action-item">
+            <i class="fa fa-trash action-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="action-item raul-simple-dropdown dropdown dropleft">
+            <a href="#" data-toggle="dropdown" class="action-icon">
+              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+
+              <a class="dropdown-item disabled" href="#">Another action</a>
+
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input action-checkbox"
+            id="action-checkbox-2"
+          >
+          <label class="custom-control-label" for="action-checkbox-2"></label>
+        </div>
+      </td>
+
+      <td>
+        <div class="table-item-wrapper">
+          <a href="#" class="pr-3 text-decoration-none">
+            <img src="https://<%= dummyImageSrc %>" alt="Image" style="width:2.5rem;height:2.5rem">
+          </a>
+
+          <div class="table-item-details">
+            <a href="#" class="text-decoration-none text-primary">Property Name</a>
+
+            <div class="text-muted">123 Main Street Dallas TX 75084</div>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        First Line Text
+
+        <div class="text-muted">Lorem ipsum dolor</div>
+      </td>
+
+      <td>
+        First Line Text
+
+        <div class="text-muted">Lorem ipsum dolor</div>
+      </td>
+
+      <td>
+        First Line Text
+      </td>
+
+      <td>
+        <div class="action-items-wrapper">
+          <div class="action-item">
+            <i class="fa fa-pencil action-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="action-item">
+            <i class="fa fa-trash action-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="action-item raul-simple-dropdown dropdown dropleft">
+            <a href="#" data-toggle="dropdown" class="action-icon">
+              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+
+              <a class="dropdown-item disabled" href="#">Another action</a>
+
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input action-checkbox"
+            id="action-checkbox-3"
+          >
+          <label class="custom-control-label" for="action-checkbox-3"></label>
+        </div>
+      </td>
+
+      <td>
+        <div class="table-item-wrapper">
+          <a href="#" class="pr-3 text-decoration-none">
+            <img src="https://<%= dummyImageSrc %>" alt="Image" style="width:2.5rem;height:2.5rem">
+          </a>
+
+          <div class="table-item-details">
+            <a href="#" class="text-decoration-none text-primary">Property Name</a>
+
+            <div class="text-muted">123 Main Street Dallas TX 75084</div>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        First Line Text
+
+        <div class="text-muted">Lorem ipsum dolor</div>
+      </td>
+
+      <td>
+        First Line Text
+
+        <div class="text-muted">Lorem ipsum dolor</div>
+      </td>
+
+      <td>
+        First Line Text
+      </td>
+
+      <td>
+        <div class="action-items-wrapper">
+          <div class="action-item">
+            <i class="fa fa-pencil action-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="action-item">
+            <i class="fa fa-trash action-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="action-item raul-simple-dropdown dropdown dropleft">
+            <a href="#" data-toggle="dropdown" class="action-icon">
+              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+
+              <a class="dropdown-item disabled" href="#">Another action</a>
+
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input action-checkbox"
+            id="action-checkbox-4"
+          >
+          <label class="custom-control-label" for="action-checkbox-4"></label>
+        </div>
+      </td>
+
+      <td>
+        <div class="table-item-wrapper">
+          <a href="#" class="pr-3 text-decoration-none">
+            <img src="https://<%= dummyImageSrc %>" alt="Image" style="width:2.5rem;height:2.5rem">
+          </a>
+
+          <div class="table-item-details">
+            <a href="#" class="text-decoration-none text-primary">Property Name</a>
+
+            <div class="text-muted">123 Main Street Dallas TX 75084</div>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        First Line Text
+
+        <div class="text-muted">Lorem ipsum dolor</div>
+      </td>
+
+      <td>
+        First Line Text
+
+        <div class="text-muted">Lorem ipsum dolor</div>
+      </td>
+
+      <td>
+        First Line Text
+      </td>
+
+      <td>
+        <div class="action-items-wrapper">
+          <div class="action-item">
+            <i class="fa fa-pencil action-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="action-item">
+            <i class="fa fa-trash action-icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="action-item raul-simple-dropdown dropdown dropleft">
+            <a href="#" data-toggle="dropdown" class="action-icon">
+              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+
+              <a class="dropdown-item disabled" href="#">Another action</a>
+
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

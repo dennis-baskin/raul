@@ -1,0 +1,262 @@
+// RAUL Tabs
+// --------------------------------------------
+.raul-nav,
+.raul-nav a.nav-link,
+.raul-nav a.nav-link.active,
+.raul-tab-content {
+  color: $charcoal-80;
+}
+
+.raul-nav.nav > li > a.nav-link {
+  border-bottom: 3px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 40px;
+  padding: 0 18px;
+  text-transform: capitalize;
+}
+
+.raul-nav.nav-tabs > li > a:hover,
+.raul-nav.nav-tabs > li > a:focus {
+  outline: none;
+}
+
+.raul-nav-tabs.nav-tabs {
+  border-bottom-color: $charcoal-10;
+}
+
+.raul-nav-tabs.nav-tabs > li {
+  background-color: $charcoal-10;
+}
+
+.raul-nav-tabs.nav-tabs > li:first-of-type {
+  border-radius: 8px 0 0 0;
+}
+
+.raul-nav-tabs.nav-tabs > li:last-of-type {
+  border-radius: 0 8px 0 0;
+}
+
+.raul-nav-tabs.nav-tabs .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.raul-nav-tabs.nav-tabs > li > a {
+  margin-right: 0;
+}
+
+.raul-nav-tabs.nav-tabs > li > a:hover,
+.raul-nav-tabs.nav-tabs > li > a:focus {
+  background-color: $charcoal-20;
+  border-bottom: 1px solid $charcoal-10;
+  border-radius: 8px 8px 0 0;
+  outline: none;
+}
+
+.raul-nav-tabs.nav-tabs > li > a.active,
+.raul-nav-tabs.nav-tabs > li > a.active:focus,
+.raul-nav-tabs.nav-tabs > li > a.active:hover {
+  background-color: $primary-60;
+  border-bottom: 1px solid $primary-60;
+  border-radius: 8px 8px 0 0;
+  color: $lightest;
+}
+
+.raul-nav-tabs + .raul-tab-content {
+  padding: 15px;
+}
+
+.raul-nav-underline.nav-tabs {
+  border-bottom: 3px solid $nav-light-sub;
+}
+
+.raul-nav-underline.nav-tabs .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.raul-nav-underline.nav-tabs > li {
+  margin-bottom: -3px;
+}
+
+.raul-nav-underline.nav-tabs > li > a {
+  border: 0;
+}
+
+.raul-nav-underline.nav-tabs > li > a:hover,
+.raul-nav-underline.nav-tabs > li > a:focus,
+.raul-nav-underline.nav-tabs.nav-justified > li > a:hover,
+.raul-nav-underline.nav-tabs.nav-justified > li > a:focus {
+  border: 0;
+  border-bottom: 3px solid rgba($primary-60, 0.4);
+}
+
+.raul-nav-underline.nav-tabs > li > a.active,
+.raul-nav-underline.nav-tabs > li > a.active:focus,
+.raul-nav-underline.nav-tabs > li > a.active:hover,
+.raul-nav-underline.nav-tabs.nav-justified > li > a.active,
+.raul-nav-underline.nav-tabs.nav-justified > li > a.active:focus,
+.raul-nav-underline.nav-tabs.nav-justified > li > a.active:hover {
+  border: 0;
+  border-bottom: 3px solid $primary-60;
+  border-radius: 0;
+}
+
+.raul-nav-underline + .raul-tab-content {
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.raul-nav-tabs.nav-tabs.nav-justified > li:not(.active) > a {
+  border-bottom: 1px solid $nav-light-sub;
+}
+
+.raul-nav-underline.nav-tabs.nav-justified {
+  border-bottom: 0;
+}
+
+.raul-nav-underline.nav-tabs.nav-justified > li > a {
+  border-bottom: 3px solid $nav-light-sub;
+  text-align: center;
+}
+
+.raul-nav-vertical.nav-tabs {
+  border: 0;
+  border-left: 1px solid $charcoal-20;
+  border-right: 1px solid $charcoal-20;
+  border-top: 1px solid $charcoal-20;
+  flex-direction: column !important;
+}
+
+.raul-nav-vertical.nav-tabs .nav-item {
+  border-bottom: 1px solid $charcoal-20;
+  margin-bottom: 0;
+}
+
+.raul-nav-vertical.nav-tabs a.nav-link {
+  border: 0;
+  border-radius: 0;
+}
+
+.raul-nav-vertical.nav-tabs a.nav-link.active {
+  border-left: 3px solid $primary-60;
+  padding-left: 15px;
+}
+
+.raul-nav-vertical.nav-tabs a.nav-link:hover {
+  background-color: $charcoal-10;
+}
+
+.raul-nav-pills.nav-tabs {
+  border-bottom: 0;
+}
+
+.raul-nav-pills.nav-tabs .nav-item {
+  margin-bottom: 0;
+}
+
+.raul-nav-pills.nav-tabs a.nav-link {
+  border-radius: 19px;
+}
+
+.raul-nav-pills.nav-tabs a.nav-link:hover {
+  background-color: $charcoal-10;
+  border: 1px solid transparent;
+}
+
+.raul-nav-pills.nav-tabs a.nav-link.active {
+  background-color: $lightest;
+  border: 1px solid $primary-60;
+}
+
+.raul-nav-pills.nav-tabs + .raul-tab-content {
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+// nav tabs
+
+.raul-nav.nav-tabs .nav-link {
+  border-radius: 0;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.raul-nav.nav-tabs.nav-justified .nav-link {
+  max-width: none;
+}
+
+.raul-nav.nav-tabs {
+  .nav-item.open .nav-link,
+  .nav-item.open .nav-link:focus,
+  .nav-item.open .nav-link:hover,
+  .nav-link.active,
+  .nav-link.active:focus,
+  .nav-link.active:hover {
+    color: inherit;
+  }
+
+  &.nav-dark {
+    .nav-item .nav-link {
+      background-color: $nav-light-sub;
+    }
+  }
+}
+
+// Toggles styles
+
+.raul-nav-toggles.nav-tabs {
+  border-bottom: 0;
+}
+
+.nav-tabs .nav-item.raul-nav-toggles-item {
+  background: $nav-light-sub;
+  border: 1px solid $charcoal-10;
+  border-radius: 0;
+  line-height: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.nav-tabs .raul-nav-toggles-item .nav-link {
+  border: 0;
+  border-radius: 0;
+  color: $charcoal-80;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 15px;
+}
+
+.raul-nav-icon-toggles.nav-tabs .raul-nav-toggles-item .nav-link {
+  padding: 8px;
+}
+
+.nav-tabs .raul-nav-toggles-item .nav-link i {
+  font-size: 22px;
+  height: 24px;
+  width: 24px;
+}
+
+.nav-tabs .raul-nav-toggles-item .nav-link.active {
+  background: $lightest;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.12);
+  color: $primary-60;
+  overflow: visible;
+}
+
+.nav-tabs .raul-nav-toggles-item.nav-item+.nav-item {
+  border-left: 0;
+  margin-left: 0;
+}
+
+// Vertical Nav Tabs
+
+.nav-tabs-vertical-title {
+  padding-left: 1.1875rem;
+}
+
+.raul-accordion-container .nav-tabs {
+  padding: 0 0 1.25rem 0.5rem;
+}

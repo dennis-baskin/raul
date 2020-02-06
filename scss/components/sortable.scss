@@ -1,0 +1,75 @@
+.raul-sortable {
+  .sortable-ghost {
+    background-color: $primary-05 !important;
+  }
+
+  & > *:not(tr).hovered {
+    background-color: $primary-05;
+    position: relative;
+
+    &::before {
+      border: 3px dotted #0076cc;
+      border-width: 0 3px;
+      content: '';
+      display: block;
+      height: calc(100% - 9px);
+      left: 4px;
+      margin: 5px 0;
+      opacity: 0.2;
+      position: absolute;
+      top: 0;
+      width: 8px;
+    }
+  }
+
+  & > tr.sortable-handler {
+    & > td:first-child {
+      padding-left: 18px;
+      position: relative;
+    }
+
+    &.hovered {
+      background-color: $primary-05;
+
+      & > td:first-child::before {
+        border: 3px dotted #0076cc;
+        border-width: 0 3px;
+        content: '';
+        display: block;
+        height: calc(100% - 9px);
+        left: 4px;
+        margin: 5px 0;
+        opacity: 0.2;
+        position: absolute;
+        top: 0;
+        width: 8px;
+      }
+    }
+  }
+
+  &.sorting {
+    & > * {
+      background: #fff !important;
+
+      &::before {
+        display: none !important;
+      }
+    }
+
+    & > .sortable-ghost {
+      background-color: $primary-05 !important;
+    }
+
+    & > tr.sortable-handler {
+      background: #fff;
+
+      & > td:first-child::before {
+        display: none;
+      }
+    }
+  }
+
+  .sortable-handler {
+    cursor: move !important;
+  }
+}

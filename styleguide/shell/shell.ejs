@@ -1,0 +1,91 @@
+<%- include('/partials/header', {
+  domain: 'RAUL Shell',
+  id: 'shell',
+  page: 'Shell',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#custom-element-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Custom element version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <div class="raul-card p-0">
+      <iframe
+        style="border: 0; min-height: 600px; width: 100%;"
+        src="../inline-demos/shell/html/shell.html"
+      ></iframe>
+    </div>
+
+    <div class="raul-card p-0 mb-3">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/shell/partials/shell/html/shell')
+      %></code></pre>
+    </div>
+
+    <a class="button button-default" href="../inline-demos/shell/html/shell.html" target="_blank">
+      <i class="fa fa-external-link"></i>
+      Open demo in full screen
+    </a>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="custom-element-version">
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <div class="raul-card p-0">
+      <iframe
+        style="border: 0; min-height: 600px; width: 100%;"
+        src="../inline-demos/shell/custom-elements/shell.html"
+      ></iframe>
+    </div>
+
+    <div class="raul-card p-0 mb-3">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/shell/partials/shell/custom-elements/shell')
+      %></code></pre>
+    </div>
+
+    <a class="button button-default" href="../inline-demos/shell/custom-elements/shell.html" target="_blank">
+      <i class="fa fa-external-link"></i>
+      Open demo in full screen
+    </a>
+  </div>
+</div>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Page Header',
+      url: 'shell/page-header.html',
+    },
+  ],
+}) %>

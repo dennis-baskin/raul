@@ -1,0 +1,149 @@
+.raul-list-group {
+  box-sizing: border-box;
+  color: $charcoal-80;
+  font-family: 'Roboto';
+  font-size: 14px;
+}
+
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.raul-list-group-header {
+  background-color: $data-light-grey;
+  border: 1px solid $charcoal-20;
+  border-bottom: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 40px;
+  padding: 0 17px;
+}
+
+.raul-list-group-item + .raul-list-group-item .raul-list-group-header {
+  border-top: 0;
+}
+
+.raul-list-group-item ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.raul-list-group-item li {
+  border: 1px solid $charcoal-20;
+  border-top: 0;
+  box-sizing: border-box;
+  display: block;
+}
+
+.raul-list-group-item li:first-child {
+  border-top: 1px solid $charcoal-20;
+}
+
+.raul-list-group-item li > label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+  padding: 1.25rem;
+  width: 100%;
+}
+
+.raul-list-item-first-line {
+  line-height: 22px;
+}
+
+.raul-list-item-second-line {
+  color: $charcoal-50;
+}
+
+.raul-list-item-optional-text {
+  float: left;
+  font-size: 12px;
+  line-height: 18px;
+  margin-right: 17px;
+}
+
+.raul-list-group .raul-radio-wrapper,
+.raul-list-group .raul-checkbox-wrapper,
+.raul-list-group .raul-switch-wrapper {
+  float: right;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.raul-list-group .raul-radio-wrapper {
+  width: 18px;
+}
+
+.raul-list-group .raul-checkbox-wrapper {
+  width: 20px;
+}
+
+// Optional layout
+.raul-list-group.raul-list-optional-layout {
+  width: 100%;
+}
+
+.raul-list-optional-layout li {
+  display: inline-block;
+  float: left;
+  width: 50%;
+}
+
+.raul-list-optional-layout li:nth-child(2) {
+  border-top: 1px solid $charcoal-20;
+}
+
+.raul-list-optional-layout li:nth-child(2n) {
+  border-left: 0;
+}
+
+// List Group Toggle
+.raul-list-group .raul-form-input-text {
+  font-size: 12px;
+}
+
+.raul-list-group-item .raul-sublist-group {
+  transition: 0.4s;
+}
+
+.raul-list-group-item .raul-sublist-group li {
+  border: 0;
+  border-top: 1px solid $charcoal-20;
+}
+
+.raul-sublist-group img {
+  height: 18px;
+  margin-right: 7px;
+  vertical-align: middle;
+  width: 18px;
+}
+
+.raul-sublist-group .raul-list-item-first-line {
+  display: inline-block;
+}
+
+@media only screen and (max-width: 576px) {
+  .raul-list-group {
+    width: 100%;
+  }
+
+  .raul-list-optional-layout li {
+    width: 100%;
+  }
+
+  .raul-list-optional-layout li:nth-child(2n) {
+    border-left: 1px solid $charcoal-20;
+    border-top: 0;
+  }
+}
+
+.list-group-item {
+  &-flex {
+    display: flex;
+  }
+}

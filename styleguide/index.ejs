@@ -1,0 +1,35 @@
+<%- include('/partials/header', {index: true}) %>
+
+<h2>RAUL Framework <%= FRAMEWORK_VERSION%></h2>
+
+<p>
+  RAUL is the UI framework for use with RealPage products.  Ideally this
+  will be used as a tool to help our products unify our look based on
+  the design styleguide.
+</p>
+
+<p>
+  Please be aware that this styleguide is continuously being updated, and is here as
+  supplemental help.  We are in the process of replacing all other "how to" documentation with
+  this styleguide.
+</p>
+
+<%- include('/partials/namespace-warning', {additionalClasses: ''}) %>
+
+<%- include('/partials/footer', {
+  index: true,
+  nextLinks: [
+    {
+      title: 'Install Instructions',
+      url: 'introduction/installation.html',
+    },
+    {
+      title: 'Layout',
+      url: 'utilities/layout.html',
+    },
+    {
+      title: 'Header Component',
+      url: 'shell/header.html',
+    },
+  ]
+}) %>

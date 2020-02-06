@@ -1,0 +1,78 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'accordions',
+  page: 'Accordions',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <h2 class="mb-3">Simple Accordion No Gutters (1 open at a time)</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/accordions/html/raul-accordion-single') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/accordions/html/raul-accordion-single')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Simple Accordion With Gutters (multiple open at a time)</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/accordions/html/raul-accordion-multiple') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/accordions/html/raul-accordion-multiple')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Light Accordion (no gutter/multiple open at a time)</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/accordions/html/raul-light-accordion') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/accordions/html/raul-light-accordion')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Complex Accordion (gutters required/1 open at a time)</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/accordions/html/raul-complex-accordion') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/accordions/html/raul-complex-accordion')
+      %></code></pre>
+    </div>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

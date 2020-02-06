@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<!-- htmllint head-req-title="false" -->
+  <head>
+    <%- include('/partials/shell-head-content') %>
+  </head>
+
+  <body class="raul-left-navigation-expanded">
+    <%- include('/shell/partials/shell/custom-elements/shell') %>
+
+    <%- include('/partials/shell-script-includes', {
+      additionalScripts: [
+        '../../js/left-nav-data-driven.js',
+      ],
+    }) %>
+  </body>
+</html>

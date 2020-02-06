@@ -1,0 +1,58 @@
+<%
+  const domain = locals.domain || 'RAUL'
+  const page = locals.page || 'Welcome'
+  const subpage = locals.subpage || null
+  const url = (page) => `${locals.index ? './' : '../'}${page}`
+%>
+
+<header id="raul-page-header" class="raul-page-header">
+  <h2 id="raul-page-header-page" class="raul-page-header-page">
+    <%= page %>
+  </h2>
+
+  <div id="raul-page-header-breadcrumbs" class="raul-page-header-breadcrumbs">
+    <div
+      id="raul-page-header-breadcrumbs-dropdown"
+      class="raul-page-header-breadcrumbs-dropdown d-md-none"
+    >
+      <a class="raul-page-header-breadcrumbs-dropdown-breadcrumb"
+         href="#shell">
+        <%= domain %>
+      </a>
+
+      <a class="raul-page-header-breadcrumbs-dropdown-breadcrumb"
+         href="#shell-colors">
+        <%= page %>
+      </a>
+
+      <% if (subpage) { %>
+        <a class="raul-page-header-breadcrumbs-dropdown-breadcrumb">
+          <%= subpage %>
+        </a>
+      <% } %>
+    </div>
+
+    <i id="raul-page-header-breadcrumbs-back"
+       class="fa fa-angle-left d-inline-block d-md-none"></i>
+
+    <a class="raul-page-header-breadcrumb hidden-sm-down"
+       href="#shell-colors">
+       <%= domain %>
+    </a>
+
+    <span class="hidden-sm-down"> / </span>
+
+    <a class="raul-page-header-breadcrumb hidden-sm-down"
+       href="#shell-colors">
+      <%= page %>
+    </a>
+
+    <% if (subpage) { %>
+      <span class="hidden-sm-down"> / </span>
+
+      <a class="raul-page-header-breadcrumb hidden-sm-down">
+        <%= subpage %>
+      </a>
+    <% } %>
+  </div>
+</header>

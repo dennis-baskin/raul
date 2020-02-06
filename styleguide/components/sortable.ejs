@@ -1,0 +1,119 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'sortable',
+  page: 'Sortable',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <p>
+      Sortable component is built on top of
+      Sortable plugin.
+      Since it already has its own documentation and examples, we focused on showing
+      some basic examples that match RAUL custom styles. For more information please check out
+      this <a href="https://github.com/RubaXa/Sortable" target="_blank">page</a>.
+    </p>
+
+    <h2 class="mb-3">Examples</h2>
+
+    <h3>Basic sortable list</h3>
+
+    <p class="mb-3">
+      You can use any element for the list and its elements, not just
+      <code>ul</code>/<code>li</code>.
+    </p>
+
+    <div class="raul-card mb-0">
+      <%- include('/components/partials/sortable/html/basic-example') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/sortable/html/basic-example')
+      %></code></pre>
+
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        RAUL.sortable.create('#items');
+      `) %></code></pre>
+    </div>
+
+    <h3 class="mb-3">Sortable list group</h3>
+
+    <div class="raul-card mb-0">
+      <%- include('/components/partials/sortable/html/list-group') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/sortable/html/list-group')
+      %></code></pre>
+
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        RAUL.sortable.create('#list-group-example');
+      `) %></code></pre>
+    </div>
+
+    <h3>Sortable list group with drag handler</h3>
+
+    <p>
+      Sometimes you may need to drag an entire item, but you only want the handle
+      to be a portion of the item. Drag handlers give you this ability.
+    </p>
+
+    <div class="raul-card mb-0">
+      <%- include('/components/partials/sortable/html/list-group-handler') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/sortable/html/list-group-handler')
+      %></code></pre>
+
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        RAUL.sortable.create(
+          '#list-group-example',
+          {
+            handle: '.sortable-handler'
+          }
+        );
+      `) %></code></pre>
+    </div>
+
+    <h3 class="mb-3">Sortable table rows</h3>
+
+    <div class="raul-card mb-0">
+      <%- include('/components/partials/sortable/html/table') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/sortable/html/table')
+      %></code></pre>
+
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        RAUL.sortable.create('#table-example');
+      `) %></code></pre>
+    </div>
+  </div>
+</div>
+
+<%- include('/partials/footer', {additionalScripts:['js/sortable.js']}) %>

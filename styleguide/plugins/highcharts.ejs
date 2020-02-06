@@ -1,0 +1,1202 @@
+<%- include('/partials/header', {
+  domain: 'Plugins',
+  id: 'raul-plugin-highcharts',
+  page: 'Highcharts',
+}) %>
+
+<h3>Version</h3>
+
+<p>RAUL is using Highcharts v6.1.0</p>
+
+<h3 class="mt-4">Highcharts Documentation</h3>
+
+<p>
+  In addition to RAUL-specific instruction found here,
+  more information is available from Highcharts at:
+  <a href="https://api.highcharts.com/highcharts" target="_blank">
+    https://api.highcharts.com/highcharts</a>.</p>
+
+<h3 class="mt-4">Installation</h3>
+
+<p class="alert alert-warning">
+  Highcharts plugin is not included in raul.js file.
+  You will have to add it separately if you want
+  to use it. Below you can see an example of how to
+  include Highcharts to your project.
+</p>
+
+<pre class="mb-3"><code class="language-html"><%= (`
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    crossorigin="anonymous"
+  />
+  <link href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/raul.min.css" rel="stylesheet" />
+  <link
+    href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/plugins/raul-plugin-highcharts.min.css"
+    rel="stylesheet"
+  />
+
+  ......
+
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/raul.min.js"></script>
+  <script
+    src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/plugins/raul-plugin-highcharts.min.js"
+  ></script>
+`) %></code></pre>
+
+<h3 class="mt-5">Usage</h3>
+
+<ul>
+  <li>Include general options and styles: <code>RAUL.highcharts.general</code></li>
+  <li>Choose the type of chart: <code>RAUL.highcharts.types.pie</code></li>
+  <li>Choose RAUL theme style: <code>RAUL.highcharts.themes.green</code></li>
+</ul>
+
+<div class="row mt-5">
+  <div class="col-12 col-md-6">
+    <h2 class="text-success">Do use RAUL chart themes:</h2>
+    <div class="raul-box my-3">
+      <div class="raul-box-block p-3">
+        <div id="chart-pie-raul"></div>
+      </div>
+    </div>
+
+    <pre>
+      <code class="language-html"><%= (`
+        <div id="chart-pie-raul"></div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        // Set global general options
+        Highcharts.setOptions(RAUL.highcharts.general)
+
+        // Set color theme and type options to the chart
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.pie,
+          RAUL.highcharts.themes.green,
+          {
+            chart: {
+              renderTo: 'chart-donut-raul'
+            },
+            series: [
+              {
+                name: 'Example',
+                colorByPoint: true,
+                data: [
+                  {
+                    y: 1,
+                    name: 'Chart Legend 1'
+                  },
+                  {
+                    y: 2,
+                    name: 'Chart Legend 2'
+                  },
+                  {
+                    y: 3,
+                    name: 'Chart Legend 3'
+                  },
+                  {
+                    y: 4,
+                    name: 'Chart Legend 4'
+                  },
+                  {
+                    y: 5,
+                    name: 'Chart Legend 5'
+                  }
+                ]
+              }
+            ]
+          }
+        ))
+      `) %></code>
+    </pre>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <h2 class="text-danger">Don't use charts without RAUL themes:</h2>
+    <div class="raul-box my-3">
+      <div class="raul-box-block p-3">
+        <div id="chart-pie-default"></div>
+      </div>
+    </div>
+
+    <pre>
+      <code class="language-html"><%= (`
+        <div id="chart-donut-default"></div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart({
+          chart: {
+            renderTo: 'chart-pie-default',
+            type: 'pie'
+          },
+          series: [{
+            name: 'Example',
+            colorByPoint: true,
+            data: [{
+              y: 1,
+              name: 'Chart Legend 1'
+            },
+            {
+              y: 2,
+              name: 'Chart Legend 2'
+            },
+            {
+              y: 3,
+              name: 'Chart Legend 3'
+            },
+            {
+              y: 4,
+              name: 'Chart Legend 4'
+            },
+            {
+              y: 5,
+              name: 'Chart Legend 5'
+            }]
+          }]
+        })
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<h3 class="mt-4">Color Themes</h3>
+
+<p>Add the following JS objects to your chart instance:</p>
+
+<div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3">
+    <div><code>RAUL.highcharts.themes.red</code></div>
+    <div><code>RAUL.highcharts.themes.orange</code></div>
+    <div><code>RAUL.highcharts.themes.yellow</code></div>
+  </div>
+
+  <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3">
+    <div><code>RAUL.highcharts.themes.green</code></div>
+    <div><code>RAUL.highcharts.themes.blue</code></div>
+    <div><code>RAUL.highcharts.themes.pink</code></div>
+  </div>
+</div>
+
+
+<h3 class="mt-4">Chart Coverage</h3>
+
+<p>
+  While Highcharts includes a multitude of charting options, RAUL provides careful
+  styling for the following charts. If you need a chart that is not
+  covered here, please contact the RAUL team. <em>Note: RAUL provides sensible defaults,
+  but in a pinch you can override them when you setup your chart.</em>
+</p>
+
+<div class="row">
+  <div class="col-md-6 col-lg-5 col-xl-4">
+    <div><code>RAUL.highcharts.types.bar</code></div>
+    <div><code>RAUL.highcharts.types.stackedBar</code></div>
+    <div><code>RAUL.highcharts.types.negativeStackedBar</code></div>
+    <div><code>RAUL.highcharts.types.basicLine</code></div>
+    <div><code>RAUL.highcharts.types.bubble</code></div>
+    <div><code>RAUL.highcharts.types.column</code></div>
+    <div><code>RAUL.highcharts.types.stackedColumn</code></div>
+    <div><code>RAUL.highcharts.types.stackedColumnGroup</code></div>
+  </div>
+
+  <div class="col-md-6 col-lg-5 col-xl-4">
+    <div><code>RAUL.highcharts.types.donut</code></div>
+    <div><code>RAUL.highcharts.types.spline</code></div>
+    <div><code>RAUL.highcharts.types.splineArea</code></div>
+    <div><code>RAUL.highcharts.types.stackedArea</code></div>
+    <div><code>RAUL.highcharts.types.pie</code></div>
+  </div>
+</div>
+
+<h3 class="my-3 mt-4">Examples of Supported Charts</h3>
+
+<p>
+  These examples show how to use themes and options to create your charts.
+  <em>Note: <code>renderTo</code> is expecting the id of the chart container.</em>
+</p>
+
+<div>
+  <code>RAUL.highcharts.types.bar</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-6"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.bar,
+          RAUL.highcharts.themes.red,
+          {
+          chart: {
+            renderTo: 'chart-6'
+          },
+          title: {
+            text: 'Bar Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example 1',
+            colorByPoint: true,
+            data: [5, 4, 3, 2, 1]
+          }],
+          xAxis: {
+            categories: [
+              'Chart Legend Data Label 0',
+              'Chart Legend Data Label 1',
+              'Chart Legend Data Label 2',
+              'Chart Legend Data Label 3',
+              'Chart Legend Data Label 4'
+            ]
+          }
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.stackedBar</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-8"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-8"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.stackedBar,
+          RAUL.highcharts.themes.orange,
+          {
+          chart: {
+            renderTo: 'chart-8'
+          },
+          title: {
+            text: 'Stacked Bar Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example 1',
+            data: [10, 8, 7, 5, 5]
+          },
+          {
+            name: 'Example 2',
+            data: [3, 3, 2, 2, 2]
+          },
+          {
+            name: 'Example 3',
+            data: [10, 6, 4, 3, 2]
+          }],
+          xAxis: {
+            categories: [
+              'Chart Legend 1',
+              'Chart Legend 2',
+              'Chart Legend 3',
+              'Chart Legend 4',
+              'Chart Legend 5'
+            ]
+          }
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.negativeStackedBar</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-7"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-7"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.negativeStackedBar,
+          RAUL.highcharts.themes.yellow,
+          {
+          chart: {
+            renderTo: 'chart-7'
+          },
+          title: {
+            text: 'Negative Stacked Bar Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          xAxis: [{
+            categories: ['0', '1', '2', '3', '4']
+          },
+          {
+            categories: ['0', '1', '2', '3', '4']
+          }],
+          series: [{
+            name: 'Example 1',
+            data: [-5, -4, -3, -2, -1]
+          },
+          {
+            name: 'Example 2',
+            data: [5, 4, 3, 2, 1]
+          }],
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.basicLine</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-11"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-11"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.BasicLine,
+          RAUL.highcharts.themes.green,
+          {
+          chart: {
+            renderTo: 'chart-11'
+          },
+          title: {
+            text: 'Basic Line Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example 1',
+            data: [1, 8, 7, 5, 5],
+            marker: {
+              symbol: 'square'
+            }
+          },
+          {
+            name: 'Example 2',
+            data: [3, 1, 4, 2, 7],
+            marker: {
+              symbol: 'square'
+            }
+          },
+          {
+            name: 'Example 3',
+            data: [5, 3, 2, 2, 2],
+            marker: {
+              symbol: 'square'
+            }
+          }],
+          xAxis: {
+            categories: ['0', '1', '2', '3', '4']
+          }
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.bubble</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-13"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-13"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.bubble,
+          RAUL.highcharts.themes.blue,
+          {
+          chart: {
+            renderTo: 'chart-13'
+          },
+          title: {
+            text: 'Bubble Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example 1',
+            data: [{
+              x: 1,
+              y: 2,
+              z: 3
+            }]
+          },
+          {
+            name: 'Example 2',
+            data: [{
+              x: 2,
+              y: 3,
+              z: 4
+            }]
+          },
+          {
+            name: 'Example 3',
+            data: [{
+              x: 15,
+              y: 2,
+              z: 7
+            }]
+          },
+          {
+            name: 'Example 4',
+            data: [{
+              x: 5,
+              y: 27,
+              z: 13
+            }]
+          },
+          {
+            name: 'Example 5',
+            data: [{
+              x: 3,
+              y: 4,
+              z: 5
+            }]
+          },
+          {
+            name: 'Example 6',
+            data: [{
+              x: 43,
+              y: 24,
+              z: 6
+            }]
+          },
+          {
+            name: 'Example 7',
+            data: [{
+              x: 23,
+              y: 54,
+              z: 16
+            }]
+          },
+          {
+            name: 'Example 8',
+            data: [{
+              x: 54,
+              y: 21,
+              z: 43
+            }]
+          },
+          {
+            name: 'Example 9',
+            data: [{
+              x: 65,
+              y: 16,
+              z: 7
+            }]
+          }]
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.column</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-3"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.setOptions(RAUL.highcharts.general)
+
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.column,
+          RAUL.highcharts.themes.pink,
+          {
+          chart: {
+            renderTo: 'chart-3'
+          },
+          title: {
+            text: 'Column Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example',
+            colorByPoint: true,
+            data: [{
+              y: 5,
+              name: 'Chart Legend 1'
+            },
+            {
+              y: 4,
+              name: 'Chart Legend 2'
+            },
+            {
+              y: 3,
+              name: 'Chart Legend 3'
+            },
+            {
+              y: 2,
+              name: 'Chart Legend 4'
+            },
+            {
+              y: 1,
+              name: 'Chart Legend 5'
+            }],
+          }],
+          xAxis: {
+            categories: ['X0', 'X1', 'X2', 'X3', 'X4']
+          }
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.stackedColumn</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-4"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.stackedColumn,
+          RAUL.highcharts.themes.red,
+          {
+          chart: {
+            renderTo: 'chart-4'
+          },
+          title: {
+            text: 'Stacked Column Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example 1',
+            data: [10, 8, 7, 5, 5]
+          },
+          {
+            name: 'Example 2',
+            data: [3, 3, 2, 2, 2]
+          },
+          {
+            name: 'Example 3',
+            data: [10, 6, 4, 3, 2]
+          }],
+          xAxis: {
+            categories: ['X0', 'X1', 'X2', 'X3', 'X4']
+          }
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.stackedColumnGroup</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-5"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-5"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.stackedColumnGroup,
+          RAUL.highcharts.themes.orange,
+          {
+          chart: {
+            renderTo: 'chart-5'
+          },
+          title: {
+            text: 'Stacked Column Grouped Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example 1',
+            data: [10, 8, 7, 5, 5],
+            stack: 'stack 1'
+          },
+          {
+            name: 'Example 2',
+            data: [3, 3, 2, 2, 2],
+            stack: 'stack 1'
+          },
+          {
+            name: 'Example 3',
+            data: [4, 6, 4, 3, 2],
+            stack: 'stack 1'
+          },
+          {
+            name: 'Example 4',
+            data: [3, 3, 2, 2, 2],
+            stack: 'stack 2'
+          },
+          {
+            name: 'Example 5',
+            data: [3, 3, 2, 2, 2],
+            stack: 'stack 2'
+          },
+          {
+            name: 'Example 6',
+            data: [3, 3, 2, 2, 2],
+            stack: 'stack 2'
+          },
+          {
+            name: 'Example 7',
+            data: [3, 3, 2, 2, 2],
+            stack: 'stack 3'
+          },
+          {
+            name: 'Example 8',
+            data: [3, 3, 2, 2, 2],
+            stack: 'stack 3'
+          },
+          {
+            name: 'Example 9',
+            data: [3, 3, 2, 2, 2],
+            stack: 'stack 3'
+          }],
+          xAxis: {
+            categories: ['X0', 'X1', 'X2', 'X3', 'X4']
+          }
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.donut</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-1"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-1"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.setOptions(RAUL.highcharts.general)
+
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.donut,
+          RAUL.highcharts.themes.yellow,
+          {
+          chart: {
+            renderTo: 'chart-1'
+          },
+          title: {
+            text: 'Donut Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example',
+            colorByPoint: true,
+            data: [{
+              y: 1,
+              name: 'Chart Legend 1'
+            },
+            {
+              y: 2,
+              name: 'Chart Legend 2'
+            },
+            {
+              y: 3,
+              name: 'Chart Legend 3'
+            },
+            {
+              y: 4,
+              name: 'Chart Legend 4'
+            },
+            {
+              y: 5,
+              name: 'Chart Legend 5'
+            }]
+          }]
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.spline</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-9"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-9"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.spline,
+          RAUL.highcharts.themes.green,
+          {
+          chart: {
+            renderTo: 'chart-9'
+          },
+          title: {
+            text: 'Spline Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example 1',
+            data: [0, 8, 7, 5, 5],
+            marker: {
+              symbol: 'square'
+            }
+          },
+          {
+            name: 'Example 2',
+            data: [0, 3, 2, 2, 2],
+            marker: {
+              symbol: 'square'
+            }
+          },
+          {
+            name: 'Example 3',
+            data: [0, 6, 4, 3, 2],
+            marker: {
+              symbol: 'square'
+            }
+          }],
+          xAxis: {
+            categories: ['0', '1', '2', '3', '4']
+          }
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.splineArea</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-10"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-10"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.splineArea,
+          RAUL.highcharts.themes.blue,
+          {
+          chart: {
+            renderTo: 'chart-10'
+          },
+          title: {
+            text: 'Spline Area Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example 1',
+            data: [0, 8, 7, 5, 5],
+            marker: {
+              symbol: 'square'
+            }
+          },
+          {
+            name: 'Example 2',
+            data: [0, 3, 2, 2, 2],
+            marker: {
+              symbol: 'square'
+            }
+          }],
+          xAxis: {
+            categories: ['0', '1', '2', '3', '4']
+          }
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.stackedArea</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-12"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-12"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.stackedArea,
+          RAUL.highcharts.themes.pink,
+          {
+          chart: {
+            renderTo: 'chart-12'
+          },
+          title: {
+            text: 'Stacked Area Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          xAxis: {
+            categories: ['0', '1', '2', '3', '4']
+          },
+          series: [{
+            name: 'Example 1',
+            data: [1, 8, 7, 5, 5],
+            marker: {
+              symbol: 'square'
+            }
+          },
+          {
+            name: 'Example 2',
+            data: [3, 1, 4, 2, 7],
+            marker: {
+              symbol: 'square'
+            }
+          },
+          {
+            name: 'Example 3',
+            data: [5, 3, 2, 2, 2],
+            marker: {
+              symbol: 'square'
+            }
+          }]
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<hr class="my-5" />
+
+<div>
+  <code>RAUL.highcharts.types.pie</code>
+</div>
+
+<div class="row my-3">
+  <div class="col-12 col-md-6">
+    <div class="raul-box">
+      <div class="raul-box-block p-3">
+        <div id="chart-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <pre class="my-0">
+      <code class="language-html"><%= (`
+        <div class="raul-box">
+          <div class="raul-box-block p-3">
+            <div id="chart-2"></div>
+          </div>
+        </div>
+      `) %></code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript"><%= (`
+        Highcharts.setOptions(RAUL.highcharts.general)
+
+        Highcharts.chart(Highcharts.merge(
+          RAUL.highcharts.types.pie,
+          RAUL.highcharts.themes.red,
+          {
+          chart: {
+            renderTo: 'chart-2'
+          },
+          title: {
+            text: 'Pie Chart'
+          },
+          subtitle: {
+            text: 'Optional Subtitle'
+          },
+          series: [{
+            name: 'Example',
+            colorByPoint: true,
+            data: [{
+              y: 5,
+              name: 'Chart Legend 1'
+            },
+            {
+              y: 4,
+              name: 'Chart Legend 2'
+            },
+            {
+              y: 3,
+              name: 'Chart Legend 3'
+            },
+            {
+              y: 2,
+              name: 'Chart Legend 4'
+            },
+            {
+              y: 1,
+              name: 'Chart Legend 5'
+            }]
+          }]
+        }))
+      `) %></code>
+    </pre>
+  </div>
+</div>
+
+<%- include('/partials/footer', {
+  additionalScripts: [
+    '../js/plugins/raul-plugin-highcharts.min.js',
+    'js/raul-plugin-highcharts.js',
+  ],
+}) %>

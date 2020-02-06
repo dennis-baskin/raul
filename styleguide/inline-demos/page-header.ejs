@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <!-- htmllint head-req-title="false" -->
+  <head>
+    <%- include('/partials/head-content') %>
+  </head>
+
+  <body class="raul-left-navigation-expanded">
+    <header id="raul-header" class="raul-header">
+      <i id="raul-header-menu-button" class="raul-header-menu-button fa fa-bars"></i>
+
+      <div id="raul-header-logo" class="raul-header-logo">
+        <img
+          id="raul-header-logo-mobile"
+          class="raul-header-logo-mobile"
+          src="https://cdn.realpage.com/images/rp-logo-dots.svg"
+          alt="RealPage Inc. Logo"
+        />
+      </div>
+
+      <div id="raul-header-title" class="raul-header-title has-sub-info">
+        <h1 id="raul-header-product" class="raul-header-product">Page Header Demo</h1>
+      </div>
+    </header>
+
+    <nav id="raul-left-navigation" class="raul-left-navigation raul-left-navigation-light">
+      <ul id="raul-left-navigation-items" class="raul-left-navigation-items">
+        <li>
+          <a class="raul-left-navigation-item no-subitems" href="#">
+            <i class="raul-left-navigation-item-icon fa fa-home"></i>
+            <span class="raul-left-navigation-item-display">Home</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <%- include('/shell/partials/page-header/page-header') %>
+
+    <main class="raul-page-container">
+      <section class="container">
+        <p class="alert alert-info">
+          Example of Page Header, not to be confused with header (the black bar at top)
+        </p>
+      </section>
+    </main>
+
+    <%- include('/partials/script-includes') %>
+  </body>
+</html>

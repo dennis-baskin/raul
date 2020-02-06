@@ -1,0 +1,266 @@
+<%- include('/partials/header', {
+  domain: 'Introduction',
+  id: 'installation',
+  page: 'Installation',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+
+    <h2>Installing RAUL</h2>
+
+    <p>
+      RAUL framework is added to a product via the CDN. The simplest way to add RAUL is to include
+      the RAUL CSS and JavaScript and dependencies onto your page using <code>link</code> and
+      <code>script</code> tags. We can choose a full version of <strong>RAUL</strong> (which
+      contains all the  components from the styleguide and requires some dependencies or
+      <strong>Omnibar</strong> version (which contains left navigation, header, page header
+      and icons and the only dependency required is babel polyfill)
+    </p>
+
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#raul"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          RAUL
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#omnibar"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Omnibar
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="raul">
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%= (`
+        <!doctype html>
+        <html>
+          <head>
+            <link
+              rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              crossorigin="anonymous"
+            />
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+              crossorigin="anonymous"
+            />
+            <link
+              rel="stylesheet"
+              href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/raul.min.gz.css"
+            />
+          </head>
+
+          <body>
+            <header>...</header>
+
+            <script
+              src="https://code.jquery.com/jquery-3.2.1.min.js"
+              crossorigin="anonymous"
+            ></script>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+            <script
+              src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+              crossorigin="anonymous"
+            ></script>
+
+            <script
+              src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/raul.min.gz.js"
+            ></script>
+          </body>
+        <html>
+      `) %></code></pre>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="omnibar">
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%= (`
+        <!doctype html>
+        <html>
+          <head>
+            <link
+              rel="stylesheet"
+              href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/raul-shell.min.css"
+            />
+          </head>
+
+          <body>
+            <header>...</header>
+
+            <script
+              src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.min.js"
+            ></script>
+
+            <script
+              src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/raul-shell.min.js"
+            ></script>
+          </body>
+        <html>
+      `) %></code></pre>
+    </div>
+  </div>
+</div>
+
+<p>
+  For more information on the RAUL dependencies, please see
+
+  <a class="button button-default" href="dependencies.html">
+    Dependencies
+  </a>
+
+  Page
+</p>
+
+<h3>Build directory structure</h3>
+
+<p>
+  You can download the build zip using the following link:
+
+  <a href="https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/raul.zip">
+    https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/raul.zip
+  </a>
+</p>
+
+<pre class="background-charcoal-80 text-white"><code>
+  raul-zip/
+  │
+  ├── css/
+  │   ├── raul.css
+  │   ├── raul.min.css
+  │   ├── raul.min.gz.css
+  │   ├── raul-shell.css
+  │   ├── raul-shell.min.css
+  │   └── raul-shell.min.gz.css
+  │
+  ├── fonts/
+  │   └── Roboto.zip
+  │
+  └── js/
+      ├── raul.js
+      ├── raul.min.js
+      ├── raul.min.gz.js
+      ├── raul-shell.js
+      ├── raul-shell.min.js
+      └── raul-shell.min.gz.js
+
+</code></pre>
+
+<p>
+  You can also access these files directly, relative to the version directory.
+  As an example if you wanted to access the RAUL CSS or JS build you could use one of the
+  following urls (preferably using the gzipped versions for production):
+</p>
+
+<ul>
+  <li>
+    <a href="../css/raul.css">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/css/raul.css
+    </a>
+  </li>
+
+  <li>
+    <a href="../css/raul.min.css">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/css/raul.min.css
+    </a>
+  </li>
+
+  <li>
+    <a href="../css/raul.min.gz.css">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/css/raul.min.gz.css
+    </a>
+  </li>
+
+  <li>
+    <a href="../css/raul-shell.css">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/css/raul-shell.css
+    </a>
+  </li>
+
+  <li>
+    <a href="../css/raul-shell.min.css">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/css/raul-shell.min.css
+    </a>
+  </li>
+
+  <li>
+    <a href="../css/raul-shell.min.gz.css">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/css/raul-shell.min.gz.css
+    </a>
+  </li>
+
+  <li>
+    <a href="../js/raul.js">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/js/raul.js
+    </a>
+  </li>
+
+  <li>
+    <a href="../js/raul.min.js">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/js/raul.min.js
+    </a>
+  </li>
+
+  <li>
+    <a href="../js/raul.min.gz.js">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/js/raul.min.gz.js
+    </a>
+  </li>
+
+  <li>
+    <a href="../js/raul-shell.js">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/js/raul-shell.js
+    </a>
+  </li>
+
+  <li>
+    <a href="../js/raul-shell.min.js">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/js/raul-shell.min.js
+    </a>
+  </li>
+
+  <li>
+    <a href="../js/raul-shell.min.gz.js">
+      https://cdn.realpage.com/raul/<%= FRAMEWORK_VERSION %>/js/raul-shell.min.gz.js
+    </a>
+  </li>
+</ul>
+
+<div class="alert alert-info">
+  If interested, please see <a href="contributing.html">contributing</a> page
+  on how to help this project.
+</div>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Documentation On Dependencies',
+      url: 'introduction/dependencies.html',
+    },
+    {
+      title: 'Header',
+      url: 'shell/header.html',
+    },
+  ],
+}) %>

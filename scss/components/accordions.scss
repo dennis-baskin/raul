@@ -1,0 +1,152 @@
+.raul-accordion-container {
+  background: $lightest;
+  color: $charcoal-80;
+  font-size: 0.875rem;
+}
+
+.raul-accordion-item {
+  background: $lightest;
+  border: 1px solid $nav-light-sub-hover;
+  margin-bottom: -1px;
+  overflow: hidden;
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  > input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+  > label {
+    cursor: pointer;
+    display: block;
+    font-weight: 500;
+    line-height: 1.25rem;
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+  }
+
+  > label::after {
+    content: '\f107';
+    display: block;
+    font-family: FontAwesome;
+    font-size: 1.125rem;
+    margin-top: -0.625rem;
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transition: transform 0.2s;
+  }
+
+  &-content {
+    color: inherit;
+    font-size: 0.875rem;
+    height: 0;
+    line-height: 1.375rem;
+    padding: 0 1.5rem;
+    transition: 0.5s ease;
+  }
+
+  &.raul-accordion-item-open &-content {
+    padding-bottom: 1.5rem;
+  }
+
+  &-open {
+    > label::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:last-child .raul-accordion-item-content {
+    border-bottom: 1px solid $nav-light-sub-hover;
+  }
+}
+
+.raul-accordion-description {
+  color: $charcoal-50;
+  font-size: 0.875rem;
+  font-weight: normal;
+}
+
+// Gutter Accordions
+
+.raul-accordion-gutters .raul-accordion-item {
+  margin-bottom: 10px;
+
+  input ~ .raul-accordion-item-content {
+    border-bottom: 1px solid $nav-light-sub-hover;
+    border-top: 0;
+  }
+}
+
+// Light Accordions
+.raul-light-accordion {
+  .raul-accordion-item,
+  .raul-accordion-item-content,
+  .raul-accordion-item > label {
+    border-left: 0;
+    border-right: 0;
+    padding-left: 0.125rem;
+    padding-right: 0.125rem;
+  }
+}
+
+.raul-light-accordion .raul-accordion-item > label::after {
+  right: 0.4375rem;
+}
+
+.raul-accordion-with-icon .raul-accordion-item > label {
+  padding: 1.25rem 1.5rem;
+}
+
+.raul-accordion-with-icon .raul-accordion-item > label i {
+  margin-right: 0.4375rem;
+}
+
+// Complex Accordions
+
+.raul-accordion-container.raul-accordion-complex .raul-accordion-item {
+  > label {
+    display: flex;
+
+    .raul-accordion-title-panel {
+      display: inline-block;
+      flex: 1 auto;
+    }
+
+    .raul-accordion-edit-panel {
+      align-items: center;
+      display: flex;
+      float: right;
+      margin-right: 2rem;
+
+      i {
+        font-size: 1.25rem;
+        line-height: 2.5rem;
+        margin: 0 0.9375rem;
+      }
+    }
+  }
+
+  .raul-accordion-item-content > :first-child {
+    padding-top: 1.25rem;
+  }
+
+  &.raul-accordion-item-open {
+    > label {
+      background: $primary-60;
+      border-color: $primary-60;
+      color: $lightest;
+    }
+
+    .raul-accordion-description {
+      color: $lightest;
+      opacity: 0.7;
+    }
+  }
+}

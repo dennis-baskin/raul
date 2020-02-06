@@ -1,0 +1,37 @@
+$base-colors: (
+  'primary': $primary-60,
+  'accent': $accent-50,
+  'charcoal-90': $charcoal-90,
+  'charcoal-80': $charcoal-80,
+  'charcoal-70': $charcoal-70,
+  'charcoal-50': $charcoal-50,
+  'charcoal-30': $charcoal-30,
+  'charcoal-20': $charcoal-20,
+  'charcoal-10': $charcoal-10,
+  'charcoal-05': $charcoal-05,
+  'charcoal-dark': $charcoal-90,
+  'charcoal': $charcoal-70,
+  'charcoal-light': $charcoal-10,
+  'white': $lightest,
+  'info': $info,
+  'success': $success,
+  'error': $error,
+  'danger': $error,
+  'warning': $warning,
+  'light-grey': $data-light-grey,
+);
+
+$properties: (
+  background: 'background',
+  bg: 'background',
+  border: 'border-color',
+  text: 'color',
+);
+
+@each $type, $color in $base-colors {
+  @each $property-name, $property in $properties {
+    .#{$property-name}-#{$type} {
+      #{$property}: $color !important;
+    }
+  }
+}

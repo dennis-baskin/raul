@@ -1,0 +1,115 @@
+<%- include('/partials/header', {
+  domain: 'Introduction',
+  id: 'dependencies',
+  page: 'Dependencies',
+}) %>
+
+<h2>Dependencies</h2>
+
+<p>
+  The current version of RAUL requires a few dependencies that must be included by the product
+  teams. We understand this is not ideal, and have plans to mitigate dependencies as much as
+  possible in the future.
+</p>
+
+<p>
+  The following are all dependency styles. They should be added before the RAUL CDN include:
+</p>
+
+<pre class="mb-3"><code class="language-html"><%= (`
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    crossorigin="anonymous"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    crossorigin="anonymous"
+  />
+`) %></code></pre>
+
+<p>
+  The following are all dependency script tags. They should be added before the RAUL CDN include:
+</p>
+
+<pre class="mb-3"><code class="language-html"><%= (`
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"
+  ></script>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+  ></script>
+
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    crossorigin="anonymous"
+  ></script>
+`) %></code></pre>
+
+<h3>jQuery</h3>
+
+<p>
+  jQuery is a JavaScript library with a set of cross-browser DOM utilities. This dependency will
+  eventually be phased out.
+
+  <br />
+
+  <a href="https://jquery.com">https://jquery.com</a>
+</p>
+
+<h3>Popper</h3>
+
+<p>
+  Popper is a JavaScript dependency used by Bootstrap 4. It is used for various Bootstrap
+  components such as tooltips. The plan for this dependcy will be for it to be internally bundled
+  if we continue using it.
+
+  <br />
+
+  <a href="https://popper.js.org">https://popper.js.org</a>
+</p>
+
+<h3>Bootstrap 4</h3>
+
+<p>
+  Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. It allows users
+  to quickly prototype/build responsive layouts. The plan for this dependcy will be for it to be
+  internally bundled if we continue using it.
+
+  <br />
+
+  <a href="https://getbootstrap.com">https://getbootstrap.com</a>
+</p>
+
+<h3>Summernote</h3>
+
+<p>
+  Summernote is text-editor plugin. It is an optional dependency for RAUL. For more information
+  please see the raul plugin for this dependency, and / or the website for summernote:
+
+  <br />
+
+  <a href="../plugins/summernote.html">raul-plugin-summernote</a>
+
+  <br />
+
+  <a href="https://summernote.org/">https://summernote.org/</a>
+</p>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Documentation On Images',
+      url: 'introduction/images.html',
+    },
+    {
+      title: 'Header',
+      url: 'shell/header.html',
+    },
+  ],
+}) %>

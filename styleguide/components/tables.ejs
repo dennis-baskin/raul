@@ -1,0 +1,241 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'tables',
+  page: 'Tables',
+  noContentPadding: true,
+}) %>
+
+<% const stripedTableClass = 'table-striped' %>
+<% const borderedTableClass = 'table-bordered' %>
+<% const hoverTableClass = 'table-hover' %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <p>
+      Our approach to tables in RAUL is to provide basic styling for tables and some very simple
+      extensions. While products sometimes require complex table functionality using js libraries,
+      those libraries will not be included by default we may add them as a supported plugin.
+    </p>
+
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h2 class="mb-3">Simple table</h2>
+
+        <div class="raul-card">
+          <%- include('/components/partials/tables/html/simple-table', {additionalClasses: ''}) %>
+        </div>
+
+        <div class="raul-card mb-5 p-0">
+          <pre class="mb-0"><code class="language-markup"><%=
+            include('/components/partials/tables/html/simple-table', {additionalClasses: ''})
+          %></code></pre>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <h2 class="mb-3">Striped table (add <code>.<%= stripedTableClass %>)</code></h2>
+
+        <div class="raul-card">
+          <%- include('/components/partials/tables/html/simple-table', {additionalClasses: stripedTableClass}) %>
+        </div>
+
+        <div class="raul-card mb-5 p-0">
+          <pre class="mb-0"><code class="language-markup"><%=
+            include('/components/partials/tables/html/simple-table', {additionalClasses: stripedTableClass})
+          %></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h2 class="mb-3">Bordered table (add <code>.<%= borderedTableClass %></code>)</h2>
+
+        <div class="raul-card">
+          <%- include('/components/partials/tables/html/simple-table', {additionalClasses: borderedTableClass}) %>
+        </div>
+
+        <div class="raul-card mb-5 p-0">
+          <pre class="mb-0"><code class="language-markup"><%=
+            include('/components/partials/tables/html/simple-table', {additionalClasses: borderedTableClass})
+          %></code></pre>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <h2 class="mb-3">Highlight rows on hover (add <code>.<%= hoverTableClass %></code>)</h2>
+
+        <div class="raul-card">
+          <%- include('/components/partials/tables/html/simple-table', {additionalClasses: hoverTableClass}) %>
+        </div>
+
+        <div class="raul-card mb-5 p-0">
+          <pre class="mb-0"><code class="language-markup"><%=
+            include('/components/partials/tables/html/simple-table', {additionalClasses: hoverTableClass})
+          %></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h2 class="mb-3">Text alignment</h2>
+
+        <div class="raul-card mb-5">
+          <%- include('/components/partials/tables/html/table-data-alignment') %>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <h2 class="mb-3">Font size</h2>
+
+        <div class="raul-card mb-5">
+          <%- include('/components/partials/tables/html/table-font-size') %>
+        </div>
+      </div>
+    </div>
+
+    <h2>Sortable table</h2>
+
+    <p>
+      Add <code>.table-sortable</code> to table header tags plus <code>.ascending</code>
+      or <code>.descending</code> to change the arrow. Includes styles only. Table sorting
+      functionality will depend on pagination approaches.
+    </p>
+
+    <div class="raul-card">
+      <%- include('/components/partials/tables/html/table-sorting') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/tables/html/table-sorting')
+      %></code></pre>
+    </div>
+
+    <h2>Table filter header</h2>
+
+    <p>
+      Global actions, such as adding a new row to the table, should be aligned left.
+      Any action icons should be aligned right. With respect to all complex table actions,
+      presentation is handled by RAUL, actions are handled by product teams. This is due
+      to the diversity of product needs and implementations.
+    </p>
+
+    <strong>Optional action icons</strong>
+
+    <ul>
+      <li>
+        <span class="fa fa-search mr-3"></span> Intended for searching within the table.
+      </li>
+
+      <li>
+        <span class="fa fa-download mr-3"></span> If your table implementation includes multiple
+        export options, for example .xls or .csv, include these in an action menu on click.
+      </li>
+
+      <li>
+        <span class="fa fa-cog mr-3"></span> The settings gear controls table structure,
+        for example adding or removing columns.
+      </li>
+
+      <li>
+        <span class="fa fa-filter mr-3"></span> The filter icon controls the data inside the table.
+        It toggles via Bootstrap collapse. For details, see
+        <a href="https://getbootstrap.com/docs/4.1/components/collapse/" target="_blank">
+          their documentation.
+        </a>
+      </li>
+
+      <li>
+        <span class="fa fa-pencil mr-3"></span> The edit pencil changes the table presentation,
+        for example changing a header label or column width.
+      </li>
+    </ul>
+
+    <div class="raul-card">
+      <%- include('/components/partials/tables/html/table-header') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/tables/html/table-header')
+      %></code></pre>
+    </div>
+
+    <h2>Table with bulk actions</h2>
+
+    <p>
+      To initialize bulk actions, wrap both table and filter header inside
+      <code>.table-with-bulk-action</code> with filter header containing a bulk action header as in
+      the example. Marking a <code>input.action-checkbox</code> as checked will trigger the bulk
+      action header to fade in and will add <code>.highlighted-row</code> to its row.
+      Marking all of them as checked will auto-check <code>input.check-all</code>, as well as
+      marking <code>input.check-all</code> as checked will check all of the other checkboxes.
+      Bulk action menu default behavior is to remain sticky on the top of the screen and over the
+      table while scrolling. Optionally, you can add <code>data-top-distance</code> attribute to
+      <code>.table-with-bulk-action</code> to tell the bulk action menu at what distance to
+      window's top should it start its sticky behavior (the value is calculated in pixels).
+    </p>
+
+    <div class="raul-card">
+      <%- include('/components/partials/tables/html/table-bulk-action') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/tables/html/table-bulk-action')
+      %></code></pre>
+    </div>
+
+    <h2>Pagination</h2>
+
+    <p>
+      Some situations will require server-side pagination (for example thousands of rows).
+      Others will call for client side pagination (complex data filtering and presentation).
+      RAUL simply provides styles for pagination in your project.
+    </p>
+
+    <div class="raul-card">
+      <%- include('/components/partials/tables/html/pagination') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/tables/html/pagination')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Table with pagination</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/tables/html/table-with-pagination') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/tables/html/table-with-pagination')
+      %></code></pre>
+    </div>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

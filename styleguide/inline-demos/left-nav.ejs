@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <!-- htmllint head-req-title="false" -->
+  <head>
+    <%- include('/partials/head-content') %>
+  </head>
+
+  <body class="raul-left-navigation-expanded">
+    <header id="raul-header" class="raul-header">
+      <i id="raul-header-menu-button" class="raul-header-menu-button fa fa-bars"></i>
+
+      <div class="raul-header-logo">
+        <img
+          class="raul-header-logo-mobile"
+          src="https://cdn.realpage.com/images/rp-logo-dots.svg"
+          alt="RealPage logo"
+        />
+      </div>
+
+      <div class="raul-header-title has-sub-info">
+        <h1 class="raul-header-product">Left Navigation</h1>
+      </div>
+
+      <div id="raul-header-user" class="raul-header-user d-none d-sm-block">
+        <i
+          id="raul-header-user-angle"
+          class="raul-header-user-angle fa fa-angle-down"
+          aria-hidden="true"
+        ></i>
+      </div>
+    </header>
+
+    <div id="raul-user-context" class="raul-user-context">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <!-- htmllint class-style="none" -->
+          <div class="leftNavToggle toggle-switch">
+            Dark Navigation: <i  class="fa fa-toggle-off" aria-hidden="true"></i>
+          </div>
+          <!-- htmllint class-style="$previous" -->
+        </li>
+      </ul>
+    </div>
+
+    <%- include('/shell/partials/left-nav/left-nav') %>
+
+    <main class="raul-page-container">
+      <section class="container">
+        <%-
+          Array.from({length: 10}, (_, i) => i + 1).map((_) => {
+            return (`
+              <h1>Jump off balcony, onto stranger's head eat owner's food</h1>
+
+              <p>
+                Cat ipsum dolor sit amet, sit on human. Sit on the laptop have secret plans so hack
+                up furballs. Rub face on everything lick the curtain just to be annoying yet lick
+                the other cats leave dead animals as gifts dead stare with ears cocked. Find empty
+                spot in cupboard and sleep all day sleep on keyboard pet my belly, you know you want
+                to; seize the hand and shred it! ignore the squirrels, you'll never catch them
+                anyway run around the house at 4 in the morning. Behind the couch jump five feet
+                high and sideways when a shadow moves terrorize the hundred-and-twenty-pound
+                rottweiler and steal his bed, not sorry and hopped up on catnip, rub whiskers on
+                bare skin act innocent, or scratch the postman wake up lick paw wake up owner meow
+                meow for cough. Sit and stare. I like big cats and i can not lie eat too much then
+                proceed to regurgitate all over living room carpet while humans eat dinner and put
+                butt in owner's face so knock over christmas tree so sit on human they not getting
+                up ever. Annoy kitten brother with poking chase imaginary bugs. Present belly,
+                scratch hand when stroked small kitty warm kitty little balls of fur my water bowl
+                is clean and freshly replenished, so i'll drink from the toilet yet please stop
+                looking at your phone and pet me.
+              </p>
+
+              <h2>Header Level 2</h2>
+
+              <ol>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                <li>Aliquam tincidunt mauris eu risus.</li>
+              </ol>
+
+              <blockquote>
+                <p>
+                  Suddenly go on wild-eyed crazy rampage love and coo around boyfriend who purrs and
+                  makes the perfect moonlight eyes so i can purr and swat the glittery gleaming yarn
+                  to him (the yarn is from a $125 sweater) furrier and even more furrier hairball
+                  refuse to leave cardboard box
+                </p>
+              </blockquote>
+
+              <h3>Header Level 3</h3>
+
+              <ul>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                <li>Aliquam tincidunt mauris eu risus.</li>
+              </ul>
+
+              <h3>Header Level 4</h3>
+
+              <ul>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                <li>Aliquam tincidunt mauris eu risus.</li>
+              </ul>
+
+              <h3>Header Level 5</h3>
+
+              <ul>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                <li>Aliquam tincidunt mauris eu risus.</li>
+              </ul>
+            `)
+          }).join('')
+        %>
+      </section>
+    </main>
+
+    <%- include('/partials/script-includes') %>
+  </body>
+</html>

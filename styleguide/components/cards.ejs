@@ -1,0 +1,355 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'cards',
+  page: 'Cards',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#custom-element-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Custom element version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <h2 class="mb-3">Basic Info Card</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/cards/html/raul-card-basic-info') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/cards/html/raul-card-basic-info')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Full Info Card</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/cards/html/raul-card-full-info') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/cards/html/raul-card-full-info')
+      %></code></pre>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="custom-element-version">
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <h2>Simple Card</h2>
+
+    <p>
+      The following card shows the most basic usage by just adding the tag.
+      You can add whatever you need inside the tag.
+    </p>
+
+    <div class="raul-card">
+      <%- include('/components/partials/cards/custom-elements/raul-card') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/cards/custom-elements/raul-card')
+      %></code></pre>
+    </div>
+
+    <h2>Basic Info Card</h2>
+
+    <p>
+      The following is an example of using the card with your own markup inside.
+    </p>
+
+    <div class="raul-card">
+      <%- include('/components/partials/cards/custom-elements/raul-card-basic-info') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/cards/custom-elements/raul-card-basic-info')
+      %></code></pre>
+    </div>
+
+    <h2>Full Info Card</h2>
+
+    <p>
+      The following is an example of all available options for this component.
+    </p>
+
+    <div class="raul-card">
+      <%- include('/components/partials/cards/custom-elements/raul-card-full-info') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/cards/custom-elements/raul-card-full-info')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Options List</h2>
+
+    <table class="table raul-table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+
+          <th>Value Type</th>
+
+          <th>Default Value</th>
+
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+            <code>image-src</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the <code>src</code> attribute for the image
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>card-title</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the title text
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>card-description</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the description text
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>address</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the address text
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>suite</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the suite text
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>city</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the city text
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>state</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the state text
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>zip</code>
+          </td>
+
+          <td>
+            <code>Number</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the zip text
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>country</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the country text
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>phone</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the phone text and <code>href</code> attribute
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>email</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the email text and <code>href</code> attribute
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>website</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the website text and <code>href</code> attribute
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

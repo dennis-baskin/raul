@@ -1,0 +1,230 @@
+<%- include('/partials/header', {
+  domain: 'Shell Components',
+  id: 'left-nav',
+  page: 'Left Navigation',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#custom-element-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Custom element version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <div class="raul-card p-0">
+      <iframe
+        style="border: 0; min-height: 600px; width: 100%;"
+        src="../inline-demos/left-nav.html"
+      ></iframe>
+    </div>
+
+    <div class="raul-card p-0 mb-3">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/shell/partials/left-nav/left-nav')
+      %></code></pre>
+    </div>
+
+    <a class="button button-default" href="../inline-demos/left-nav.html" target="_blank">
+      <i class="fa fa-external-link"></i>
+      Open demo in full screen
+    </a>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="custom-element-version">
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <h2>Data driven left nav</h2>
+
+    <div class="raul-card p-0">
+      <iframe
+        style="border: 0; min-height: 600px; width: 100%;"
+        src="../inline-demos/left-nav-data-driven.html"
+      ></iframe>
+    </div>
+
+    <div class="raul-card p-0 mb-3">
+      <pre class="mb-0"><code class="language-html"><%= (`
+        <ui-left-nav><ui-left-nav>
+      `) %></code></pre>
+
+      <pre class="mb-0"><code class="language-js"><%= (`
+        const leftNavStructure = [
+          {
+            'title': 'Home',
+            'icon': 'places-home-1',
+            'url': '#',
+            'classes': 'custom-class',
+            'attributes': {
+              'custom-attribute-1': 'custom-attribute-1-value',
+              'custom-attribute-2': '',
+            },
+          },
+          {
+            'title': 'Company',
+            'icon': 'bank-2',
+            'classes': ['custom-class-1', 'custom-class-2', 'custom-class-n'],
+            'items': [
+              {
+                'title': 'Company Search',
+                'url': '#',
+                'classes': 'custom-class-1',
+                'attributes': {
+                  'custom-attribute-1': 'custom-attribute-1-value',
+                  'custom-attribute-2': '',
+                },
+              },
+              {
+                'title': 'Company Details',
+                'url': '#',
+              },
+            ],
+          },
+          {
+            'title': 'Properties',
+            'icon': 'building-7',
+            'active': true,
+            'items': [
+              {
+                'title': 'Level 2 Sub Navigation Item',
+                'active': true,
+                'items': [
+                  {
+                    'title': 'Level 3 Sub Navigation Item (Active)',
+                    'url': '#',
+                    'active': true,
+                  },
+                  {
+                    'title': 'Level 3 Sub Navigation Item',
+                    'items': [
+                      {
+                        'title': 'Level 4 Sub Navigation Item',
+                        'items': [
+                          {
+                            'title': 'Level 5 Sub Navigation Item',
+                            'url': '#',
+                          },
+                          {
+                            'title': 'Level 5 Sub Navigation Item',
+                            'items': [
+                              {
+                                'title': 'Level 6 Sub Navigation Item',
+                                'url': '#',
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        'title': 'Level 4 Sub Navigation Item',
+                        'url': '#',
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                'title': 'Level 2 Sub Navigation Item',
+                'url': '#',
+              },
+            ],
+          },
+          {
+            'title': 'Products',
+            'icon': 'content-view-module-1',
+            'url': '#',
+          },
+          {
+            'title': 'People',
+            'icon': 'user',
+            'url': '#',
+          },
+          {
+            'title': 'Roles & Rights',
+            'icon': 'key-1',
+            'url': '#',
+          },
+          {
+            'title': 'Settings',
+            'icon': 'fa fa-cog',
+            'url': '#',
+          },
+        ]
+
+      const leftNavDataDriven = document.querySelector('ui-left-nav')
+
+      leftNavDataDriven.api.items = leftNavStructure
+      `) %></code></pre>
+    </div>
+
+    <a class="button button-default" href="../inline-demos/left-nav-data-driven.html" target="_blank">
+      <i class="fa fa-external-link"></i>
+      Open demo in full screen
+    </a>
+
+    <h3 class="mt-3">Icons</h3>
+
+    <p>
+      The data-driven left nav accepts both FontAwesome and RAUL's ui-icon format. We recommend
+      choosing <a href="../components/icons.html">RAUL ui-icons</a> for the left nav as this
+      is the preferred format of the future. Please consult with the UI/UX Design Team for help
+      selecting ui-icon equivalents.
+    </p>
+
+    <p>
+      For FontAwesome use <code>'icon': 'fa fa-cog'</code><br />
+      For RAUL ui-icons us <code>'icon': 'icon-file-name'</code><br />
+    </p>
+
+    <div class="mt-3">
+      <h3>Exceptions</h3>
+
+      <p>
+        In the last round of RAUL compliance a few products were granted left nav exceptions.
+        The following link shows how to implement those exceptions using custom elements.
+        Do not use these features if you've not been granted an exception!
+      </p>
+
+      <a class="button button-default" href="../inline-demos/left-nav-data-driven-with-exceptions.html" target="_blank">
+        <i class="fa fa-external-link"></i>
+        Demo with various exceptions
+      </a>
+    </div>
+  </div>
+</div>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Page Header',
+      url: 'shell/page-header.html',
+    },
+  ],
+}) %>

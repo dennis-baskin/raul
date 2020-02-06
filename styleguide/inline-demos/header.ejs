@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <!-- htmllint head-req-title="false" -->
+  <head>
+    <%- include('/partials/head-content') %>
+  </head>
+
+  <body class="raul-left-navigation-expanded">
+    <%- include('/shell/partials/header/header') %>
+
+    <nav id="raul-left-navigation" class="raul-left-navigation raul-left-navigation-light">
+      <ul id="raul-left-navigation-items" class="raul-left-navigation-items">
+        <li>
+          <a class="raul-left-navigation-item no-subitems" href="#">
+            <i class="raul-left-navigation-item-icon fa fa-home"></i>
+            <span class="raul-left-navigation-item-display">Home</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <%- include('/partials/page-header', {domain: 'Shell', page: 'Header'}) %>
+
+    <main id="header-inline-demo" class="raul-page-container">
+      <section class="container">
+        <p class="alert alert-info">
+          Example of shell Header
+        </p>
+      </section>
+    </main>
+
+    <%- include('/partials/script-includes') %>
+  </body>
+</html>

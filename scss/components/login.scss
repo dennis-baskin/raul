@@ -1,0 +1,106 @@
+.raul-login-container {
+  background: $lightest url('#{$images-cdn-url}rp-logo.svg') no-repeat center 45px;
+  border: 1px solid $charcoal-20;
+  box-sizing: border-box;
+  color: $charcoal-80;
+  font-family: 'Roboto';
+  font-size: 12px;
+  margin: 0 auto;
+  padding: 117px 45px 30px 45px;
+  width: 390px;
+}
+
+.raul-login-container.raul-login-no-logo {
+  background: $lightest;
+}
+
+.raul-login-form .form-group {
+  margin-bottom: 0;
+}
+
+.raul-login-form label {
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 0;
+  padding-bottom: 4px;
+}
+
+.raul-login-form input[type='text'] {
+  border: 1px solid $charcoal-20;
+  border-radius: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  height: 40px;
+  margin-bottom: 12px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.raul-login-remember {
+  float: left;
+  margin-top: 3px;
+}
+
+.raul-login-remember label {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.raul-login-checkbox-wrap {
+  border: 2px solid $charcoal-20;
+  border-radius: 2px;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 20px;
+  margin-top: 2px;
+  overflow: hidden;
+  position: relative;
+  width: 20px;
+}
+
+.raul-login-remember input {
+  left: 0;
+  margin-left: -100px;
+  position: absolute;
+  top: 0;
+}
+
+.raul-login-remember i {
+  color: $lightest;
+  display: inline-block;
+  font-size: 22px;
+  left: -1px;
+  position: absolute;
+  top: -4px;
+}
+
+.raul-login-remember input:checked + div.raul-login-checkbox-wrap {
+  border-color: $primary-60;
+}
+
+.raul-login-remember input:checked + div.raul-login-checkbox-wrap > i {
+  color: $primary-60;
+}
+
+.raul-login-remember span {
+  display: block;
+  float: right;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 26px;
+  padding-left: 8px;
+}
+
+.raul-login-forgot-pass {
+  float: right;
+  margin-top: 8px;
+}
+
+.raul-login-forgot-pass a {
+  color: $primary-60;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}

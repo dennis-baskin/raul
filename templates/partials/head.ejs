@@ -1,0 +1,59 @@
+<!-- htmllint doctype-first="false" -->
+<head>
+  <meta charset="utf-8" />
+
+  <meta
+    name="description"
+    content="Admin, Dashboard, Bootstrap, Bootstrap 4"
+  />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"
+  />
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  />
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="RAUL Demo">
+
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <title>RAUL - <%= locals.title %></title>
+  <link rel="shortcut icon" href="https://s.realpage.com/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../css/raul.css">
+
+  <!-- htmllint tag-bans="false" -->
+  <style>
+    #loading-one,
+    #loading-two,
+    .load-container { height:200px; background-color:#ccc; margin-top:40px; }
+    #show-messages,#more-messages{ border:1px solid #ccc; background-color:#eee; padding:0 10px; }
+
+    .raul-notifications-context { color:#222; width:240px; height:300px;
+      background-color:#ccc; padding:10px; display:none }
+    .raul-shopping-context { color:#222; width:240px; height:300px;
+      background-color:#ccc; padding:10px; display:none }
+
+    .progress-bar-container { width: 500px; margin: 50px auto; padding: 20px; }
+    .card-floater {width:45%; display: inline-block; margin: 0 10px; box-sizing: border-box;}
+  </style>
+  <!-- htmllint tag-bans="$previous" -->
+</head>

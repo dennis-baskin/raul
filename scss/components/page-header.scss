@@ -1,0 +1,133 @@
+// RAUL Page Header
+// --------------------------------------------
+
+header.raul-page-header {
+  background-color: $lightest;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  padding-left: 0;
+  position: fixed;
+  top: 56px;
+  transition: 0.5s;
+  width: 100%;
+  z-index: 80;
+}
+
+header.raul-page-header::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
+header .raul-page-header-icon {
+  color: $primary-60;
+  float: left;
+  font-size: 28px;
+  margin: 12px 12px 12px 54px;
+  text-align: center;
+  width: 40px;
+}
+
+header .raul-page-header-page {
+  color: $primary-60;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+  margin: 0;
+  padding: 4px 15px 0 15px;
+}
+
+header .raul-page-header-breadcrumbs {
+  font-size: 12px;
+  line-height: 14px;
+  padding: 0 15px 5px 15px;
+  position: relative;
+}
+
+header .raul-page-header-breadcrumbs .fa-angle-left {
+  color: $primary-60;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 12px;
+  margin: 0 6px 0 0;
+  vertical-align: top;
+}
+
+header .raul-page-header-breadcrumbs .raul-page-header-breadcrumb {
+  color: $charcoal-80;
+}
+
+header .raul-page-header-breadcrumbs-dropdown {
+  background-color: $lightest;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 5px 25px -10px;
+  display: none;
+  position: absolute;
+  top: 20px;
+  z-index: 1;
+
+  .raul-page-header-breadcrumbs-dropdown-breadcrumb {
+    color: $charcoal-80;
+    display: block;
+    overflow: hidden;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 180px;
+  }
+
+  .raul-page-header-breadcrumbs-dropdown-breadcrumb:hover {
+    background-color: $charcoal-10;
+    cursor: pointer;
+  }
+}
+
+.raul-left-navigation-pinned header.raul-page-header::after {
+  clear: none;
+  content: '';
+  display: block;
+  padding-left: 300px;
+}
+
+@include media-breakpoint-up(lg) {
+  .raul-left-navigation-expanded header.raul-page-header {
+    padding-left: 300px;
+  }
+
+  header.raul-page-header {
+    padding-left: 54px;
+  }
+}
+
+// Content affected by header
+.raul-page-container {
+  margin-left: 330px;
+  padding-top: 100px;
+  transition: 0.5s;
+}
+
+main.raul-page-container {
+  margin-left: 0;
+}
+
+@include media-breakpoint-up(lg) {
+  .raul-left-navigation-expanded main.raul-page-container {
+    margin-left: 300px;
+  }
+
+  main.raul-page-container {
+    margin-left: 54px;
+  }
+}
+
+// Left Nav Exceed Height State
+.raul-left-navigation-exceed-height header.raul-page-header {
+  position: absolute;
+}
+
+header.raul-page-header.hide-left-nav {
+  padding-left: 0 !important;
+}
+
+main.raul-page-container.hide-left-nav {
+  margin-left: 0 !important;
+}

@@ -1,0 +1,691 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'notifications',
+  page: 'Notifications',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#javascript-api"
+          aria-controls="custom-element-api"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          JavaScript API
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <div class="alert alert-warning">
+      If your application is not using left navigation please be aware that you will have to add
+      <code>no-left-navigation</code> class to the <code>body</code> tag.
+    </div>
+
+    <h2>Generate Notifications through HTML elements</h2>
+
+    <p>
+      Any HTML element that contains a <code>.data-notification-toggle</code>
+      will generate a new Notification every time it's clicked.
+    </p>
+
+    <div class="raul-card mb-0">
+      <p>
+        <%- include('/components/partials/notifications/notifications-examples') %>
+      </p>
+
+      <cite>
+        <small class="text-charcoal-70">
+          * Time to live should be added in milliseconds.
+        </small>
+      </cite>
+    </div>
+
+    <pre class="mb-4"><code class="language-markup">
+      <%= include('/components/partials/notifications/notifications-examples') %>
+    </code></pre>
+
+    <h2>Behavior</h2>
+
+    <p>
+      There are 3 flavors of Notifications: info, success, and danger (warning has
+      been deprecated). Every Notification has an "<code>X</code>" button on its
+      right side which will close the Notification.
+      Closing a Notification will make it slide out of the view and once it does that
+      it disappears. There is an <code>isClosed</code> variable on each Notification
+      which lets you know its status, as well as there is an <code>addedToDOM</code>
+      variable to let you know whether the element is in the DOM or not.
+      There are also 2 types of Notification list displays: the default one will
+      add the new Notifications on top of the old ones and the expanded one that lists
+      the Notifications one under another, keeping the newest ones on the top side of
+      the list.
+      Having more than one active Notifications at the same time (e.g. 3 Notifications
+      that are not closed) will make the bulk actions container appear. It contains
+      two different buttons: "<code>Show X</code>" / "<code>Hide X</code>" button
+      (<code>X</code> being the number of active Notifications),
+      which toggles between the default and the extended Notification list view, and
+      the "<code>Close All</code>" button, which closes all the Notifications.
+      Bulk action container and close button are displayed by default but they can
+      be hidden if desired.
+    </p>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="javascript-api">
+    <p>
+      Notification's javascript usage is as simple as declaring a new <code>Notification</code>
+      instance with the desired options set. The notification will slide in as default as soon
+      as the instance is created, but this behaviour can be changed (more information in the
+      following javascript documentation).
+    </p>
+
+    <h3>Options</h3>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Option</th>
+        <th>Expected</th>
+        <th>Default</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <th class="text-nowrap">
+          <code>description</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>string</code>
+        </td>
+
+        <td>
+          <code>null</code>
+        </td>
+
+        <td>
+          <p>
+            Sets Notification's description.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>moreDetailsHref</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>string</code>
+        </td>
+
+        <td>
+          <code>null</code>
+        </td>
+
+        <td>
+          <p>
+            Notification optionally has the possibility to add an URL. If a correct URL
+            is provided, <code>moreDetailsText</code> option's text will be shown which
+            will redirect the user to the specified URL.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>moreDetailsText</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>string</code>
+        </td>
+
+        <td>
+          <code>null</code>
+        </td>
+
+        <td>
+          <p>
+            The text that will be shown for the URL if <code>moreDetailsHref</code>
+            option is set.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>preventDisplay</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>boolean</code>
+        </td>
+
+        <td>
+          <code>false</code>
+        </td>
+
+        <td>
+          <p>
+            Determines whether the Notification should be added to the DOM and shown
+            as soon as the object is created or not.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>showCloseButton</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>boolean</code>
+        </td>
+
+        <td>
+          <code>true</code>
+        </td>
+
+        <td>
+          <p>
+            Determines the existence of the close button when creating the Notification.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>title</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>string</code>
+        </td>
+
+        <td>
+          <code>null</code>
+        </td>
+
+        <td>
+          <p>
+            Sets Notification's title.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>ttl</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>number</code>
+
+          <hr />
+
+          <p>
+            Represents time in milliseconds
+          </p>
+        </td>
+
+        <td>
+          <code>null</code>
+        </td>
+
+        <td>
+          <p>
+            Represents the time after which the Notification will slide away.
+            Its least set value will be considered valid once the <code>#show</code>
+            method is triggered.
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>type</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>string</code>
+
+          <hr />
+
+          <p>Valid options:</p>
+
+          <ul>
+            <li><code>'info'</code></li>
+            <li><code>'success'</code></li>
+            <li><code>'danger'</code></li>
+          </ul>
+        </td>
+
+        <td>
+          <code>'info'</code>
+        </td>
+
+        <td>
+          <p>
+            Determines the Notification style that will be added.
+          </p>
+        </td>
+      </tr>
+      </tbody>
+
+      <tfoot>
+      <tr>
+        <td colspan="4">
+          The Notification template is created with the options provided when creating
+          the Notification, therefore every desired options must be passed to the
+          <code>options</code> object when creating a new instance and changing one
+          option's value will have no effect after the instance is created
+          (except for the <code>ttl</code> option which will be used once the
+          <code>#show</code> method is called).
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+
+    <h3>Methods</h3>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Method</th>
+        <th>Syntax</th>
+        <th>Parameters</th>
+        <th>Description</th>
+        <th>Returned value</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <th class="text-nowrap">
+          <code>&lt;constructor&gt;</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>new RAUL.Notification(options)</code>
+        </td>
+
+        <td>
+          Optional <code>options</code> object (described above)
+        </td>
+
+        <td>
+          <p>Creates a new notification instance.</p>
+        </td>
+
+        <td>
+          New notification instance
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <p><code>.info</code></p>
+          <p><code>.success</code></p>
+          <p><code>.danger</code></p>
+        </th>
+
+        <td class="text-nowrap">
+          <p><code>RAUL.Notification.info(options)</code></p>
+          <p><code>RAUL.Notification.success(options)</code></p>
+          <p><code>RAUL.Notification.danger(options)</code></p>
+        </td>
+
+        <td>
+          Optional <code>options</code> object (described above); the type
+          will be set automatically based on the method used
+        </td>
+
+        <td>
+          <p>Creates a new notification instance of the specified type.</p>
+        </td>
+
+        <td>
+          New notification instance
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>#addToDOM</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>notification.addToDOM()</code>
+        </td>
+
+        <td>
+          N/A
+        </td>
+
+        <td>
+          <p>
+            Attaches Notification to the DOM. See <code>preventDisplay</code>
+            option and <code>#remove</code> method for more details.
+          </p>
+        </td>
+
+        <td>
+          N/A
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>#close</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>notification.close()</code>
+        </td>
+
+        <td>
+          N/A
+        </td>
+
+        <td>
+          <p>
+            Closes the Notification, triggering it to slide away from view.
+          </p>
+        </td>
+
+        <td>
+          N/A
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>#remove</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>notification.remove()</code>
+        </td>
+
+        <td>
+          N/A
+        </td>
+
+        <td>
+          <p>
+            Detaches Notification from the DOM.
+          </p>
+        </td>
+
+        <td>
+          N/A
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>#show</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>notification.show()</code>
+        </td>
+
+        <td>
+          N/A
+        </td>
+
+        <td>
+          <p>
+            Calls the <code>#addToDOM</code> method and slides the Notification
+            into the view (for a specific time if <code>ttl</code> option is set).
+          </p>
+        </td>
+
+        <td>
+          N/A
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>.active</code>
+
+          <hr />
+
+          <p>Represented by a getter</p>
+        </th>
+
+        <td class="text-nowrap">
+          <code>RAUL.Notifications.active</code>
+        </td>
+
+        <td>
+          N/A
+        </td>
+
+        <td>
+          <p>
+            Returns an array containing all of the active Notifications
+            that are currently available on the screen.
+          </p>
+        </td>
+
+        <td>
+          An array with all of the active Notifications
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>.activeNotificationsExpandedStatus</code>
+
+          <hr />
+
+          Represented by a getter and a setter
+        </th>
+
+        <td class="text-nowrap">
+          <p><code>RAUL.Notifications.activeNotificationsExpandedStatus</code></p>
+          <p><code>RAUL.Notifications.activeNotificationsExpandedStatus = true</code></p>
+          <p><code>RAUL.Notifications.activeNotificationsExpandedStatus = false</code></p>
+        </td>
+
+        <td>
+          <code>boolean</code> value expected
+        </td>
+
+        <td>
+          <p>
+            Gets/Sets the expanded display status for Notifications' header.
+            It's toggled by default by the "<code>Show X</code>" / "<code>Hide X</code>"
+            bulk action button. Default value: <code>false</code>.
+          </p>
+        </td>
+
+        <td>
+          <code>boolean</code>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>.all</code>
+
+          <hr />
+
+          <p>Represented by a getter</p>
+        </th>
+
+        <td class="text-nowrap">
+          <code>RAUL.Notifications.all</code>
+        </td>
+
+        <td>
+          N/A
+        </td>
+
+        <td>
+          <p>
+            Returns an array containing all the notifications that have
+            been created, whatever their statuses.
+          </p>
+        </td>
+
+        <td>
+          An array with all the notifications
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>.bulkActionButtonsDisplayStatus</code>
+
+          <hr />
+
+          Represented by a getter and a setter
+        </th>
+
+        <td class="text-nowrap">
+          <p><code>RAUL.Notifications.bulkActionButtonsDisplayStatus</code></p>
+          <p><code>RAUL.Notifications.bulkActionButtonsDisplayStatus = true</code></p>
+          <p><code>RAUL.Notifications.bulkActionButtonsDisplayStatus = false</code></p>
+        </td>
+
+        <td>
+          <code>boolean</code> value expected
+        </td>
+
+        <td>
+          <p>
+            Gets/Sets the visibility status for the bulk action buttons.
+            Default value: <code>true</code>.
+          </p>
+        </td>
+
+        <td>
+          <code>boolean</code>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>.closeAll</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>RAUL.Notifications.closeAll()</code>
+        </td>
+
+        <td>
+          N/A
+        </td>
+
+        <td>
+          <p>
+            Calls the <code>#close</code> method on every Notification.
+            <code>.closeAll</code> method is triggered by default by the
+            "<code>Close All</code>" bulk action button.
+          </p>
+        </td>
+
+        <td>
+          N/A
+        </td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap">
+          <code>.showAll</code>
+        </th>
+
+        <td class="text-nowrap">
+          <code>RAUL.Notifications.showAll()</code>
+        </td>
+
+        <td>
+          N/A
+        </td>
+
+        <td>
+          <p>
+            Makes all Notifications active again, displaying them on the screen.
+          </p>
+        </td>
+
+        <td>
+          N/A
+        </td>
+      </tr>
+      </tbody>
+
+      <tfoot>
+      <tr>
+        <td colspan="5">
+          <code>&lt;</code>fn<code>&gt;</code> = contructor method
+          <code>.</code>fn = class (static) method
+          <code>#</code>fn = instance method
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+
+    <h3>Example Usage</h3>
+
+    <pre><code class="language-javascript"><%= (`
+      // Basic usage:
+
+      const notification = new RAUL.Notification({
+        type: 'success',
+        title: 'You made it!',
+        description: 'You created a notification!',
+        preventDisplay: true,
+        showCloseButton: false,
+      })
+      notification.ttl = 2000
+      notification.show()
+
+      const notification2 = RAUL.Notification.danger({
+        title: 'Oh no...',
+        description: 'Something bad happened!',
+        moreDetailsHref: '#some-url',
+        moreDetailsText: 'Find more about it here...',
+      })
+
+      const notification3 = RAUL.Notification.info({
+        description: 'This is an afirmation',
+      })
+
+      // Static methods usage:
+
+      const everyEachActiveNotificationInThisVeryMoment = RAUL.Notification.allNotifications
+      RAUL.Notifications.showAll()
+      RAUL.Notifications.activeNotificationsExpandedStatus = true
+    `)%></code></pre>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

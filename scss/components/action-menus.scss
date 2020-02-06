@@ -1,0 +1,43 @@
+.raul-simple-dropdown[class^='drop'],
+.raul-simple-dropdown[class*=' drop'] {
+  [data-toggle='dropdown'] {
+    color: $primary-60;
+    display: inline-flex;
+    outline: none;
+    padding: 0 0.5rem;
+    text-decoration: none;
+  }
+
+  .dropdown-menu {
+    border-radius: 0;
+    box-shadow: 0 4px 8px 0 rgba(82, 97, 115, 0.18);
+    font-size: 0.75rem;
+    left: auto;
+    padding: 0.75rem 0;
+    right: auto;
+    z-index: 79;
+
+    .dropdown-item {
+      color: $primary-60;
+      padding: 0.125rem 0.75rem;
+
+      &:active,
+      &:hover {
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      &.disabled {
+        color: $charcoal-20;
+        pointer-events: none;
+      }
+    }
+
+    .dropdown-divider {
+      border-top: 1px solid $charcoal-10;
+      height: 0;
+      margin: 0.5rem 0;
+      overflow: hidden;
+    }
+  }
+}

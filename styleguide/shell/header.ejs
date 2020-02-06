@@ -1,0 +1,75 @@
+<%- include('/partials/header', {
+  domain: 'Shell Components',
+  id: 'header',
+  page: 'Header',
+}) %>
+
+<h2>The App Switcher</h2>
+
+<p>
+  Inside the header, there is an icon representing the App Switcher. It is the waffle icon, which
+  looks like a grid of boxes. When your team is ready for implementation, this icon needs to be
+  added by your team. In future iterations, this will be dynamically added based on your integration
+  with books.
+</p>
+
+<p>
+  With the icon added, your team will need to add an Ajax call to fetch the data from your server,
+  or preload the data on page render. For the time being, that data should be acquired from
+  green book, and cached on your product's server. To instatiate the AppSwitcher, you will use the
+  following switcher APIs:
+</p>
+
+<pre class="language-javascript"><code><%= (`
+  // Option 1, via AppSwitcher extension method
+  var appSwitcher = RAUL.AppSwitcher.fromOptions({switcherData: response});
+
+  // Option 2, direct instantiation
+  var appSwitcher = new RAUL.AppSwitcher({switcherData: response});
+`) %></code></pre>
+
+<p>An example of using jQuery Ajax to fetch the data</p>
+
+<pre class="language-javascript"><code><%= (`
+  <script type="text/javascript">
+    jQuery
+      .ajax({
+        method: "GET",
+        dataType: "json",
+        url: '/api/v1/app-switcher',
+      })
+      .done(function(response) {
+        RAUL.AppSwitcher.fromOptions({switcherData: response});
+      })
+      .fail(function(jqXHR, error) { console.log(jqXHR); });
+  </script>
+`) %></code></pre>
+
+<h2>Header Example</h2>
+
+<iframe
+  style="border:1px solid #cecece;min-height:300px;width:100%;"
+  src="../inline-demos/header.html"
+></iframe>
+
+<p>
+  <a class="button button-default" href="../inline-demos/header.html" target="_blank">
+    <i class="fa fa-external-link"></i>
+    Open demo in full screen
+  </a>
+</p>
+
+<h3>Code Snippets</h3>
+
+<pre class="language-markup"><code><%=
+  include('/shell/partials/header/header').trim()
+%></code></pre>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Left Navigation',
+      url: 'shell/left-nav.html',
+    },
+  ],
+}) %>

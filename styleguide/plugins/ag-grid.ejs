@@ -1,0 +1,676 @@
+<%- include('/partials/header', {
+  domain: 'Plugins',
+  id: 'raul-plugin-ag-grid',
+  page: 'ag-Grid',
+}) %>
+
+<h2>ag-Grid Documentation</h2>
+
+<p>
+  Since ag-Grid is already very configurable,
+  RAUL is only providing CSS styles for the grid
+  and some examples of different use cases.
+  In addition to RAUL-specific instruction found here,
+  more information is available from ag-Grid at:
+  <a href="https://www.ag-grid.com/documentation-main/documentation.php" target="_blank">
+    https://www.ag-grid.com/documentation-main/documentation.php</a>.</p>
+
+<h2 class="mt-4">Installation</h2>
+
+<p class="alert alert-warning">
+  ag-Grid plugin is not included in raul.js file.
+  You will have to add it separately if you want
+  to use it. Below you can see an example of how to
+  include ag-Grid to your project.
+</p>
+
+<div class="raul-card mb-5 p-0">
+  <pre class="mb-0"><code class="language-html"><%= (`
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/raul.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/plugins/raul-plugin-ag-grid.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Code on page -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/raul.min.js"></script>
+    <script
+      src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/plugins/raul-plugin-ag-grid.min.js"
+    ></script>
+  `) %></code></pre>
+</div>
+
+<h2 class="mt-4">Usage</h2>
+
+<p class="mb-3">
+  To apply RAUL styles to ag-Grid tables, simply add the <code>.raul-grid</code> class
+  to the parent wrapper.
+</p>
+
+<h2 class="mt-4">Feature Coverage</h2>
+
+<h3 class="mt-3">Core Grid Features</h3>
+
+<div style="column-count: 2;">
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-success">
+      <span>Accessibility - Covered</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Aligned Grids Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-warning">
+      <span>Cell Editing - Missing</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Column Filter - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-success">
+      <span>Column Groups - Covered </span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Column Moving - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-success">
+      <span>Column Pinning - Covered</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-success">
+      <span>Column Resizing - Covered</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>CSV Export - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Custom Filter - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Date Filter - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>External Filter - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Keyboard Navigation - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Printing - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Number Filter - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-warning">
+      <span>Pagination -Missing</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-warning">
+      <span>Quick Filter - Missing</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-success">
+      <span>Row Selection - Covered</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Row Sorting - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Row Dragging - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-warning">
+      <span>Text Filter - Missing</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Touch Support - Functionality/No styles</span>
+    </div>
+  </div>
+</div>
+
+<h3 class="mt-3">Enterprise Features</h3>
+<div style="column-count: 2;">
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Aggregation - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Clipboard - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-warning">
+      <span>Column Menu - Missing</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-warning">
+      <span>Context Menu - Missing</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Excel Export - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-success">
+      <span>Grouping Rows - Covered</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Master / Detail  - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Pivoting - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-success">
+      <span>Range Selection - Covered</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-pending">
+      <span>Set Filter - Functionality/No styles</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-warning">
+      <span>Status Bar - Missing</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-warning">
+      <span>Tool Panel - Missing</span>
+    </div>
+  </div>
+  <div>
+    <div class="raul-status-indicator raul-status-indicator-warning">
+      <span>Tree Data - Missing</span>
+    </div>
+  </div>
+</div>
+
+<h2 class="mt-4">Examples</h2>
+
+<p class="mb-3">
+  Below you can see some basic different use cases of the grid.
+</p>
+
+<h3 class="mb-3">Column Pinning</h3>
+
+<div class="raul-card mb-0">
+  <div id="ag-grid-pinned-left" style="height: 250px;" class="raul-grid"></div>
+</div>
+
+<div class="raul-card mb-5 p-0">
+  <pre class="mb-0"><code class="language-html"><%= (`
+    <div id="ag-grid-pinned-left" style="height: 250px;" class="raul-grid"></div>
+  `) %></code></pre>
+
+  <pre class="mb-0"><code class="language-javascript"><%= (`
+    const columnDefs = [
+      {headerName: 'ID', field: 'id', pinned: 'left'},
+      {headerName: 'Name', field: 'name'},
+      {headerName: 'Address', field: 'address'},
+      {headerName: 'City', field: 'city'},
+      {headerName: 'State', field: 'state'},
+      {headerName: 'Postal', field: 'postal'},
+      {headerName: 'County', field: 'county'},
+      {headerName: 'Units', field: 'units'},
+      {headerName: 'Sq Ft', field: 'sqFt'},
+      {headerName: 'Built', field: 'built'},
+      {headerName: 'Owner', field: 'owner'},
+      {headerName: 'Manager', field: 'manager'},
+      {headerName: 'Type', field: 'type'},
+    ]
+
+    const rowData = [
+      {
+        id: '1',
+        name: 'Innovo Living On Atlantic',
+        address: '801 Harbor Inn Drive',
+        city: 'Coral Springs',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '310',
+        sqFt: '1000',
+        built: '2000',
+        owner: 'Company X',
+        manager: 'MyPMC',
+        type: 'Conventional',
+      },
+      {
+        id: '2',
+        name: 'Whispering Palms',
+        address: '4540 Northwest 36 Street',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33319-6439',
+        county: 'Broward',
+        units: '214',
+        sqFt: '744',
+        built: '1997',
+        owner: 'Company Y',
+        manager: 'MyPMC',
+        type: 'Conventional',
+      },
+      {
+        id: '3',
+        name: 'Hawaiian Palms',
+        address: '3540 Northwest 50 Avenue',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '275',
+        sqFt: '1146',
+        built: '2001',
+        owner: 'Company Z',
+        manager: '',
+        type: 'Conventional',
+      },
+      {
+        id: '4',
+        name: 'Innovo Living On Atlantic',
+        address: '801 Harbor Inn Drive',
+        city: 'Coral Springs',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '310',
+        sqFt: '1000',
+        built: '2000',
+        owner: 'Company X',
+        manager: 'MyPMC',
+        type: '',
+      },
+      {
+        id: '5',
+        name: 'Whispering Palms',
+        address: '4540 Northwest 36 Street',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33319-6439',
+        county: 'Broward',
+        units: '214',
+        sqFt: '744',
+        built: '1997',
+        owner: 'Company Y',
+        manager: 'MyPMC',
+        type: 'Conventional',
+      },
+      {
+        id: '6',
+        name: 'Hawaiian Palms',
+        address: '3540 Northwest 50 Avenue',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '275',
+        sqFt: '1146',
+        built: '2001',
+        owner: 'Company Z',
+        manager: 'MyPMC',
+        type: '',
+      },
+    ]
+
+    const gridOptions = {
+      columnDefs: columnDefs,
+      headerHeight: 42,
+      rowData: rowData,
+      rowHeight: 42,
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var agGridDiv = document.querySelector('#ag-grid-pinned-left')
+      new window.agGrid.Grid(agGridDiv, gridOptions)
+    })
+  `) %></code></pre>
+</div>
+
+<h3 class="mb-3">Column Groups</h3>
+
+<div class="raul-card mb-0">
+  <div id="ag-grid-column-groups" style="height: 250px;" class="raul-grid"></div>
+</div>
+
+<div class="raul-card mb-5 p-0">
+  <pre class="mb-0"><code class="language-html"><%= (`
+    <div id="ag-grid-column-groups" style="height: 250px;" class="raul-grid"></div>
+  `) %></code></pre>
+
+  <pre class="mb-0"><code class="language-javascript"><%= (`
+    const columnDefs = [
+      {headerName: 'ID', field: 'id'},
+      {headerName: 'Name', field: 'name'},
+      {
+        headerName: 'Full Address',
+        children: [
+          {headerName: 'Address', field: 'address'},
+          {headerName: 'City', field: 'city'},
+          {headerName: 'State', field: 'state'},
+          {headerName: 'Postal', field: 'postal'},
+          {headerName: 'County', field: 'county'},
+        ],
+      },
+      {headerName: 'Units', field: 'units'},
+      {headerName: 'Sq Ft', field: 'sqFt'},
+      {headerName: 'Built', field: 'built'},
+      {headerName: 'Owner', field: 'owner'},
+      {headerName: 'Manager', field: 'manager'},
+      {headerName: 'Type', field: 'type'},
+    ],
+
+    const rowData = [
+      {
+        id: '1',
+        name: 'Innovo Living On Atlantic',
+        address: '801 Harbor Inn Drive',
+        city: 'Coral Springs',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '310',
+        sqFt: '1000',
+        built: '2000',
+        owner: 'Company X',
+        manager: 'MyPMC',
+        type: 'Conventional',
+      },
+      {
+        id: '2',
+        name: 'Whispering Palms',
+        address: '4540 Northwest 36 Street',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33319-6439',
+        county: 'Broward',
+        units: '214',
+        sqFt: '744',
+        built: '1997',
+        owner: 'Company Y',
+        manager: 'MyPMC',
+        type: 'Conventional',
+      },
+      {
+        id: '3',
+        name: 'Hawaiian Palms',
+        address: '3540 Northwest 50 Avenue',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '275',
+        sqFt: '1146',
+        built: '2001',
+        owner: 'Company Z',
+        manager: '',
+        type: 'Conventional',
+      },
+      {
+        id: '4',
+        name: 'Innovo Living On Atlantic',
+        address: '801 Harbor Inn Drive',
+        city: 'Coral Springs',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '310',
+        sqFt: '1000',
+        built: '2000',
+        owner: 'Company X',
+        manager: 'MyPMC',
+        type: '',
+      },
+      {
+        id: '5',
+        name: 'Whispering Palms',
+        address: '4540 Northwest 36 Street',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33319-6439',
+        county: 'Broward',
+        units: '214',
+        sqFt: '744',
+        built: '1997',
+        owner: 'Company Y',
+        manager: 'MyPMC',
+        type: 'Conventional',
+      },
+      {
+        id: '6',
+        name: 'Hawaiian Palms',
+        address: '3540 Northwest 50 Avenue',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '275',
+        sqFt: '1146',
+        built: '2001',
+        owner: 'Company Z',
+        manager: 'MyPMC',
+        type: '',
+      },
+    ]
+
+    const gridOptions = {
+      columnDefs: columnDefs,
+      headerHeight: 42,
+      rowData: rowData,
+      rowHeight: 42,
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var agGridDiv = document.querySelector('#ag-grid-column-groups')
+      new window.agGrid.Grid(agGridDiv, gridOptions)
+    })
+  `) %></code></pre>
+</div>
+
+<h3 class="mb-3">Row Sorting</h3>
+
+<div class="raul-card mb-0">
+  <div id="ag-grid-sorting" style="height: 250px;" class="raul-grid"></div>
+</div>
+
+<div class="raul-card mb-5 p-0">
+  <pre class="mb-0"><code class="language-html"><%= (`
+    <div id="ag-grid-sorting" style="height: 250px;" class="raul-grid"></div>
+  `) %></code></pre>
+
+  <pre class="mb-0"><code class="language-javascript"><%= (`
+    const columnDefs = [
+      {headerName: 'ID', field: 'id', sort: 'asc'},
+      {headerName: 'Name', field: 'name'},
+      {headerName: 'Address', field: 'address'},
+      {headerName: 'City', field: 'city'},
+      {headerName: 'State', field: 'state'},
+      {headerName: 'Postal', field: 'postal'},
+      {headerName: 'County', field: 'county'},
+      {headerName: 'Units', field: 'units'},
+      {headerName: 'Sq Ft', field: 'sqFt'},
+      {headerName: 'Built', field: 'built'},
+      {headerName: 'Owner', field: 'owner'},
+      {headerName: 'Manager', field: 'manager'},
+      {headerName: 'Type', field: 'type'},
+    ]
+
+    const rowData = [
+      {
+        id: '1',
+        name: 'Innovo Living On Atlantic',
+        address: '801 Harbor Inn Drive',
+        city: 'Coral Springs',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '310',
+        sqFt: '1000',
+        built: '2000',
+        owner: 'Company X',
+        manager: 'MyPMC',
+        type: 'Conventional',
+      },
+      {
+        id: '2',
+        name: 'Whispering Palms',
+        address: '4540 Northwest 36 Street',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33319-6439',
+        county: 'Broward',
+        units: '214',
+        sqFt: '744',
+        built: '1997',
+        owner: 'Company Y',
+        manager: 'MyPMC',
+        type: 'Conventional',
+      },
+      {
+        id: '3',
+        name: 'Hawaiian Palms',
+        address: '3540 Northwest 50 Avenue',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '275',
+        sqFt: '1146',
+        built: '2001',
+        owner: 'Company Z',
+        manager: '',
+        type: 'Conventional',
+      },
+      {
+        id: '4',
+        name: 'Innovo Living On Atlantic',
+        address: '801 Harbor Inn Drive',
+        city: 'Coral Springs',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '310',
+        sqFt: '1000',
+        built: '2000',
+        owner: 'Company X',
+        manager: 'MyPMC',
+        type: '',
+      },
+      {
+        id: '5',
+        name: 'Whispering Palms',
+        address: '4540 Northwest 36 Street',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33319-6439',
+        county: 'Broward',
+        units: '214',
+        sqFt: '744',
+        built: '1997',
+        owner: 'Company Y',
+        manager: 'MyPMC',
+        type: 'Conventional',
+      },
+      {
+        id: '6',
+        name: 'Hawaiian Palms',
+        address: '3540 Northwest 50 Avenue',
+        city: 'Lauderdal Lakes',
+        state: 'FL',
+        postal: '33071-5615',
+        county: 'Broward',
+        units: '275',
+        sqFt: '1146',
+        built: '2001',
+        owner: 'Company Z',
+        manager: 'MyPMC',
+        type: '',
+      },
+    ]
+
+    const gridOptions = {
+      columnDefs: columnDefs,
+      enableSorting: true,
+      headerHeight: 42,
+      rowData: rowData,
+      rowHeight: 42,
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var agGridDiv = document.querySelector('#ag-grid-sorting')
+      new window.agGrid.Grid(agGridDiv, gridOptions)
+    })
+  `) %></code></pre>
+</div>
+
+<%- include('/partials/footer', {
+  additionalScripts: [
+    '../js/plugins/raul-plugin-ag-grid.min.js',
+    'js/raul-plugin-ag-grid.js',
+  ],
+}) %>

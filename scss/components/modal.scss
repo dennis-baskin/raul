@@ -1,0 +1,253 @@
+.modal.right .modal-dialog {
+  float: right;
+  height: 100%;
+  margin: 0;
+  width: 320px;
+}
+
+.modal.right .modal-content {
+  border-radius: 0;
+  height: 100%;
+}
+
+.slide {
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+
+.modal-backdrop.slide {
+  opacity: 0;
+}
+
+.modal-backdrop.in,
+.modal-backdrop.show {
+  opacity: $modal-backdrop-opacity;
+}
+
+.slide.in,
+.slide.show {
+  opacity: 1;
+}
+
+.modal.right.slide .modal-dialog {
+  transform: translate(25%, 0);
+  transition: transform 0.3s ease-out;
+}
+
+.modal.slide.in .modal-dialog,
+.modal.slide.show .modal-dialog {
+  transform: translate(0, 0);
+}
+
+.modal.slide.in
+.modal.slide.show {
+  opacity: 1;
+}
+
+// .modal-backdrop {
+//     background-color: #f7f8f9;
+// }
+
+//Aside modals styles
+.raul-aside-modal.modal.right .modal-dialog,
+.raul-modal .modal-dialog {
+  background: $lightest;
+  box-shadow: 0 8px 16px 0 rgba(82, 97, 115, 0.18);
+  box-sizing: border-box;
+  color: $charcoal-80;
+  font-family: 'Roboto';
+}
+
+.raul-modal {
+  min-height: 400px;
+}
+
+.raul-modal,
+.raul-aside-modal {
+  .modal-header {
+    display: block;
+  }
+}
+
+.raul-aside-modal .modal-header {
+  background: $lightest;
+  border: 0;
+  padding: 1.4375rem 1.625rem 0;
+  z-index: 100;
+}
+
+.raul-modal .modal-header,
+.raul-modal .modal-body {
+  border: 0;
+  padding: 0;
+}
+
+.raul-modal .modal-body {
+  font-size: 14px;
+  line-height: 22px;
+  margin-top: 20px;
+}
+
+.raul-modal .modal-content {
+  border: 0;
+  padding: 33px 35px;
+  padding-bottom: 15px;
+}
+
+.raul-aside-modal .modal-title,
+.raul-modal .modal-title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-bottom: 3px;
+}
+
+.raul-modal .raul-modal-btn-container {
+  background: $lightest;
+  padding: 0 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.raul-modal .button {
+  padding: 8px 20px;
+}
+
+.raul-modal .raul-modal-btn-container button:last-child {
+  margin-left: 5px;
+}
+
+.raul-modal .modal-footer {
+  border: 0;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+}
+
+.raul-modal .raul-modal-divider {
+  border-top: 1px solid $charcoal-20;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: 1;
+}
+
+.raul-modal-centered {
+  text-align: center;
+}
+
+.raul-modal.raul-modal-centered .modal-dialog {
+  max-width: 455px;
+}
+
+.raul-modal.raul-modal-centered .modal-body {
+  margin-top: 10px;
+  min-height: 0;
+}
+
+.raul-modal.raul-modal-centered .modal-footer {
+  justify-content: center;
+}
+
+.raul-aside-modal .modal-header .modal-subheader {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.raul-aside-modal .modal-content {
+  border: 0;
+}
+
+.raul-aside-modal .modal-body {
+  overflow: auto;
+  padding-left: 1.4375rem;
+  padding-right: 1.4375rem;
+  width: 100%;
+}
+
+.raul-aside-modal .close {
+  color: $charcoal-80;
+  font-size: 32px;
+  font-weight: 100;
+  line-height: 24px;
+}
+
+.raul-aside-modal .modal-footer {
+  background: inherit;
+  padding: 18px 16px;
+}
+
+.raul-aside-modal .raul-nav-underline.nav-tabs.nav-justified {
+  background-color: $nav-light-sub;
+}
+
+// Single aside modal
+.raul-single-aside.modal.right .modal-dialog {
+  width: 350px;
+}
+
+.raul-single-aside .modal-footer {
+  text-align: center;
+}
+
+.raul-single-aside .modal-footer button {
+  width: 47%;
+}
+
+.raul-single-aside .modal-footer button:first-child {
+  float: left;
+}
+
+.raul-single-aside .modal-footer button:last-child {
+  float: right;
+}
+
+//Double aside styles
+.raul-double-aside.modal.right .modal-dialog {
+  width: 600px;
+}
+
+.raul-double-aside .modal-footer button {
+  width: 124px;
+}
+
+.raul-double-aside .modal-footer button:last-child {
+  margin-left: 5px;
+}
+
+// Single aside tabbed modal
+.raul-aside-modal-tabbed.raul-aside-modal .modal-content {
+  padding: 0;
+}
+
+.raul-aside-modal-tabbed.raul-aside-modal .modal-header {
+  background-color: $nav-light-sub;
+  padding: 15px 25px;
+  padding-bottom: 20px;
+}
+
+.raul-aside-modal-tabbed.raul-aside-modal .modal-body {
+  padding: 0;
+  width: 100%;
+}
+
+.raul-aside-modal-tabbed .raul-nav-underline + .raul-tab-content {
+  bottom: 0;
+  overflow: auto;
+  padding: 15px 25px;
+  position: absolute;
+  top: 43px;
+}
+
+.raul-aside-modal-tabbed .raul-nav.nav-tabs .nav-link {
+  max-width: none;
+}
+
+@media only screen and (max-width: 576px) {
+  .raul-single-aside.modal.right .modal-dialog,
+  .raul-double-aside.modal.right .modal-dialog {
+    width: 100%;
+  }
+}

@@ -1,0 +1,87 @@
+<!-- htmllint preset="none" -->
+<!doctype html>
+<html>
+  <head>
+    <title>RAUL / Vue</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../css/raul.css" />
+  </head>
+
+  <body>
+    <ui-shell
+      product-name="RAUL UI Library"
+      company-name="Vue Example"
+      property-name="Vue"
+
+      user-name="Some User"
+      user-title="Some Title"
+
+      help-link="#help"
+      home-link="#home"
+      logout-link="#logout"
+      settings-link="#settings"
+      user-settings-link="#user-settings"
+
+      show-help-link
+      show-home-link
+      show-settings-link
+      show-search
+
+      domain="RAUL"
+      page="Vue Example"
+    >
+      <template slot id="left-nav" v-cloak>
+        <%- include('../partials/left-nav') %>
+      </template>
+
+      <template slot id="content" v-cloak>
+        <div id="app">
+          <h1>{{title}}</h1>
+
+          <div class="raul-box border p-4 mb-3">
+            <h2>Custom Elements</h2>
+
+            <p>
+              App uses Custom Elements and UI shell to load interface with RAUL.
+            </p>
+          </div>
+        </div>
+      </template>
+    </ui-shell>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
+    </script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../../js/raul.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <script>
+      var app = new Vue({
+        el: '#app',
+
+        data: {
+          title: 'Rendered Using Vue'
+        }
+      })
+    </script>
+  </body>
+</html>
+<!-- htmllint preset="default" -->

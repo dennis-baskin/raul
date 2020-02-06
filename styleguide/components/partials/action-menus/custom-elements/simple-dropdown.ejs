@@ -1,0 +1,19 @@
+<ui-action-menu direction="right">
+  <template slot id="title">
+    <button class="btn btn-primary">Custom Trigger</button>
+  </template>
+
+  <ui-action-menu-item>
+    <span class="fa fa-pencil"></span> Edit
+  </ui-action-menu-item>
+
+  <ui-action-menu-item disabled>
+    <span class="fa fa-close"></span> Disabled
+  </ui-action-menu-item>
+
+  <div class="dropdown-divider"></div>
+
+  <ui-action-menu-item item-class="text-danger" item-id="has-id">
+    <span class="fa fa-trash"></span> Delete
+  </ui-action-menu-item>
+</ui-action-menu>

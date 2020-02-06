@@ -1,0 +1,32 @@
+<form>
+  <div class="form-group">
+    <label for="email">Email address</label>
+
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      aria-describedby="email-help"
+      placeholder="Enter email"
+    />
+
+    <small id="email-help" class="form-text text-muted">
+      We'll never share your email with anyone else.
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password">
+  </div>
+
+  <div class="form-group custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="accept-terms">
+
+    <label class="custom-control-label" for="accept-terms">
+      Accept random terms and conditions
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

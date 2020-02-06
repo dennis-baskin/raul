@@ -1,0 +1,37 @@
+.raul-progress {
+  background-color: $charcoal-05;
+  border-radius: 0;
+  color: $lightest;
+  font-family: 'Roboto';
+  font-size: 10px;
+  height: 15px;
+  margin: 0;
+}
+
+.raul-progress-light {
+  background-color: $lightest;
+}
+
+.raul-progress-bar {
+  background-color: $charcoal-30;
+  height: 100%;
+  text-align: center;
+  transition: none;
+  width: 0;
+
+  &.info {
+    background-color: $info;
+  }
+
+  &.success {
+    background-color: $success;
+  }
+
+  &.danger {
+    background-color: $danger;
+  }
+
+  &.warning {
+    background-color: $warning;
+  }
+}

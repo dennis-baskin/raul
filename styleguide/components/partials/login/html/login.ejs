@@ -1,0 +1,52 @@
+<div class="raul-login-container <%= locals.logo ? '' : 'raul-login-no-logo'%>">
+  <form class="raul-login-form" role="form" action="">
+    <div class="form-group">
+      <label for="username">Username</label>
+
+      <div>
+        <input id="username" type="text" class="form-control" name="username" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+
+      <div>
+        <input id="password" type="text" class="form-control" name="password" required>
+      </div>
+    </div>
+
+    <div class="form-group clearfix mb-3">
+      <div class="raul-login-remember">
+        <label class="clearfix">
+          <input type="checkbox" name="remember">
+
+          <div class="raul-login-checkbox-wrap">
+            <i class="fa fa-check-square" aria-hidden="true"></i>
+          </div>
+
+          <span>Remember Me</span>
+        </label>
+      </div>
+
+      <div class="raul-login-forgot-pass">
+        <a href="#">
+          Forgot Password?
+        </a>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="button button-primary button-block">
+        Login
+      </button>
+
+      <div class="rpup-login rpup-login-full">
+        <div class="rpup-question">Already using Unified Platform?</div>
+        <a href="https://my.realpage.com" class="rpup-button raul-radius btn-block">
+          RealPage Unified Platform
+        </a>
+      </div>
+    </div>
+  </form>
+</div>

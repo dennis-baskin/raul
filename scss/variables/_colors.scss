@@ -1,0 +1,109 @@
+// base colors
+$black: #000;
+$lightest: #fff;
+
+$charcoal-90: #181a1b;
+$charcoal-80: #303436; // base
+$charcoal-70: #494d50;
+$charcoal-50: #7a8085;
+$charcoal-30: #afb3b6;
+$charcoal-20: #c9cdcf;
+$charcoal-10: #e4e6e7;
+$charcoal-05: #f1f3f3;
+
+// brand colors
+$primary-70: #005a9a;
+$primary-60: #0076cc; // base
+$primary-55: #008ae8;
+$primary-05: #e5f4ff;
+
+$accent-50: #f60;
+$accent-55: darken($accent-50, 5%);
+$accent-45: lighten($accent-50, 5%);
+
+// neutral colors
+$neutral-one: #4c5258;
+$neutral-two: #999ea0;
+$neutral-three: #b5b7b9;
+$neutral-four: #ebeae8;
+$neutral-five: #ddd;
+$neutral-six: #eaeaea;
+
+// message colors
+$info: $primary-60;
+$success: #1e8553;
+$error: #d01a1f;
+$warning: #fec12d;
+
+// light colors
+$info-light: lighten($info, 5%);
+$success-light: lighten($success, 5%);
+$error-light: lighten($error, 5%);
+$warning-light: lighten($warning, 5%);
+
+// lightest colors
+$info-lighter: lighten($info, 25%);
+$success-lighter: lighten($success, 25%);
+$error-lighter: lighten($error, 25%);
+$warning-lighter: lighten($warning, 15%);
+
+// lightest colors
+$info-lightest: lighten($info, 50%);
+$success-lightest: lighten($success, 50%);
+$error-lightest: lighten($error, 50%);
+$warning-lightest: lighten($warning, 35%);
+
+// darker colors
+$info-darker: darken($info, 60%);
+$success-darker: darken($success, 60%);
+$error-darker: darken($error, 60%);
+$warning-darker: darken($warning, 60%);
+
+// data visualization colors
+$data-deep-purple: #673ab7;
+$data-indigo: #3f51b5;
+$data-blue: #673ab7;
+$data-light-blue: #03a9f4;
+$data-cyan: #00bcd4;
+$data-teal: #009688;
+$data-green: #4caf50;
+$data-light-green: #8bc34a;
+$data-lime: #cddc39;
+$data-yellow: #ffeb3b;
+$data-amber: #ffc107;
+$data-orange: #ff9800;
+$data-deep-orange: #ff5722;
+$data-brown: #795548;
+$data-grey: #9e9e9e;
+$data-light-grey: #f7f8f9;
+
+// shell colors
+$header: #37474f;
+
+$nav-dark: #495e69;
+$nav-dark-sub: #37474f;
+$nav-dark-sub-hover: #28343b;
+
+$nav-light: $lightest;
+$nav-light-sub: #f7f6f6;
+$nav-light-sub-hover: #e7e8e9;
+
+$theme-colors: (
+  'danger': $danger,
+  'error': $error,
+  'info': $info,
+  'primary': $primary-60,
+  'success': $success,
+  'warning': $warning,
+);
+
+// list[1] is icon bg color
+// list[2] is the main bg color
+// list[3] is the text color
+$alert-colors: (
+  'info': ($info-light, $lightest, $info-darker),
+  'success': ($success-light, $lightest, $success-darker),
+  'danger': ($error-light, $lightest, $error-darker),
+  'error': ($error-light, $lightest, $error-darker),
+  'warning': ($warning-light, $lightest, $warning-darker),
+);

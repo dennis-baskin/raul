@@ -1,0 +1,255 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'action-menus',
+  page: 'Action menus',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <p>
+      Use action menus when you need to take action on a page element (card, row, list item).
+      The menu icon <span class="fa fa-ellipsis-v px-2 text-primary"></span> should be located
+      in the upper right of the element. Menu items should be links with optional icons.
+      Actions can be grouped with dividers.
+    </p>
+
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          aria-controls="html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML Version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#custom-element-version"
+          aria-controls="custom-element-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Custom Element Version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#custom-element-api"
+          aria-controls="custom-element-api"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Custom Element API
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <h2 class="mb-3">HTML version</h2>
+
+    <div class="raul-card text-right">
+      <%- include('/components/partials/action-menus/html/simple-dropdown') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/action-menus/html/simple-dropdown')
+      %></code></pre>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="custom-element-version">
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <h2 class="mb-3">Action menu default:</h2>
+
+    <div class="raul-card text-right">
+      <ui-action-menu>
+        <ui-action-menu-item url="#first">First Action</ui-action-menu-item>
+        <ui-action-menu-item url="#second">Second Action</ui-action-menu-item>
+        <ui-action-menu-item url="#third">Third Action</ui-action-menu-item>
+        <ui-action-menu-item url="#fourth">Fourth Action</ui-action-menu-item>
+      </ui-action-menu>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        (`
+          <ui-action-menu>
+            <ui-action-menu-item url="#first">First Action</ui-action-menu-item>
+            <ui-action-menu-item url="#second">Second Action</ui-action-menu-item>
+            <ui-action-menu-item url="#third">Third Action</ui-action-menu-item>
+            <ui-action-menu-item url="#fourth">Fourth Action</ui-action-menu-item>
+          </ui-action-menu>
+        `)
+      %></code></pre>
+    </div>
+
+    <h2>Action menu with divider:</h2>
+
+    <p>
+      Sometimes you may need to separate action items with a divider.
+    </p>
+
+    <div class="raul-card text-right">
+      <ui-action-menu>
+        <ui-action-menu-item url="#first">First Action</ui-action-menu-item>
+        <ui-action-menu-item url="#second">Second Action</ui-action-menu-item>
+        <ui-action-menu-item url="#third">Third Action</ui-action-menu-item>
+        <ui-action-menu-item url="#fourth">Fourth Action</ui-action-menu-item>
+
+        <div class="dropdown-divider"></div>
+
+        <ui-action-menu-item url="#final">Final Action</ui-action-menu-item>
+      </ui-action-menu>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        (`
+          <ui-action-menu>
+            <ui-action-menu-item url="#first">First Action</ui-action-menu-item>
+            <ui-action-menu-item url="#second">Second Action</ui-action-menu-item>
+            <ui-action-menu-item url="#third">Third Action</ui-action-menu-item>
+            <ui-action-menu-item url="#fourth">Fourth Action</ui-action-menu-item>
+
+            <div class="dropdown-divider"></div>
+
+            <ui-action-menu-item url="#final">Final Action</ui-action-menu-item>
+          </ui-action-menu>
+        `)
+      %></code></pre>
+    </div>
+
+    <h2>Action menu customized:</h2>
+
+    <p>
+      This shows the extent of customization possible with the API.
+      Both the trigger and the items themselves can include HTML. We don't recommend
+      overriding the default <i class="fa fa-ellipsis-v" aria-hidden="true"></i> trigger,
+      however, you can overwrite it by specifying your desired HTML inside the
+      <code>&lt;template slot id="title"&gt;&lt;/template&gt;</code> element.
+    </p>
+
+    <div class="raul-card">
+      <%- include('/components/partials/action-menus/custom-elements/simple-dropdown') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/action-menus/custom-elements/simple-dropdown')
+      %></code></pre>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="custom-element-api">
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <h2 class="mb-3">Action menu API:</h2>
+
+    <table class="table raul-table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Attribute</th>
+          <th>Value Type</th>
+          <th>Default Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="text-nowrap"><code>ui-action-menu</code></td>
+          <td class="text-nowrap"><code>item-class</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>None</em></td>
+          <td>Adds more classes to <code>class</code> attribute of the main element.</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>ui-action-menu</code></td>
+          <td class="text-nowrap"><code>direction</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><code>"down"</code></td>
+          <td>
+            Sets the direction of the menu. Allowed values:
+            <code>down</code>,
+            <code>up</code>,
+            <code>left</code>,
+            <code>right</code>.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>ui-action-menu</code></td>
+          <td class="text-nowrap"><code>item-id</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>None</em></td>
+          <td>Sets the <code>id</code> attribute of the main element.</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>ui-action-menu-item</code></td>
+          <td class="text-nowrap"><code>item-class</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>None</em></td>
+          <td>
+            Adds more classes to
+            <code>class</code>
+            attribute of the
+            <code>ui-action-menu-item</code>
+            element.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>ui-action-menu-item</code></td>
+          <td class="text-nowrap"><code>disabled</code></td>
+          <td class="text-nowrap"><code>Boolean</code></td>
+          <td><em>None</em></td>
+          <td>Adds disabled styles to the item.</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>ui-action-menu-item</code></td>
+          <td class="text-nowrap"><code>item-id</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>None</em></td>
+          <td>
+            Sets the <code>id</code> attribute of the <code>ui-action-menu-item</code> element.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>ui-action-menu-item</code></td>
+          <td class="text-nowrap"><code>url</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><code>"#"</code></td>
+          <td>Item's target URL.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

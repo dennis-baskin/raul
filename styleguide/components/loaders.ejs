@@ -1,0 +1,389 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'loaders',
+  page: 'Loaders',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#javascript-api"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          JavaScript API
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <%- include('/partials/namespace-warning', {additionalClasses: ''}) %>
+
+    <p>
+      When adding loaders it will be most commonly done via the JavaScript API. However, it is
+      possible to add the markup yourself for a more fine grained control. There are many options
+      available to achieve the same goal.
+    </p>
+
+    <h2>Full page loader</h2>
+
+    <p>
+      When the entire page is being loaded, the full page loader should be added to the body. With
+      the JavaScript API you have no choice to append it to any other element. Below is the markup
+      example of the full page loader contained within a relative div, but it should be noted that
+      this is for example purposes only.
+    </p>
+
+    <div class="raul-card">
+      <div style="height:200px;padding:20px;position:relative;">
+        <p>There is some content here that is being hidden by the page loader</p>
+
+        <div class="raul-page-loader-wrapper" style="position:absolute;">
+          <div class="raul-page-loader"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <div class="raul-page-loader-wrapper">
+          <div class="raul-page-loader"></div>
+        </div>
+      `) %></code></pre>
+    </div>
+
+    <div class="raul-card">
+      <div style="height:100px;padding:20px;position:relative;">
+        <p>This is when content is being loaded</p>
+
+        <div class="raul-content-loader-wrapper">
+          <div class="raul-content-loader"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <div class="raul-content-loader-wrapper">
+          <div class="raul-content-loader"></div>
+        </div>
+      `) %></code></pre>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="javascript-api">
+    <p>
+      The loader JavaScript API provides various methods of adding loaders. The basic simple way
+      is to create a new instance of <code>RAUL.Loader</code> with desired options, and then
+      call the <code>#add</code> method on the instance. You can also decide to pass in
+      a selector to the <code>#add</code> method, which will override the location where your alert
+      will be appended to.
+    </p>
+
+    <h3 class="mb-3">Options</h3>
+
+    <table class="table raul-table table-bordered mb-5">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Expected</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th class="text-nowrap">
+            <code>target</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>various</code>
+
+            <hr />
+
+            <code>string (css selector)</code>
+            <code>Element</code>
+            <code>HTMLCollection</code>
+          </td>
+
+          <td>
+            <code>null</code>
+          </td>
+
+          <td>
+            <p>
+              The target should be a valid selector where the loader will be
+              <strong>appended</strong>. If not supplied in the options you will need to add it
+              when calling <code>#add</code> method. The only exception is if it is the page
+              loader, which will always be appended to the body.
+            </p>
+
+            <p>
+              Please note that if multiple results are found for the target, the first found
+              element will be used.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>type</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>string</code>
+
+            <hr />
+
+            <code>'page'</code> or <code>'content'</code>
+          </td>
+
+          <td>
+            <code>'page'</code>
+          </td>
+
+          <td>
+            <p>
+              This determines the type of loader that will be added.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="mb-3">Loader Methods</h3>
+
+    <table class="table raul-table table-bordered mb-5">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Syntax</th>
+          <th>Parameters</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th class="text-nowrap">
+            <code>&lt;constructor&gt;</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>new RAUL.Loader(options)</code>
+          </td>
+
+          <td>
+            Optional <code>options</code> object (described above)
+          </td>
+
+          <td>
+            <p>Creates a new Loader instantance.</p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>#add</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>loader.add([target])</code>
+          </td>
+
+          <td>
+            Optional <code>target</code> selector as a <code>string</code>, <code>Element</code>, or
+            <code>HTMLCollection</code>. (If collection is passed only the first found
+            result will be used).
+          </td>
+
+          <td>
+            <p>
+              Adds loader to it's target, whether supplied in the options during instantiation, or
+              supplied to this method as an override.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>#remove</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>loader.remove()</code>
+          </td>
+
+          <td>
+            N/A
+          </td>
+
+          <td>
+            <p>Detaches loader from the dom.</p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>.template</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>RAUL.Loader.template(templateOptions)</code>
+          </td>
+
+          <td>
+            Object representing template options: <code>{type = 'page'}</code>.
+          </td>
+
+          <td>
+            <p>
+              <code>.template</code> class method is provided as a utility for more fine grained
+              needs.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>.addContentLoader</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>RAUL.Loader.addContentLoader(&lt;target&gt;)</code>
+          </td>
+
+          <td>
+            Required <code>target</code> selector as a <code>string</code>, <code>Element</code>, or
+            <code>HTMLCollection</code>. (If collection is passed then a loader will be added to
+            each element).
+          </td>
+
+          <td>
+            <p>
+              Adds loader to one or more targets.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>.removeContentLoader</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>RAUL.Loader.removeContentLoader(&lt;target&gt;)</code>
+          </td>
+
+          <td>
+            Required <code>target</code> selector as a <code>string</code>, <code>Element</code>, or
+            <code>HTMLCollection</code>. (If collection is passed then a loader will be removed from
+            each element in collection).
+          </td>
+
+          <td>
+            <p>
+              Removes loader from one or more targets.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>.removeAllContentLoaders</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>RAUL.Loader.removeAllContentLoaders()</code>
+          </td>
+
+          <td>
+            N/A
+          </td>
+
+          <td>
+            <p>
+              Removes all content loaders on page.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>.addPageLoader</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>RAUL.Loader.addPageLoader()</code>
+          </td>
+
+          <td>
+            N/A
+          </td>
+
+          <td>
+            <p>
+              Adds a page loader to the page and skips all the ceremony of having to instantiate a
+              new <code>Loader</code> object. If page loader already exists, it will be removed
+              first before a new one is added.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>.removePageLoader</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>RAUL.Loader.removePageLoader()</code>
+          </td>
+
+          <td>
+            N/A
+          </td>
+
+          <td>
+            <p>
+              Finds and removes the page loader from the page.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <code>&lt;</code>fn<code>&gt;</code> = contructor method
+            <code>.</code>fn = class (static) method
+            <code>#</code>fn = instance method
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

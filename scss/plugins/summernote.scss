@@ -1,0 +1,12 @@
+@import '../variables';
+@import 'node_modules/summernote/dist/summernote-bs4';
+
+.note-toolbar.card-header,
+.note-toolbar.card-header .btn-light {
+  background: $lightest;
+}
+
+.note-toolbar {
+  // Fixes overlapping on shell (page-header == z-index: 80)
+  z-index: 60;
+}

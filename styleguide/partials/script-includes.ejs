@@ -1,0 +1,41 @@
+<%
+  const url = (page) => `${locals.index ? './' : '../'}${page}`
+  const additionalScripts = locals.additionalScripts || []
+%>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNJFetUUcPl7Zy2jkjtXu3B3Xr7oiRB5o"></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+
+<script src="<%= url('js/raul.min.js') %>"></script>
+
+<%-
+  additionalScripts.map((script) => {
+    return `<script src="${url(script)}"></script>`
+  }).join('')
+%>
+
+<script src="<%= url('js/vendor/prism.js') %>"></script>
+<script src="<%= url('js/styleguide.js') %>"></script>
+
+<script type="text/javascript">
+  fetch('<%= url('mock-api/app-switcher.json')  %>')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json) {
+      if (document.querySelector('#raul-header')) {
+        return RAUL.AppSwitcher.fromOptions({switcherData: json});
+      }
+
+      RAUL.ui.setAppSwitcherData(json);
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+</script>

@@ -1,0 +1,287 @@
+// RAUL Tooltip
+// --------------------------------------------
+
+button[data-tooltip] {
+  overflow: visible;
+}
+
+button[data-tooltip]:active:focus,
+button[data-tooltip]:focus {
+  outline: none;
+}
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::before,
+[data-tooltip]::after {
+  bottom: 100%;
+  box-shadow: 0 4px 8px 0 rgba(82, 97, 115, 0.18);
+  filter: alpha(opacity=0);
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, 10px);
+  transform-origin: top;
+  transition: all 0.18s ease-out 0.18s;
+}
+
+[data-tooltip]::after {
+  background: $lightest;
+  border: 1px solid $data-light-grey;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: $charcoal-80;
+  content: attr(data-tooltip);
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  margin-bottom: 11px;
+  max-width: 288px;
+  padding: 14px 20px;
+  white-space: nowrap;
+  z-index: 91;
+}
+
+[data-tooltip]::before {
+  background-color: $lightest;
+  border-bottom: 1px solid $data-light-grey;
+  border-left: 0;
+  border-right: 1px solid $data-light-grey;
+  border-top: 0;
+  content: '';
+  height: 8px;
+  margin-bottom: 7px;
+  margin-left: -3px;
+  transform: rotate(45deg) !important; // Standard syntax
+  transform-origin: center;
+  width: 8px;
+  z-index: 92;
+}
+
+[data-tooltip-pos='up']::before {
+  border-bottom: 1px solid $data-light-grey;
+  border-left: 0;
+  border-right: 1px solid $data-light-grey;
+  border-top: 0;
+  box-shadow: 4px 4px 8px 0 rgba(82, 97, 115, 0.18);
+  margin-bottom: 7px;
+  margin-left: -3px;
+}
+
+[data-tooltip]:hover::before,
+[data-tooltip][data-tooltip-show]::before,
+[data-tooltip]:hover::after,
+[data-tooltip][data-tooltip-show]::after {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+[data-tooltip].font-awesome::after {
+  font-family: FontAwesome;
+}
+
+[data-tooltip][data-tooltip-break]::after {
+  white-space: pre;
+}
+
+[data-tooltip-pos='down']::before,
+[data-tooltip-pos='down']::after {
+  bottom: auto;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -10px);
+}
+
+[data-tooltip-pos='down']::after {
+  margin-top: 12px;
+}
+
+[data-tooltip-pos='down']::before,
+[data-tooltip-pos='bottom-left']::before,
+[data-tooltip-pos='bottom-right']::before {
+  border-bottom: 0;
+  border-left: 1px solid $data-light-grey;
+  border-right: 0;
+  border-top: 1px solid $data-light-grey;
+  box-shadow: none;
+  margin-left: -4px;
+  margin-top: 8px;
+  z-index: 92;
+}
+
+[data-tooltip-pos='down']:hover::before,
+[data-tooltip-pos='down'][data-tooltip-show]::before,
+[data-tooltip-pos='down']:hover::after,
+[data-tooltip-pos='down'][data-tooltip-show]::after {
+  transform: translate(-50%, 0);
+}
+
+[data-tooltip-pos='left']::before,
+[data-tooltip-pos='left']::after {
+  bottom: auto;
+  left: auto;
+  right: 100%;
+  top: 50%;
+  transform: translate(10px, -50%);
+}
+
+[data-tooltip-pos='left']::after {
+  margin-right: 12px;
+}
+
+[data-tooltip-pos='left']::before {
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 1px solid $data-light-grey;
+  border-top: 1px solid $data-light-grey;
+  box-shadow: 4px -2px 8px 0 rgba(82, 97, 115, 0.18);
+  margin-right: 8px;
+  margin-top: -4px;
+  z-index: 92;
+}
+
+[data-tooltip-pos='left']:hover::before,
+[data-tooltip-pos='left'][data-tooltip-show]::before,
+[data-tooltip-pos='left']:hover::after,
+[data-tooltip-pos='left'][data-tooltip-show]::after {
+  transform: translate(0, -50%);
+}
+
+[data-tooltip-pos='right']::before,
+[data-tooltip-pos='right']::after {
+  bottom: auto;
+  left: 100%;
+  top: 50%;
+  transform: translate(-10px, -50%);
+}
+
+[data-tooltip-pos='right']::after {
+  margin-left: 12px;
+}
+
+[data-tooltip-pos='right']::before {
+  border-bottom: 1px solid $data-light-grey;
+  border-left: 1px solid $data-light-grey;
+  border-right: 0;
+  border-top: 0;
+  box-shadow: -2px 4px 8px 0 rgba(82, 97, 115, 0.18);
+  margin-left: 8px;
+  margin-top: -4px;
+  z-index: 92;
+}
+
+[data-tooltip-pos='right']:hover::before,
+[data-tooltip-pos='right'][data-tooltip-show]::before,
+[data-tooltip-pos='right']:hover::after,
+[data-tooltip-pos='right'][data-tooltip-show]::after {
+  transform: translate(0, -50%);
+}
+
+[data-tooltip-size]::after {
+  white-space: normal;
+}
+
+[data-tooltip-size='100']::after {
+  width: 80px;
+}
+
+[data-tooltip-size='150']::after {
+  width: 150px;
+}
+
+[data-tooltip-size='200']::after {
+  width: 200px;
+}
+
+[data-tooltip-size='250']::after {
+  width: 250px;
+}
+
+[data-tooltip-size='fit']::after {
+  width: 100%;
+}
+
+// Side tooltips
+
+[data-tooltip-pos='top-left']::before,
+[data-tooltip-pos='top-right']::before,
+[data-tooltip-pos='bottom-left']::before,
+[data-tooltip-pos='bottom-right']::before {
+  bottom: 100%;
+  box-shadow: 4px 4px 8px 0 rgba(82, 97, 115, 0.18);
+  left: 50%;
+  position: absolute;
+  transform: none;
+}
+
+[data-tooltip-pos='top-left']::after,
+[data-tooltip-pos='top-right']::after,
+[data-tooltip-pos='bottom-left']::after,
+[data-tooltip-pos='bottom-right']::after {
+  bottom: 100%;
+  box-shadow: 0 4px 8px 0 rgba(82, 97, 115, 0.18);
+  filter: alpha(opacity=0);
+  left: auto;
+  margin-right: -20px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 50%;
+  transform: none;
+  transition: all 0.18s ease-out 0.18s;
+}
+
+[data-tooltip-pos='top-left']:hover::after,
+[data-tooltip-pos='top-left'][data-tooltip-show]::after,
+[data-tooltip-pos='top-right']:hover::after,
+[data-tooltip-pos='top-right'][data-tooltip-show]::after,
+[data-tooltip-pos='bottom-left']:hover::after,
+[data-tooltip-pos='bottom-left'][data-tooltip-show]::after,
+[data-tooltip-pos='bottom-right']:hover::after,
+[data-tooltip-pos='bottom-right'][data-tooltip-show]::after {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+[data-tooltip-pos='top-right']::after {
+  left: 50%;
+  margin-left: -20px;
+  margin-right: 0;
+  right: auto;
+}
+
+// bottom left/right tooltips
+[data-tooltip-pos='bottom-left']::before,
+[data-tooltip-pos='bottom-right']::before {
+  bottom: auto;
+  box-shadow: none;
+  left: 50%;
+  top: 100%;
+}
+
+[data-tooltip-pos='bottom-left']::after {
+  bottom: auto;
+  left: auto;
+  margin-right: -20px;
+  margin-top: 12px;
+  right: 50%;
+  top: 100%;
+}
+
+[data-tooltip-pos='bottom-right']::after {
+  bottom: auto;
+  left: 50%;
+  margin-left: -20px;
+  margin-right: 0;
+  margin-top: 12px;
+  right: auto;
+  top: 100%;
+}

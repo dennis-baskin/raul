@@ -1,0 +1,37 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": [
+              "> 1%",
+              "last 2 versions",
+              "ie >= 11",
+            ],
+          },
+          "modules": false,
+        }],
+        "stage-3",
+      ],
+      "plugins": [
+        "external-helpers",
+        "lodash",
+      ],
+     },
+    "test": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": [
+              "> 1%",
+              "last 2 versions",
+              "ie >= 11",
+            ],
+          },
+        }],
+        "stage-3",
+      ],
+    }
+  }
+}

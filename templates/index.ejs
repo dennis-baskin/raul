@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head', {title: 'Demo'}) %>
+
+  <body class="raul-left-navigation-expanded">
+
+    <!-- RAUL Header -->
+    <header id="raul-header" class="raul-header">
+      <i id="raul-header-menu-button" class="raul-header-menu-button fa fa-bars"></i>
+
+      <div id="raul-header-logo" class="raul-header-logo">
+        <img id="raul-header-logo-mobile" class="raul-header-logo-mobile" src="https://cdn.realpage.com/images/rp-logo-dots.svg">
+      </div>
+
+      <div id="raul-header-title" class="raul-header-title has-sub-info">
+        <h1 id="raul-header-product" class="raul-header-product">Product Name</h1>
+        <h2 id="raul-header-company" class="raul-header-company d-none d-sm-inline-block" title="Acme Property Management Company">Acme Property Management Company</h2>
+        <span id="raul-header-divider" class="raul-header-divider d-none d-sm-inline-block">|</span>
+        <div id="raul-header-properties" class="raul-header-properties">The Village</div>
+      </div>
+      <div id="raul-header-user" class="raul-header-user d-none d-sm-block">
+        <div id="raul-header-user-info" class="raul-header-user-info d-none d-md-inline-flex">
+          <p id="raul-header-user-handle" class="raul-header-user-handle d-none d-md-block m-0">John Smith</p>
+          <p id="raul-header-user-title" class="raul-header-user-title d-none d-md-block m-0">Leasing Agent</p>
+        </div>
+        <div id="raul-header-user-avatar" class="raul-header-user-avatar"></div>
+        <i id="raul-header-user-angle" class="raul-header-user-angle fa fa-angle-down" aria-hidden="true"></i>
+      </div>
+      <div id="raul-header-more" class="raul-header-more d-xl-none">
+        <i id="raul-header-more-icon" class="raul-header-more-icon fa fa-ellipsis-v"></i>
+      </div>
+      <div id="raul-header-icon-wrap" class="raul-header-icon-wrap">
+        <span class='unified-navbar-item'><a href="#home"><i id="raul-header-home" class="raul-header-home fa fa-home d-none d-xl-inline-block"></i></a></span>
+        <span class='unified-navbar-item'><a href="#switcher"><i id="raul-header-app-switcher" class="raul-header-app-switcher fa fa-th"></i></a></span>
+        <span class='unified-navbar-item'><a href="#help"><i id="raul-header-help" class="raul-header-help fa fa-question-circle d-none d-xl-inline-block"></i></a></span>
+        <span class='unified-navbar-item'><a href="#settings"><i id="raul-header-settings" class="raul-header-custom-icon fa fa-cog d-none d-xl-inline-block"></i></a></span>
+        <span class='unified-navbar-item'><a href="#shopping"><i id="raul-header-shopping" class="raul-header-shopping fa fa-shopping-cart  d-none d-xl-inline-block" data-badge="2"></i></a></span>
+        <span class='unified-navbar-item'><a href="#notifications"><i id="raul-header-notifications" class="raul-header-notifications fa fa-bell" data-badge="20"></i></a></span>
+      </div>
+      <div id="raul-header-search" class="raul-header-search d-none d-lg-block">
+        <input id="raul-header-search-input" class="raul-header-search-input" placeholder="Search">
+        <i id="raul-header-search-icon" class="raul-header-search-icon fa fa-search"></i>
+      </div>
+      <div id="raul-header-search-mobile" class="raul-header-search-mobile d-lg-none">
+        <input id="raul-header-search-input-mobile" class="raul-header-search-input-mobile" placeholder="Search">
+        <i id="raul-header-search-icon-mobile" class="raul-header-search-icon-mobile fa fa-search"></i>
+      </div>
+    </header>
+
+    <!-- More Context -->
+    <div id="raul-header-more-context" class="raul-header-more-context d-xl-none">
+      <div id="raul-header-more-context-inner" class="raul-header-more-context-inner">
+        <div class="raul-header-user clearfix d-sm-none">
+          <div class="raul-header-user-avatar"></div>
+          <div class="raul-header-user-info">
+            <p class="raul-header-user-handle m-0">John Smith</p>
+            <p class="raul-header-user-title m-0">Leasing Agent</p>
+          </div>
+          <i class="raul-header-user-angle fa fa-angle-down" aria-hidden="true"></i>
+        </div>
+        <a class="raul-header-context-home" href="#home">
+          <i class="raul-header-home fa fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a class="raul-header-context-help" href="#help">
+          <i class="raul-header-help fa fa-question-circle"></i>
+          <span>Help</span>
+        </a>
+        <a class="raul-header-context-custom" href="#settings">
+          <i class="raul-header-custom-icon fa fa-cog"></i>
+          <span>Settings</span>
+        </a>
+        <a class="raul-header-context-shopping" href="#shopping">
+          <i class="raul-header-shopping fa fa-shopping-cart" data-badge="2"></i>
+          <span>Shopping Card <span class="badge badge-pill badge-default">2</span></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- User Context -->
+    <div id="raul-user-context" class="raul-user-context">
+      <ul class="list-group">
+        <li class="list-group-item">User Settings</li>
+        <li class="list-group-item">Log Out</li>
+        <li class="list-group-item">
+          <div class="leftNavToggle toggle-switch">Dark Navigation: <i  class="fa fa-toggle-off" aria-hidden="true"></i></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Notifications Context -->
+    <div id="raul-notifications-context" class="raul-notifications-context">
+      Notifications Context
+    </div>
+
+    <!-- Shopping Context -->
+    <div id="raul-shopping-context" class="raul-shopping-context">
+      Shopping Context
+    </div>
+
+    <!-- Left Navigation -->
+    <nav id="raul-left-navigation" class="raul-left-navigation raul-left-navigation-light">
+      <ul id="raul-left-navigation-items" class="raul-left-navigation-items">
+        <li>
+          <a class="raul-left-navigation-item no-subitems" href="#">
+            <i class="raul-left-navigation-item-icon fa fa-home"></i>
+            <span class="raul-left-navigation-item-display">Home</span>
+          </a>
+        </li>
+        <li>
+          <span class="raul-left-navigation-item has-subitems">
+            <i class="raul-left-navigation-item-arrow fa fa-angle-down"></i>
+            <i class="raul-left-navigation-item-icon fa fa-university"></i>
+            <span class="raul-left-navigation-item-display">Company</span>
+          </span>
+          <ul class="raul-left-navigation-subitems">
+            <li>
+              <a class="raul-left-navigation-subitem">
+                <span class="raul-left-navigation-item-display">Company Search</span>
+              </a>
+            </li>
+            <li>
+              <a class="raul-left-navigation-subitem">
+                <span class="raul-left-navigation-item-display">Company Details</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="raul-left-navigation-item has-subitems active  selected">
+            <i class="raul-left-navigation-item-arrow fa fa-angle-up"></i>
+            <i class="raul-left-navigation-item-icon fa fa-building"></i>
+            <span class="raul-left-navigation-item-display">Properties</span>
+          </span>
+          <ul class="raul-left-navigation-subitems subitems-open">
+            <li>
+              <span class="raul-left-navigation-subitem has-subitems active">
+                <i class="raul-left-navigation-item-arrow fa fa-angle-up"></i>
+                <span class="raul-left-navigation-item-display">Level 2 Sub Navigation Item</span>
+              </span>
+              <ul class="raul-left-navigation-subitems subitems-open">
+                <li>
+                  <a class="raul-left-navigation-subitem active">
+                    <span class="raul-left-navigation-item-display">Level 3 Sub Navigation Item (Active)</span>
+                  </a>
+                </li>
+                <li>
+                  <span class="raul-left-navigation-subitem has-subitems">
+                    <i class="raul-left-navigation-item-arrow fa fa-angle-down"></i>
+                    <span class="raul-left-navigation-item-display">Level 3 Sub Navigation Item</span>
+                  </span>
+                  <ul class="raul-left-navigation-subitems">
+                    <li>
+                      <span class="raul-left-navigation-subitem has-subitems">
+                        <i class="raul-left-navigation-item-arrow fa fa-angle-down"></i>
+                        <span class="raul-left-navigation-item-display">Level 4 Sub Navigation Item</span>
+                      </span>
+                      <ul class="raul-left-navigation-subitems">
+                        <li>
+                          <a class="raul-left-navigation-subitem">
+                            <span class="raul-left-navigation-item-display">Level 5 Sub Navigation Item</span>
+                          </a>
+                        </li>
+                        <li>
+                          <span class="raul-left-navigation-subitem has-subitems">
+                            <i class="raul-left-navigation-item-arrow fa fa-angle-down"></i>
+                            <span class="raul-left-navigation-item-display">Level 5 Sub Navigation Item</span>
+                          </span>
+                          <ul class="raul-left-navigation-subitems">
+                            <li>
+                              <a class="raul-left-navigation-subitem">
+                                <span class="raul-left-navigation-item-display">Level 6 Sub Navigation Item</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a class="raul-left-navigation-subitem">
+                        <span class="raul-left-navigation-item-display">Level 4 Sub Navigation Item</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="raul-left-navigation-subitem">
+                <span class="raul-left-navigation-item-display">Level 2 Sub Navigation Item</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="raul-left-navigation-item no-subitems" href="#">
+            <i class="raul-left-navigation-item-icon fa fa-th"></i>
+            <span class="raul-left-navigation-item-display">Products</span>
+          </a>
+        </li>
+        <li>
+          <a class="raul-left-navigation-item no-subitems" href="#">
+            <i class="raul-left-navigation-item-icon fa fa-users"></i>
+            <span class="raul-left-navigation-item-display">People</span>
+          </a>
+        </li>
+        <li>
+          <a class="raul-left-navigation-item no-subitems" href="#">
+            <i class="raul-left-navigation-item-icon fa fa-key"></i>
+            <span class="raul-left-navigation-item-display">Roles & Rights</span>
+          </a>
+        </li>
+        <li>
+          <a class="raul-left-navigation-item no-subitems" href="#">
+            <i class="raul-left-navigation-item-icon fa fa-cog"></i>
+            <span class="raul-left-navigation-item-display">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+
+    <!-- Page Header -->
+    <header id="raul-page-header" class="raul-page-header">
+      <h2 id="raul-page-header-page" class="raul-page-header-page">Page Header</h2>
+      <div id="raul-page-header-breadcrumbs" class="raul-page-header-breadcrumbs">
+        <div id="raul-page-header-breadcrumbs-dropdown" class="raul-page-header-breadcrumbs-dropdown hidden-md-up">
+          <a class="raul-page-header-breadcrumbs-dropdown-breadcrumb" href="http://www.realpage.com">RAUL</a>
+          <a class="raul-page-header-breadcrumbs-dropdown-breadcrumb" href="http://www.realpage.com">Component</a>
+        </div>
+        <i id="raul-page-header-breadcrumbs-back" class="fa fa-angle-left d-inline-block d-md-none"></i>
+        <a class="raul-page-header-breadcrumb d-none d-md-inline-block" href="http://www.realpage.com">RAUL</a>
+        <span class="d-none d-md-inline-block"> / </span>
+        <a class="raul-page-header-breadcrumb d-none d-md-inline-block" href="http://www.realpage.com">Component</a>
+        <span class="d-none d-md-inline-block"> / </span>
+        <span class="raul-page-header-breadcrumb"><strong>Page Header</strong></span>
+      </div>
+    </header>
+
+    <main id="raul-page-container" class="raul-page-container">
+      <section class="container">
+
+        <h1 class="mt-5 text-primary">Welcome to the RAUL 2.0 shell demo!</h1>
+
+        <hr>
+
+        <p>The shell structure is supported by four primary components: header, left navigation, page header, and footer. For additional, components please visit the style guide.</p>
+
+        <div class="card">
+          <div class="card-body">
+            http://raul-styleguide-staging.devplaypen.com/ <br>
+            User ID: realpage <br>
+            Pass: password
+          </div>
+        </div>
+
+        <p class="mt-4">Please feel free to submit your requests through the style guide.</p>
+      </section>
+    </main>
+
+    <%- include('partials/script-includes') %>
+
+    <script type="text/javascript">
+      jQuery
+        .ajax({
+          method: "GET",
+          dataType: "json",
+          url: 'mock-api/app-switcher.json',
+        })
+        .done(function(response) {
+          RAUL.AppSwitcher.fromOptions({switcherData: response});
+        })
+        .fail(function(jqXHR, error) { console.log(jqXHR); });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,260 @@
+@import '../variables';
+@import 'node_modules/bootstrap/scss/utilities/clearfix';
+
+// Step tracker styles
+
+.step-track-wrap {
+  @include clearfix();
+
+  .tab-pane {
+    min-height: 300px;
+  }
+
+  .navbar-inner {
+    width: 100%;
+  }
+}
+
+.nav-step-track {
+  border: 0;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.nav-step-track .navbar {
+  margin-bottom: 20px;
+}
+
+.nav-step-track li {
+  background: $data-light-grey;
+  position: relative;
+  width: auto !important;
+}
+
+.nav-step-track .nav-link.complete {
+  background: $nav-dark-sub;
+  color: $lightest;
+}
+
+.nav-step-track .nav-link.active {
+  background: $primary-60;
+  color: $lightest;
+}
+
+.nav-step-track .active {
+  background: $data-light-grey;
+}
+
+.nav-step-track a.nav-link {
+  color: $nav-dark-sub;
+  font-weight: 500;
+  overflow: hidden;
+  padding: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav-step-track.nav-tabs .nav-link,
+.nav-step-track.nav-tabs .nav-link {
+  border: 0;
+  border-radius: 0;
+  font-size: 12px;
+}
+
+.nav-step-track.nav-tabs .nav-item+.nav-item {
+  margin-left: 4px;
+}
+
+.nav-step-track.nav-tabs .nav-item {
+  margin-bottom: 0;
+}
+
+.nav-step-track li a::after {
+  background: $data-light-grey;
+  box-shadow: 3px 0 0 0 #fff;
+  content: '';
+  display: block;
+  height: 19px;
+  position: absolute;
+  right: -8px;
+  top: 0;
+  transform: skewX(25deg);
+  width: 19px;
+  z-index: 1;
+}
+
+.nav-step-track li a::before {
+  background: $data-light-grey;
+  bottom: 0;
+  box-shadow: 3px 0 0 0 #fff;
+  content: '';
+  display: block;
+  height: 19px;
+  position: absolute;
+  right: -8px;
+  transform: skewX(-25deg);
+  width: 19px;
+  z-index: 1;
+}
+
+.nav-step-track li:last-child a::after,
+.nav-step-track li:last-child a::before {
+  display: none;
+}
+
+.nav-step-track .complete::after,
+.nav-step-track .complete::before {
+  background: $nav-dark-sub;
+}
+
+.nav-step-track .active::after,
+.nav-step-track .active::before {
+  background: $primary-60;
+}
+
+.nav-step-track .nav-link:hover {
+  cursor: inherit;
+}
+
+.nav-step-track .nav-item .complete.nav-link:hover {
+  background: $primary-60;
+  cursor: pointer;
+}
+
+.nav-step-track .complete:hover::after,
+.nav-step-track .complete:hover::before {
+  background: $primary-60;
+}
+
+.nav-step-track-footer {
+  list-style: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 8px 0 0;
+}
+
+.nav-step-track-footer li.previous.disabled + li {
+  padding-left: 0;
+}
+
+.nav-step-track-footer .prev-btn,
+.nav-step-track-footer .next-btn {
+  height: 38px;
+  text-align: center;
+  width: 100%;
+}
+
+.nav-step-track-footer .prev-btn {
+  background: $nav-dark-sub;
+  margin: 0 4px;
+  position: relative;
+}
+
+.nav-step-track-footer .prev-btn::before {
+  border-bottom: 19px solid transparent;
+  border-right: 8px solid $nav-dark-sub;
+  border-top: 19px solid transparent;
+  content: '';
+  display: block;
+  height: 38px;
+  left: -8px;
+  position: absolute;
+  top: 0;
+}
+
+.nav-step-track-footer .next-btn {
+  background: $primary-60;
+  position: relative;
+}
+
+.nav-step-track-footer .next-btn::after {
+  border-bottom: 19px solid transparent;
+  border-left: 8px solid $primary-60;
+  border-top: 19px solid transparent;
+  content: '';
+  display: block;
+  height: 38px;
+  position: absolute;
+  right: -8px;
+  top: 0;
+}
+
+.nav-step-track-footer a {
+  color: $lightest;
+  font-size: 12px;
+  line-height: 38px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-step-track-footer .previous,
+.nav-step-track-footer .next {
+  padding: 0;
+}
+
+.nav-step-track-footer .previous:hover,
+.nav-step-track-footer .next:hover {
+  cursor: pointer;
+}
+
+.nav-step-track-footer .disabled:hover {
+  cursor: inherit;
+}
+
+.nav-step-track-footer .disabled:hover a {
+  cursor: inherit;
+}
+
+// media styles for step track
+@media only screen and (max-width: 576px) {
+  .nav-step-track {
+    display: block;
+  }
+
+  .nav-step-track.nav-tabs .nav-item {
+    margin-right: 5px;
+    width: 100%;
+  }
+
+  .nav-step-track.nav-tabs .nav-item a {
+    display: none;
+  }
+
+  .nav-step-track li a::after,
+  .nav-step-track li a::before {
+    box-shadow: none;
+    right: -5px;
+  }
+
+  .nav-step-track.nav-tabs .nav-item a.active {
+    display: block;
+  }
+
+  .nav-step-track-footer {
+    display: flex;
+  }
+
+  .nav-step-track-footer li {
+    display: none;
+
+    &.previous,
+    &.next {
+      display: inline-block;
+      flex-basis: 50%;
+    }
+
+    &.previous.hidden ~ .next {
+      flex-basis: 100%;
+    }
+  }
+
+  .nav-step-track-footer li.previous.disabled + li {
+    padding-right: 0;
+  }
+
+  .nav-step-track-footer .prev-btn,
+  .nav-step-track-footer .next-btn {
+    margin: 0 4px;
+  }
+}

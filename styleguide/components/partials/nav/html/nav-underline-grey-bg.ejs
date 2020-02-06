@@ -1,0 +1,80 @@
+<p>
+  Dark tabs are identical to regular tabs. Simply wrap the tabs in a
+  container with the class <code>.background-light-grey</code>. Dark
+  tabs typically divide the page in half, with the top half being all
+  grey, and tab contents below being white.
+</p>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-5">
+    <!-- Nav tabs -->
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#home-bg-grey"
+          aria-controls="home"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          Home
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#profile-bg-grey"
+          aria-controls="profile"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Profile
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#messages-bg-grey"
+          aria-controls="messages"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Messages
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#settings-bg-grey"
+          aria-controls="settings"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Settings
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <!-- Tab panes -->
+    <div class="raul-tab-content tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home-bg-grey">home...</div>
+
+      <div role="tabpanel" class="tab-pane" id="profile-bg-grey">profile...</div>
+
+      <div role="tabpanel" class="tab-pane" id="messages-bg-grey">messages...</div>
+
+      <div role="tabpanel" class="tab-pane" id="settings-bg-grey">settings...</div>
+    </div>
+  </div>
+</div>

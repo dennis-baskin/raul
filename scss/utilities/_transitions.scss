@@ -1,0 +1,15 @@
+@import 'node_modules/bootstrap/scss/transitions';
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.35s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.no-transition {
+  transition: none !important;
+}

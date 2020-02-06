@@ -1,0 +1,148 @@
+{
+  "products": [
+    {
+      "id": 4,
+      "name": "Asset Optimization",
+      "url": "https://mydev.corp.realpage.com//product/assetoptimizer?personaid=33",
+      "description": "RealPage Portfolio Asset Management (PAM) is a solution designed and developed specifically for general partners, limited partners, and property management professionals, to provide the portfolio data, critical metrics, and thorough analysis you need, regardless of asset type or operational platform. You’ll have the power to collect financial and operating data and collaborate with property management partners, enabling them to continue to leverage their existing operational structures and best business practices.",
+      "label": "asset-optimizer",
+      "familyId": 400,
+      "familyName": "Asset Optimization",
+      "isNewTab": true,
+      "isFavorite": false,
+      "isResource": false
+    },
+    {
+      "id": 7,
+      "name": "YieldStar",
+      "url": "https://mydev.corp.realpage.com//product/yieldstar?personaid=33",
+      "description": "Revenue Management tools leverage our lease-transaction transaction data to provide a daily.",
+      "label": "yieldstar",
+      "familyId": 400,
+      "familyName": "Asset Optimization",
+      "isNewTab": true,
+      "isFavorite": false,
+      "isResource": false
+    },
+    {
+      "id": 6,
+      "name": "Lead2Lease",
+      "url": "https://mydev.corp.realpage.com//product/lead2lease?personaid=33",
+      "description": "The Lead2Lease solution helps you identify the quality of your leads, increase lead conversion, improve leasing efficiency, and better target your marketing efforts. Make sure no inquiry goes unanswered. Prioritize follow-up, keep track of leasing agent performance, and know where your marketing dollars are most effective through detailed reporting.",
+      "label": "lead2lease",
+      "familyId": 300,
+      "familyName": "Lease Management",
+      "isNewTab": false,
+      "isFavorite": false,
+      "isResource": false
+    },
+    {
+      "id": 23,
+      "name": "On-Site",
+      "url": "https://mydev.corp.realpage.com//product/onsite?personaid=33",
+      "description": "On-Site",
+      "label": "on-site",
+      "familyId": 300,
+      "familyName": "Lease Management",
+      "isNewTab": true,
+      "isFavorite": false,
+      "isResource": false
+    },
+    {
+      "id": 10,
+      "name": "Prospect Contact Center",
+      "url": "https://mydev.corp.realpage.com//product/prospectcontactcenter?personaid=33",
+      "description": "Gives you the ability to interact with the tools used by the RealPage Contact Center answering your calls to cultivate the premium leads that convert to more leases, and acting as a natural extension of your leasing and marketing team. ",
+      "label": "prospect-contact-center",
+      "familyId": 300,
+      "familyName": "Lease Management",
+      "isNewTab": true,
+      "isFavorite": false,
+      "isResource": false
+    },
+    {
+      "id": 9,
+      "name": "Websites & Syndication",
+      "url": "https://mydev.corp.realpage.com//product/marketingcenter?personaid=33",
+      "description": "Provides access to Marketing Center which provides tools to manage your community website and other related marketing content.",
+      "label": "websites-syndication",
+      "familyId": 300,
+      "familyName": "Lease Management",
+      "isNewTab": true,
+      "isFavorite": true,
+      "isResource": false
+    },
+    {
+      "id": 1,
+      "name": "OneSite",
+      "url": "https://mydev.corp.realpage.com//product/onesite?personaid=33",
+      "description": "The OneSite environment provides access to Leasing and Rents, Facilities, Purchasing, and Document Management for your properties, depending the mix of products which are licensed.  Use this logo for future state Leasing & Rents.  Also need to discuss whether one tile for Leasing & Rents will apply to Affordable, Senior, and Student. ",
+      "label": "onesite",
+      "familyId": 100,
+      "familyName": "Property Management",
+      "isNewTab": true,
+      "isFavorite": true,
+      "isResource": false
+    },
+    {
+      "id": 8,
+      "name": "RealPage Accounting",
+      "url": "https://mydev.corp.realpage.com//product/accounting?personaid=33",
+      "description": "RealPage Accounting is a feature-rich, web-based property management accounting solution designed for corporate operations of any size.",
+      "label": "realpage-accounting",
+      "familyId": 100,
+      "familyName": "Property Management",
+      "isNewTab": true,
+      "isFavorite": true,
+      "isResource": false
+    },
+    {
+      "id": 13,
+      "name": "Spend Management",
+      "url": "https://mydev.corp.realpage.com//product/opsbuyer?personaid=33",
+      "description": "With RealPage Spend Management software solutions, your portfolio’s entire P.O. and approval process is automated with real time visibility into spending against your budget.  Includes selected vendors online catalogs for electronic orders and electronic invoicing.",
+      "label": "spend-management",
+      "familyId": 100,
+      "familyName": "Property Management",
+      "isNewTab": true,
+      "isFavorite": false,
+      "isResource": false
+    },
+    {
+      "id": 16,
+      "name": "Vendor Services",
+      "url": "https://mydev.corp.realpage.com//product/vendorservices?personaid=33",
+      "description": "RealPage Vendor Credentialing software is a web-based tracking platform that provides a full-service solution that manages vendor compliance and ensures they continue to work within your guidelines.",
+      "label": "vendor-services",
+      "familyId": 100,
+      "familyName": "Property Management",
+      "isNewTab": true,
+      "isFavorite": false,
+      "isResource": false
+    },
+    {
+      "id": 17,
+      "name": "Resident Portal",
+      "url": "https://mydev.corp.realpage.com//product/residentportal?personaid=33",
+      "description": "The RealPage Resident Portals engages residents, boost renewals, and provides.",
+      "label": "resident-portal",
+      "familyId": 200,
+      "familyName": "Resident Services",
+      "isNewTab": true,
+      "isFavorite": false,
+      "isResource": false
+    },
+    {
+      "id": 18,
+      "name": "Utility Management",
+      "url": "https://mydev.corp.realpage.com//product/utilitymanagement?personaid=33",
+      "description": "Utility Management provides powerful platform for your business including one-bill.",
+      "label": "utility-management",
+      "familyId": 200,
+      "familyName": "Resident Services",
+      "isNewTab": true,
+      "isFavorite": false,
+      "isResource": false
+    }
+  ]
+}

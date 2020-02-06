@@ -1,0 +1,6 @@
+dist/
+fonts/
+node_modules/
+scss/
+styleguide/js/vendor/**/*.js
+test/

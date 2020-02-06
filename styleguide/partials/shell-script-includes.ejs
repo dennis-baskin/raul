@@ -1,0 +1,33 @@
+<%
+  const url = (page) => `${locals.index ? './' : '../'}${page}`
+  const additionalScripts = locals.additionalScripts || []
+%>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.min.js"
+></script>
+
+<script src="<%= url('../../js/raul-shell.min.js') %>"></script>
+
+<%-
+  additionalScripts.map((script) => {
+    return `<script src="${url(script)}"></script>`
+  }).join('')
+%>
+
+<script type="text/javascript">
+  fetch('<%= url('../../mock-api/app-switcher.json')  %>')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json) {
+      if (document.querySelector('#raul-header')) {
+        return RAUL.AppSwitcher.fromOptions({switcherData: json});
+      }
+
+      RAUL.ui.setAppSwitcherData(json);
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+</script>

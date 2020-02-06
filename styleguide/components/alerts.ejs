@@ -1,0 +1,484 @@
+<% const cleanupMarkupRegex = /^\s+|\s+$|<!--.*-->|color-block\s*/g %>
+
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'alerts',
+  page: 'Alerts',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#javascript-api"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          JavaScript API
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <h2 class="mb-3">Basic alerts</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/alerts/html/basic', {type: 'info'}) %>
+
+      <%- include('/components/partials/alerts/html/basic', {type: 'warning'}) %>
+
+      <%- include('/components/partials/alerts/html/basic', {type: 'success'}) %>
+
+      <%- include('/components/partials/alerts/html/basic', {type: 'error'}) %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/alerts/html/basic', {type: 'info'})
+        .replace(cleanupMarkupRegex, '')
+        .trim()
+        %>
+
+        <%=
+        include('/components/partials/alerts/html/basic', {type: 'warning'})
+        .replace(cleanupMarkupRegex, '')
+        .trim()
+        %>
+
+        <%=
+        include('/components/partials/alerts/html/basic', {type: 'success'})
+        .replace(cleanupMarkupRegex, '')
+        .trim()
+        %>
+
+        <%=
+        include('/components/partials/alerts/html/basic', {type: 'error'})
+        .replace(cleanupMarkupRegex, '')
+        .trim()
+      %></code></pre>
+    </div>
+
+    <h2>Alerts with additional content</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/alerts/html/additional-content') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/alerts/html/additional-content')
+        .replace(cleanupMarkupRegex, '')
+        .trim()
+      %></code></pre>
+    </div>
+
+    <p>
+      We implement XSS sanitization for dynamic / javascript alerts. We utilize a whitelist of
+      tag and attribute combinations to determine what we allow inside of the content. Alerts need
+      to be flexible enough to accomodate various products needs. However, there are certain
+      precautions that need to be taken. If this list is too restrictive, we can expand on it as
+      we integrate among teams.
+    </p>
+
+    <div class="raul-card">
+      <p>Content should be appended after this text</p>
+
+      <div id="dynamic-alert-container"></div>
+
+      <div>
+        <button
+          class="btn btn-default"
+          type="button"
+          data-alert-toggle
+          data-alert-class="my-additional-class another-cool-class"
+          data-alert-message="
+            &lt;h2&gt;This is a title&lt;/h2&gt;
+            &lt;p class='mb-0'&gt;Dynamic alert example using data attributes&lt;/p&gt;
+          "
+          data-alert-target="#dynamic-alert-container"
+          data-alert-type="info"
+        >
+          Create Persistent Info Alert
+        </button>
+
+        <button
+          class="btn btn-default"
+          type="button"
+          data-alert-toggle
+          data-alert-class="my-class another-class"
+          data-alert-message="
+            &lt;h2&gt;Self-Destruct&lt;/h2&gt;
+            &lt;p class='mb-0'&gt;This will self destruct in 3 seconds&lt;/p&gt;
+          "
+          data-alert-target="#dynamic-alert-container"
+          data-alert-type="warning"
+          data-alert-ttl="3000"
+        >
+          Create Warning Alert with a TTL *
+        </button>
+      </div>
+
+      <cite><small class="text-charcoal-70">
+        * Time to live should be added in milliseconds.
+      </small></cite>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%= (`
+        <div id="dynamic-alert-container">
+          <p>Content should be appended after this text</p>
+        </div>
+
+        <button
+          class="btn btn-default"
+          type="button"
+          data-alert-toggle
+          data-alert-class="my-additional-class another-cool-class"
+          data-alert-message="
+            <h2>This is a title</h2>;
+            <p class='mb-0'>Dynamic alert example using data attributes</p>;
+          "
+          data-alert-target="#dynamic-alert-container"
+          data-alert-type="info"
+        >
+          Create Persistent Info Alert
+        </button>
+
+        <button
+          class="btn btn-default"
+          type="button"
+          data-alert-toggle
+          data-alert-class="my-class another-class"
+          data-alert-message="
+            <h2>Self-Destruct</h2>;
+            <p class='mb-0'>This will self destruct in 3 seconds</p>
+          "
+          data-alert-target="#dynamic-alert-container"
+          data-alert-type="warning"
+          data-alert-ttl="3000"
+        >
+          Create Warning Alert with a TTL
+        </button>
+      `)%></code></pre>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="javascript-api">
+    <p>
+      Alert javascript usage is pretty straight forward: create an instance of <code>Alert</code>
+      with desired options, then call <code>#add</code> method. You can also decide to pass in
+      a selector to the <code>#add</code> method, which will override the location where your alert
+      will be appended to.
+    </p>
+
+    <h2 class="mb-3">Options</h2>
+
+    <table class="table raul-table table-bordered mb-5">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Expected</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th class="text-nowrap">
+            <code>class</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>string</code>
+          </td>
+
+          <td>
+            <code>''</code>
+          </td>
+
+          <td>
+            <p>Add additional classes to alert container, separated by a space</p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>message</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>string</code>
+          </td>
+
+          <td>
+            <code>''</code>
+          </td>
+
+          <td>
+            <p>
+              Message can be a simple string, or markup that follows some restrictoins.
+              We use a whitelins of tags and attributes as below:
+            </p>
+
+            <pre><code class="language-javascript"><%= (`
+            {
+              a: ['href', 'title', 'target'],
+              div: ['class'],
+              p: ['class'],
+              h2: ['class'],
+              h2: ['class'],
+              span: ['class'],
+              i: ['class'],
+              strong: [],
+              em: [],
+            }
+          `) %></code></pre>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>target</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>string</code>
+
+            <hr />
+
+            <p>Should represent DOM selector</p>
+          </td>
+
+          <td>
+            <code>'body'</code>
+          </td>
+
+          <td>
+            <p>
+              The target should be a valid selector where the alert will be
+              <strong>appended</strong>. If not supplied in the options you will need to add it
+              when calling <code>#add</code> method. Otherwise alert will not be added anywhere.
+            </p>
+
+            <p>
+              Please note that if multiple results are found for the target, the first found
+              element will be used.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap">
+            <code>type</code>
+          </td>
+
+          <td class="text-nowrap">
+            <code>string</code>
+
+            <hr />
+
+            <p>Valid options:</p>
+
+            <ul>
+              <li><code>'info'</code></li>
+              <li><code>'success'</code></li>
+              <li><code>'warning'</code></li>
+              <li><code>'error'</code></li>
+              <li><code>'danger'</code></li>
+            </ul>
+          </td>
+
+          <td>
+            <code>'info'</code>
+          </td>
+
+          <td>
+            <p>
+              Type determines the Alert style that will be added.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>ttl</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>number</code>
+
+            <hr />
+
+            <p>Represents time in milliseconds</p>
+          </td>
+
+          <td>
+            <code>null</code>
+          </td>
+
+          <td>
+            <p>
+              Alert will remove itself after specified time in this option
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="mb-3">Methods</h2>
+
+    <table class="table raul-table table-bordered mb-5">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Syntax</th>
+          <th>Parameters</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th class="text-nowrap">
+            <code>&lt;constructor&gt;</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>new RAUL.Alert(options)</code>
+          </td>
+
+          <td>
+            Optional <code>options</code> object (described above)
+          </td>
+
+          <td>
+            <p>Creates a new alert instance.</p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>.template</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>RAUL.Alert.template(templateOptions)</code>
+          </td>
+
+          <td>
+            Object representing template options: <code>{classes = '', message, type}</code>.
+          </td>
+
+          <td>
+            <p>
+              <code>.template</code> class method is provided as a utility for more fine grained
+              needs.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>#add</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>alert.add([target])</code>
+          </td>
+
+          <td>
+            Optional <code>target</code> selector as a <code>string</code>.
+          </td>
+
+          <td>
+            <p>
+              Adds alert to it's target, whether supplied in the options during instantiation, or
+              supplied to this method as an override.
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>#remove</code>
+          </th>
+
+          <td class="text-nowrap">
+            <code>alert.remove()</code>
+          </td>
+
+          <td>
+            N/A
+          </td>
+
+          <td>
+            <p>Detaches alert from the dom.</p>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <code>&lt;</code>fn<code>&gt;</code> = contructor method
+            <code>.</code>fn = class (static) method
+            <code>#</code>fn = instance method
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <h2 class="mb-3">Example Usage</h2>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        // Basic usage:
+
+        const alert = new RAUL.Alert({
+          class: 'my-additional-classes here',
+          message: 'My alert from a JS',
+          target: '#my-location',
+          type: 'error',
+          ttl: 3000,
+        })
+
+        alert.add()
+        alert.remove()
+
+        // Specifying location after creation:
+
+        const alert2 = new RAUL.Alert({
+          class: 'my-additional-classes here',
+          message: 'My alert from a JS #2',
+          type: 'error',
+        })
+
+        alert2.add('#my-other-location')
+
+        setTimeOut(() => alert2.add('#my-third-location'), 3000)
+      `)%></code></pre>
+    </div>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

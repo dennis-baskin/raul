@@ -1,0 +1,158 @@
+<%- include('/partials/header', {
+  domain: 'Plugins',
+  id: 'raul-plugin-dropzone',
+  page: 'Dropzone (file uploader)',
+}) %>
+
+<h3>Version</h3>
+
+<p>RAUL is using DropzoneJS 5.4.0</p>
+
+<h3 class="mt-4">DropzoneJS Documentation</h3>
+
+<p>
+  In addition to RAUL-specific instruction found here,
+  more information is available from DropzoneJS at:
+  <a href="http://www.dropzonejs.com" target="_blank">
+    http://www.dropzonejs.com</a>.
+</p>
+
+<h3 class="mt-4">Installation</h3>
+
+<p class="alert alert-warning">
+  RAUL Dropzone plugin is not included in raul.js file.
+  You will have to add it separately if you want
+  to use it. Below you can see an example of how to
+  include RAUL Dropzone to your project.
+</p>
+
+<pre class="mb-3"><code class="language-html"><%= (`
+  <link href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/raul.min.css" rel="stylesheet"/>
+  <link
+    href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/plugins/raul-plugin-dropzone.min.css"
+    rel="stylesheet"
+  />
+
+  ......
+
+  <script src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/raul.min.js"></script>
+  <script
+    src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/plugins/raul-plugin-dropzone.min.js"
+  ></script>
+`) %></code></pre>
+
+<h3 class="mt-5">Usage</h3>
+
+<ul>
+  <li>Run default RAUL Dropzone: <code>RAUL.plugins.Dropzone.load()</code></li>
+
+  <li>RAUL Dropzone instance: <code>RAUL.plugins.Dropzone</code></li>
+</ul>
+
+<h2 class="mt-5">Examples of files in different states</h2>
+
+<div class="row mb-5">
+  <%- include('/plugins/partials/dropzone/file-states-example') %>
+</div>
+
+<h2>Example of default file uploader</h2>
+
+
+  <div class="mb-2">
+    <p>
+      By default, the RAUL Dropzone uploader puts the files directly below the upload area.
+      Add the upload path to the <code>.raul-uploader</code> element via the <code>data-url</code>
+      attribute. Having multiple instances of the RAUL Dropzone on the same page will require an
+      additional <code>id</code> attribute on every <code>.raul-uploader</code> element.
+    </p>
+
+    <p>
+      Note: Because this page is a static file with no upload location, trying to
+      upload files in any of the following examples will fail.
+    </p>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-6">
+      <%- include('/plugins/partials/dropzone/default-uploader') %>
+    </div>
+
+    <div class="col-6">
+      <pre><code class="language-markup">
+        <%= include('/plugins/partials/dropzone/default-uploader') %>
+      </code></pre>
+    </div>
+  </div>
+
+<h2>Example displaying files separate from the dropzone</h2>
+
+<p>
+  When you want more control over where uploaded files display, place
+  <code><%= (`<div id="apart-files"></div>`) %></code> in your page
+  where you want the files to show up.
+</p>
+
+<div class="row mb-5">
+  <div class="col-6">
+    <div
+      data-url="https://cdn.realpage.com/raul/<%= (`${FRAMEWORK_VERSION}`) %>/styleguide/plugins/dropzone"
+      id="apart-files-and-droparea-example"
+    >
+      <div class="raul-uploader-droparea mb-2" id="apart-droparea">
+        <i class="fa fa-cloud-upload raul-uploader-icon" aria-hidden="true"></i>
+        <span>Drag files here to upload or <span class="text-primary">Choose File</span></span>
+      </div>
+    </div>
+
+    <div id="apart-files"></div>
+  </div>
+
+  <div class="col-6">
+    <pre><code class="language-markup"><%= (`
+      <div data-url="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/styleguide/plugins/dropzone" id="apart-files-and-droparea-example" id="apart-files-and-droparea-example">
+        <div class="raul-uploader-droparea mb-2" id="apart-droparea">
+          <i class="fa fa-cloud-upload raul-uploader-icon" aria-hidden="true"></i>
+          <span>Drag files here to upload or <span class="text-primary">Choose File</span></span>
+        </div>
+      </div>
+
+      <div id="apart-files"></div>
+    `) %></code></pre>
+    <pre class="my-4"><code class="language-javascript"><%= (`
+      const apartDropareaAndFilesExample = RAUL.plugins.Dropzone('#apart-files-and-droparea-example', {
+        clickable: '#apart-droparea',
+        previewsContainer: '#apart-files',
+      })
+    `) %></code></pre>
+  </div>
+</div>
+
+<h2>Additional options</h2>
+
+<div class="mb-0">
+  <p>
+    RAUL Dropzone provides only the current theme and, since it is built on top of the
+    DropzoneJS plugin, it's highly customisable.
+    Before configuring the plugin furthermore we strongly recommend you checking
+    <a href="http://www.dropzonejs.com/#configuration-options" target="_blank">their documentation</a>
+    first.
+    Every option passed to the <code>RAUL.plugins.Dropzone</code> instance will override
+    its existing value. Options are passed in the second parameter as an object,
+    just like in
+    <a href="http://www.dropzonejs.com/#create-dropzones-programmatically">their example</a>.
+  </p>
+</div>
+
+<pre class="my-3"><code class="language-javascript"><%= (`
+  const mainSelector = '#raul-dropzone'
+  const additionalOptions = { parameter1: 'some-value', parameter2: 'some-other-value' }
+
+  const instanceExample = RAUL.plugins.Dropzone(mainSelector, additionalOptions)
+`) %></code></pre>
+
+<%- include('/partials/footer', {
+  additionalScripts: [
+    '../js/plugins/raul-plugin-dropzone.min.js',
+    'js/raul-plugin-dropzone.js',
+  ],
+}) %>

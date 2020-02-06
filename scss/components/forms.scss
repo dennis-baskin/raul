@@ -1,0 +1,451 @@
+.custom-switch {
+  align-items: center;
+  display: flex;
+  padding-left: 0;
+
+  &-space-between {
+    justify-content: space-between;
+
+    .custom-switch-text {
+      padding-right: 0;
+    }
+
+    .custom-control-input {
+      display: none;
+    }
+  }
+
+  .custom-control-label {
+    background: $charcoal-20;
+    border-radius: 50px;
+    display: inline-block;
+    height: 1.25rem;
+    position: relative;
+    transition: all 0.4s;
+    width: 2rem;
+
+    &::before {
+      background-color: $white;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      height: 1rem;
+      left: 2px;
+      position: absolute;
+      top: 2px;
+      transition: all 0.4s;
+      width: 1rem;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.custom-switch .custom-control-input:checked {
+  ~.custom-control-label {
+    background-color: $success;
+
+    &::before {
+      background-color: $white;
+      transform: translateX(12px);
+    }
+  }
+}
+
+.custom-switch .custom-control-input:active~.custom-control-label::before {
+  background-color: $white;
+}
+
+.custom-switch-text {
+  padding-right: 2rem;
+}
+
+.custom-switch .custom-control-input:disabled~.custom-switch-text {
+  color: $charcoal-20;
+}
+
+// Switcher
+.raul-switch-wrapper {
+  line-height: normal;
+  margin-bottom: 12px;
+}
+
+.raul-form-input-text {
+  color: $charcoal-80;
+  font-family: 'Roboto';
+  font-size: 14px;
+}
+
+// The switch
+.raul-switch {
+  display: inline-block;
+  height: 20px;
+  margin-bottom: 0;
+  position: relative;
+  vertical-align: middle;
+  width: 32px;
+}
+
+.raul-switch-wrapper .raul-form-input-text {
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.raul-switch input {
+  display: none;
+}
+
+// The slider
+.raul-switch-slider {
+  background-color: $charcoal-20;
+  border-radius: 100px;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.raul-switch-slider::before {
+  background-color: $lightest;
+  border-radius: 50%;
+  bottom: 2px;
+  content: '';
+  height: 16px;
+  left: 2px;
+  position: absolute;
+  transition: 0.4s;
+  width: 16px;
+}
+
+.raul-switch input:checked + .raul-switch-slider {
+  background-color: $success;
+}
+
+.raul-switch input:focus + .raul-switch-slider {
+  box-shadow: 0 0 1px $success;
+}
+
+.raul-switch input:disabled + .raul-switch-slider {
+  cursor: initial;
+}
+
+.raul-input-text-disabled  {
+  color: $charcoal-20;
+  cursor: initial;
+}
+
+.raul-switch input:checked + .raul-switch-slider::before {
+  transform: translateX(12px);
+}
+
+// Radio buttons
+.raul-radio-wrapper {
+  cursor: pointer;
+  display: block;
+  line-height: 18px;
+  margin-bottom: 12px;
+  min-height: 1.125rem;
+  position: relative;
+
+  .raul-form-input-text {
+    padding-left: 28px;
+  }
+}
+
+.raul-radio-wrapper input {
+  opacity: 0;
+  position: absolute;
+}
+
+.raul-radio-checkmark {
+  border: 2px solid $charcoal-20;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 1.125rem;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1.125rem;
+}
+
+.raul-radio-wrapper input:checked ~ .raul-radio-checkmark {
+  background-color: $primary-60;
+  border: 2px solid $primary-60;
+}
+
+// dot-circle - hidden when not checked
+.raul-radio-checkmark::after {
+  content: '';
+  display: none;
+  position: absolute;
+}
+
+// Show dot/circle when checked
+.raul-radio-wrapper input:checked ~ .raul-radio-checkmark::after {
+  display: block;
+}
+
+// Style dot-circle
+.raul-radio-wrapper .raul-radio-checkmark::after {
+  background: $lightest;
+  border-radius: 50%;
+  height: 6px;
+  left: 50%;
+  margin-left: -3px;
+  margin-top: -3px;
+  top: 50%;
+  width: 6px;
+}
+
+.raul-radio-wrapper input:disabled + .raul-radio-checkmark {
+  cursor: initial;
+}
+
+// Check Boxes
+.raul-checkbox-wrapper {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 12px;
+  min-height: 1.125rem;
+  position: relative;
+
+  .raul-form-input-text {
+    padding-left: 35px;
+  }
+
+  .raul-checkbox-some-selected ~ .raul-checkbox-checkmark::after {
+    border: 0;
+    border-top: 2px solid $lightest;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -6px;
+    margin-top: -1px;
+    position: absolute;
+    top: 50%;
+    transform: none;
+    width: 12px;
+  }
+}
+
+.raul-checkbox-wrapper input {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+}
+
+.raul-checkbox-checkmark {
+  border: 2px solid $charcoal-20;
+  border-radius: 2px;
+  height: 1.125rem;
+  left: 0;
+  position: absolute;
+  top: 0.125rem;
+  width: 1.125rem;
+}
+
+.raul-checkbox-wrapper input:checked ~ .raul-checkbox-checkmark {
+  background-color: $primary-60;
+  border-color: $primary-60;
+}
+
+.raul-checkbox-wrapper input:checked:disabled ~ .raul-checkbox-checkmark {
+  background-color: $charcoal-20;
+  border-color: $charcoal-20;
+  cursor: initial;
+}
+
+.raul-checkbox-wrapper input:disabled ~ .raul-checkbox-checkmark {
+  cursor: initial;
+}
+
+.raul-checkbox-checkmark::after {
+  content: '';
+  display: none;
+  position: absolute;
+}
+
+.raul-checkbox-wrapper input:checked ~ .raul-checkbox-checkmark::after {
+  display: block;
+}
+
+.raul-checkbox-wrapper .raul-checkbox-checkmark::after {
+  border: solid $lightest;
+  border-width: 0 2px 2px 0;
+  height: 11px;
+  left: 5px;
+  top: 0;
+  transform: rotate(45deg);
+  width: 5px;
+}
+
+.raul-checkbox-wrapper .raul-checkbox-some-selected ~ .raul-checkbox-checkmark {
+  background-color: $primary-60;
+  border-color: $primary-60;
+}
+
+// Text inputs
+.form-control-wrapper {
+  background: $lightest;
+  position: relative;
+  width: 100%;
+}
+
+// Form icons
+.form-icon-box {
+  background-color: $lightest;
+  padding: 0.3125rem;
+  position: absolute;
+  right: 0.0625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  &[data-tooltip] {
+    position: absolute;
+  }
+}
+
+.form-icon {
+  color: $charcoal-70;
+  font-size: 0.75rem;
+
+  &-grey {
+    color: $charcoal-30;
+  }
+
+  &-search,
+  &-date {
+    font-size: 1.25rem;
+  }
+}
+
+// Form with info
+.input-group .form-control-wrapper {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+  position: relative;
+  width: 1%;
+}
+
+.input-group-append [data-tooltip]::after {
+  font-size: 0.875rem;
+  max-width: 22.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-info-box-icon {
+  color: $charcoal-30;
+  font-size: 1.25rem;
+}
+
+// Textareas
+.form-control.form-textarea {
+  height: 8.125rem;
+  line-height: 1.5;
+  min-height: 2.5rem;
+}
+
+.form-control.form-textarea-sm {
+  height: 2.5rem;
+  min-height: 2.5rem;
+}
+
+// Form validation
+.form-control {
+  &.is-valid,
+  &.is-invalid {
+    background-position: right 5px center;
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    padding-right: 2rem;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &.is-valid {
+    background-image: url($images-cdn-url + 'success-green.svg');
+  }
+
+  &.is-invalid {
+    background-image: url($images-cdn-url + 'danger-red.svg');
+  }
+}
+
+// Custom Forms
+.form-control.custom-select {
+  background: none;
+  position: relative;
+  z-index: 20;
+}
+
+.custom-control {
+  min-height: 1.3rem;
+  padding-left: 0;
+
+  &-sm {
+    .custom-control-label {
+      font-size: 0.75rem;
+    }
+  }
+
+  &-right {
+    .custom-control-label {
+      padding-left: 0;
+      padding-right: 2rem;
+      width: 100%;
+
+      &::before,
+      &::after {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  &-right-next {
+    .custom-control-label {
+      padding-left: 0;
+      padding-right: 2rem;
+
+      &::before,
+      &::after {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  &-no-text {
+    .custom-control-label {
+      display: block;
+      height: 1.3rem;
+      padding-left: 0;
+      padding-right: 0;
+      width: 1.3rem;
+    }
+  }
+}
+
+.custom-control-label {
+  line-height: 1.3rem;
+  min-height: 1.3rem;
+  padding-left: 2rem;
+}
+
+// Date Form
+.form-control-date {
+  background-image: url($images-cdn-url + 'calendar.svg');
+  background-position: right 5px center;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  padding-right: 2rem;
+}

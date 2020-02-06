@@ -1,0 +1,579 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'icons',
+  page: 'Icons',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <h2>Overview</h2>
+
+    <p>
+      RAUL includes 4000 icons to cover the needs of your application. We tried to combine best
+      of both font icons and svg icons. RAUL uses custom elements to achieve icon font-style markup,
+      but inlines an svg so users don't pay the download penalty of such an extensive library and
+      icons can still be styled via inherited classes. Similar to icon fonts, RAUL icons display
+      inline with a height, width and color that matches the surrounding text.
+    </p>
+
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#icon-useage"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          Icon Useage
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#find-icons"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Icon Library
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#product-icons"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Product Icons
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="icon-useage">
+    <h3 class="mt-4">Custom Element Markup</h3>
+
+    <p>
+      <code><%= (`<ui-icon icon="name-of-icon"></ui-icon>`) %></code>
+    </p>
+
+    <h3 class="mt-4">Default Styles and Alignment</h3>
+    <p>
+      Icons display inline with a height that matches the font-size,
+      and aligns optically to the baseline.
+    </p>
+
+    <div class="raul-card mb-0">
+      <div class="row">
+        <div class="col-12">
+          <h1><ui-icon icon="add-circle-1"></ui-icon> Matches the h1 text size</h1>
+
+          <h2><ui-icon icon="add-circle-1"></ui-icon> Matches the h2 text size</h2>
+
+          <h3><ui-icon icon="add-circle-1"></ui-icon> Matches the h3 text size</h3>
+
+          <h3>
+            <ui-icon icon="add-circle-1" class="text-success"></ui-icon>
+            Styleable via classes
+          </h3>
+
+          <button class="button button-primary">
+            <ui-icon icon="add-circle-1"></ui-icon> Inherits Text Color
+          </button>
+
+          <button class="button button-text">
+            <ui-icon icon="add-circle-1"></ui-icon> Inherits Text Color
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <h1><ui-icon icon="add-circle-1"></ui-icon> Matches the h1 text size</h1>
+
+        <h2><ui-icon icon="add-circle-1"></ui-icon> Matches the h2 text size</h2>
+
+        <h3><ui-icon icon="add-circle-1"></ui-icon> Matches the h3 text size</h3>
+
+        <h3><ui-icon icon="add-circle-1" class="text-success"></ui-icon> Styleable via classes</h3>
+
+        <button class="button button-primary">
+          <ui-icon icon="add-circle-1"></ui-icon> Inherits Text Color
+        </button>
+
+        <button class="button button-text">
+          <ui-icon icon="add-circle-1"></ui-icon> Inherits Text Color
+        </button>
+      `) %></code></pre>
+    </div>
+
+    <h2>Sizing Utilities</h2>
+
+    <p>
+      Use <code>.icon-big .icon-bigger .icon-biggest</code> classes
+      to size icons relative to surrounding text.
+    </p>
+
+    <div class="raul-card mb-0">
+      <div class="row">
+        <div class="col-12">
+          <h3><ui-icon icon="add-circle-1"></ui-icon> Normal</h3>
+
+          <h3><ui-icon icon="add-circle-1" class="icon-big"></ui-icon> .icon-big</h3>
+
+          <h3><ui-icon icon="add-circle-1" class="icon-bigger"></ui-icon> .icon-bigger</h3>
+
+          <h3><ui-icon icon="add-circle-1" class="icon-biggest"></ui-icon> .icon-biggest</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <h3><ui-icon icon="camera-1"></ui-icon> Normal</h3>
+
+        <h3><ui-icon icon="camera-1" class="icon-big"></ui-icon> .icon-big</h3>
+
+        <h3><ui-icon icon="camera-1" class="icon-bigger"></ui-icon> .icon-bigger</h3>
+
+        <h3><ui-icon icon="camera-1" class="icon-biggest"></ui-icon> .icon-biggest</h3>
+      `) %></code></pre>
+    </div>
+
+    <h2>Responsive Icons</h2>
+
+    <p>Adding <code>.icon-responsive</code> class causes the icon to displays as a block element,
+    expanding to the size of it's container.</p>
+
+    <div class="raul-card mb-0">
+      <div class="row">
+        <div class="col-2">
+          <ui-icon icon="camera-1" class="icon-responsive"></ui-icon>
+        </div>
+
+        <div class="col-2">
+          <ui-icon icon="coffee-cup-1" class="icon-responsive"></ui-icon>
+        </div>
+
+        <div class="col-2">
+          <ui-icon icon="bank-2" class="icon-responsive"></ui-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <div class="row">
+          <div class="col-2">
+            <ui-icon icon="camera-1" class="icon-responsive"></ui-icon>
+          </div>
+
+          <div class="col-2">
+            <ui-icon icon="coffee-cup-1" class="icon-responsive"></ui-icon>
+          </div>
+
+          <div class="col-2">
+            <ui-icon icon="bank-2" class="icon-responsive"></ui-icon>
+          </div>
+        </div>
+      `) %></code></pre>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="find-icons">
+    <p class="mt-4">
+      Here are all the icons in the CDN. This is work in progress. We'll be making it easier
+      to search and find icons.
+    </p>
+
+    <ui-icons-search></ui-icons-search>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="product-icons">
+    <h3 class="my-4">Product Families</h3>
+
+    <p>
+      Product families require <code>kind="family"</code> in addition to the icon name:
+    </p>
+
+    <pre class="mb-5"><code class="language-markup"><%= (`
+      <ui-icon class="text-primary" icon="asset-and-investment-management" kind="family"></ui-icon>
+    `) %></code></pre>
+
+    <div class="icon-list d-flex flex-wrap">
+      <div class="ui-icon" data-tooltip="icon='asset-and-investment-management'">
+        <ui-icon class="text-primary" icon="asset-and-investment-management" kind="family">
+        </ui-icon>
+        <strong class="icon-code">Asset &amp; Investment Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='asset-optimization'">
+        <ui-icon class="text-primary" icon="asset-optimization" kind="family"></ui-icon>
+        <strong class="icon-code">Asset Optimization</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='lease-management'">
+        <ui-icon class="text-primary" icon="lease-management" kind="family"></ui-icon>
+        <strong class="icon-code">Lease Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='property-management'">
+        <ui-icon class="text-primary" icon="property-management" kind="family"></ui-icon>
+        <strong class="icon-code">Property Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='resident-services'">
+        <ui-icon class="text-primary" icon="resident-services" kind="family"></ui-icon>
+        <strong class="icon-code">Resident Services</strong>
+      </div>
+    </div>
+
+    <h3 class="my-4">Products</h3>
+
+    <p>
+      Product icons require <code>kind="product"</code> in addition to the icon name:
+    </p>
+
+    <pre class="mb-5"><code class="language-markup"><%= (`
+      <ui-icon class="text-primary" icon="yieldstar" kind="product"></ui-icon>
+    `) %></code></pre>
+
+    <div class="icon-list d-flex flex-wrap">
+      <div class="ui-icon" data-tooltip="icon='amenity-analysis'">
+        <ui-icon class="text-primary" kind="product" icon="amenity-analysis"></ui-icon>
+        <strong class="icon-code">Amenity Analysis</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='asset-and-investment-management'">
+        <ui-icon class="text-primary" kind="product" icon="asset-and-investment-management">
+        </ui-icon>
+        <strong class="icon-code">Asset &amp; Investment Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='asset-optimization'">
+        <ui-icon class="text-primary" kind="product" icon="asset-optimization"></ui-icon>
+        <strong class="icon-code">Asset Optimization</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='axiometrics'">
+        <ui-icon class="text-primary" kind="product" icon="axiometrics"></ui-icon>
+        <strong class="icon-code">Axiometrics</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='business-intelligence'">
+        <ui-icon class="text-primary" kind="product" icon="business-intelligence"></ui-icon>
+        <strong class="icon-code">Business Intelligence</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='data-analytics'">
+        <ui-icon class="text-primary" kind="product" icon="data-analytics"></ui-icon>
+        <strong class="icon-code">Data Analytics</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='deposit-iq'">
+        <ui-icon class="text-primary" kind="product" icon="deposit-iq"></ui-icon>
+        <strong class="icon-code">Deposit IQ</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='easy-lms'">
+        <ui-icon class="text-primary" kind="product" icon="easy-lms"></ui-icon>
+        <strong class="icon-code">Easy LMS</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='get-work'">
+        <ui-icon class="text-primary" kind="product" icon="get-work"></ui-icon>
+        <strong class="icon-code">Get Work</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='ilm-leasing-analytics'">
+        <ui-icon class="text-primary" kind="product" icon="ilm-leasing-analytics"></ui-icon>
+        <strong class="icon-code">ILM Leasing Analytics</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='intelligent-lead-management'">
+        <ui-icon class="text-primary" kind="product" icon="intelligent-lead-management"></ui-icon>
+        <strong class="icon-code">ILM</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='investment-analytics'">
+        <ui-icon class="text-primary" kind="product" icon="investment-analytics"></ui-icon>
+        <strong class="icon-code">Investment Analytics</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='kigo'">
+        <ui-icon class="text-primary" kind="product" icon="kigo"></ui-icon>
+        <strong class="icon-code">Kigo</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='lead-analytics'">
+        <ui-icon class="text-primary" kind="product" icon="lead-analytics"></ui-icon>
+        <strong class="icon-code">Lead Analytics</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='lead2lease'">
+        <ui-icon class="text-primary" kind="product" icon="lead2lease"></ui-icon>
+        <strong class="icon-code">Lead 2 Lease</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='lease-management'">
+        <ui-icon class="text-primary" kind="product" icon="lease-management"></ui-icon>
+        <strong class="icon-code">Lease Managment</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='lro'">
+        <ui-icon class="text-primary" kind="product" icon="lro"></ui-icon>
+        <strong class="icon-code">LRO</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='market-comps'">
+        <ui-icon class="text-primary" kind="product" icon="market-comps"></ui-icon>
+        <strong class="icon-code">Market Comps</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='marketing-center'">
+        <ui-icon class="text-primary" kind="product" icon="marketing-center"></ui-icon>
+        <strong class="icon-code">Marketing Center</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='omnichannel'">
+        <ui-icon class="text-primary" kind="product" icon="omnichannel"></ui-icon>
+        <strong class="icon-code">Omni Channel</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='on-site'">
+        <ui-icon class="text-primary" kind="product" icon="on-site"></ui-icon>
+        <strong class="icon-code">On-Site</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='onesite-screening'">
+        <ui-icon class="text-primary" kind="product" icon="onesite-screening"></ui-icon>
+        <strong class="icon-code">OneSite Screening</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='onesite'">
+        <ui-icon class="text-primary" kind="product" icon="onesite"></ui-icon>
+        <strong class="icon-code">OneSite</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='online-leasing'">
+        <ui-icon class="text-primary" kind="product" icon="online-leasing"></ui-icon>
+        <strong class="icon-code">Online Leasing</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='payments'">
+        <ui-icon class="text-primary" kind="product" icon="payments"></ui-icon>
+        <strong class="icon-code">Payments</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='performance-analytics'">
+        <ui-icon class="text-primary" kind="product" icon="performance-analytics"></ui-icon>
+        <strong class="icon-code">Performance Analytics</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='portfolio-asset-management'">
+        <ui-icon class="text-primary" kind="product" icon="portfolio-asset-management"></ui-icon>
+        <strong class="icon-code">Portfolio Asset Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='property-photos'">
+        <ui-icon class="text-primary" kind="product" icon="property-photos"></ui-icon>
+        <strong class="icon-code">Property Photos</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='propertyware'">
+        <ui-icon class="text-primary" kind="product" icon="propertyware"></ui-icon>
+        <strong class="icon-code">Propertyware</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='prospect-contact-center'">
+        <ui-icon class="text-primary" kind="product" icon="prospect-contact-center"></ui-icon>
+        <strong class="icon-code">Prospect Contact Center</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='realpage-accounting'">
+        <ui-icon class="text-primary" kind="product" icon="realpage-accounting"></ui-icon>
+        <strong class="icon-code">RealPage Accounting</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='realpage-document-management'">
+        <ui-icon class="text-primary" kind="product" icon="realpage-document-management"></ui-icon>
+        <strong class="icon-code">RealPage Document Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='realpage-portfolio-management'">
+        <ui-icon class="text-primary" kind="product" icon="realpage-portfolio-management"></ui-icon>
+        <strong class="icon-code">RealPage Portfolio Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='relate-24-7'">
+        <ui-icon class="text-primary" kind="product" icon="relate-24-7"></ui-icon>
+        <strong class="icon-code">Relate 24/7</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='renters-insurance'">
+        <ui-icon class="text-primary" kind="product" icon="renters-insurance"></ui-icon>
+        <strong class="icon-code">Renters Insurance</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='rentjoy'">
+        <ui-icon class="text-primary" kind="product" icon="rentjoy"></ui-icon>
+        <strong class="icon-code">RentJoy</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='rentjoy-crm'">
+        <ui-icon class="text-primary" kind="product" icon="rentjoy-crm"></ui-icon>
+        <strong class="icon-code">RentJoy CRM</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='resident-portals'">
+        <ui-icon class="text-primary" kind="product" icon="resident-portals"></ui-icon>
+        <strong class="icon-code">Resident Portals</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='resident-services'">
+        <ui-icon class="text-primary" kind="product" icon="resident-services"></ui-icon>
+        <strong class="icon-code">Resident Services</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='revenue-forecaster'">
+        <ui-icon class="text-primary" kind="product" icon="revenue-forecaster"></ui-icon>
+        <strong class="icon-code">Revenue Forecaster</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='revenue-management'">
+        <ui-icon class="text-primary" kind="product" icon="revenue-management"></ui-icon>
+        <strong class="icon-code">Revenue Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='spend-management'">
+        <ui-icon class="text-primary" kind="product" icon="spend-management"></ui-icon>
+        <strong class="icon-code">Spend Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='underwriting-analytics'">
+        <ui-icon class="text-primary" kind="product" icon="underwriting-analytics"></ui-icon>
+        <strong class="icon-code">Underwriting Analytics</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='unified-amenities'">
+        <ui-icon class="text-primary" kind="product" icon="unified-amenities"></ui-icon>
+        <strong class="icon-code">Unified Amenities</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='utility-management'">
+        <ui-icon class="text-primary" kind="product" icon="utility-management"></ui-icon>
+        <strong class="icon-code">Utility Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='vendor-services'">
+        <ui-icon class="text-primary" kind="product" icon="vendor-services"></ui-icon>
+        <strong class="icon-code">Vendor Services</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='windsor-consulting'">
+        <ui-icon class="text-primary" kind="product" icon="windsor-consulting"></ui-icon>
+        <strong class="icon-code">Windsor Consulting</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='yieldstar'">
+        <ui-icon class="text-primary" kind="product" icon="yieldstar"></ui-icon>
+        <strong class="icon-code">Yieldstar</strong>
+      </div>
+    </div>
+
+    <h3 class="my-4">Resources</h3>
+
+    <p>
+      Resource icons require <code>kind="resource"</code> in addition to the icon name:
+    </p>
+
+    <pre class="mb-5"><code class="language-markup"><%= (`
+      <ui-icon class="text-primary" icon="support-tool" kind="resource"></ui-icon>
+    `) %></code></pre>
+
+
+    <div class="icon-list d-flex flex-wrap">
+      <div class="ui-icon" data-tooltip="icon='client-portal'">
+        <ui-icon class="text-charcoal-50" icon="client-portal" kind="resource"></ui-icon>
+        <strong class="icon-code">Client Portal</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='implementation-portal'">
+        <ui-icon class="text-charcoal-50" icon="implementation-portal" kind="resource"></ui-icon>
+        <strong class="icon-code">Implementation Portal</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='integration-marketplace'">
+        <ui-icon class="text-charcoal-50" icon="integration-marketplace" kind="resource"></ui-icon>
+        <strong class="icon-code">Integration Marketplace</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='learning-portal'">
+        <ui-icon class="text-charcoal-50" icon="learning-portal" kind="resource"></ui-icon>
+        <strong class="icon-code">Learning Portal</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='leasing-and-rent-conversion-tool'">
+        <ui-icon class="text-charcoal-50" icon="leasing-and-rent-conversion-tool" kind="resource">
+        </ui-icon>
+        <strong class="icon-code">Leasing &amp; Rents Conversion Tool</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='migration-tool'">
+        <ui-icon class="text-charcoal-50" icon="migration-tool" kind="resource"></ui-icon>
+        <strong class="icon-code">Migration Tool</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='product-updates'">
+        <ui-icon class="text-charcoal-50" icon="product-updates" kind="resource"></ui-icon>
+        <strong class="icon-code">Product Updates</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='research-application'">
+        <ui-icon class="text-charcoal-50" icon="research-application" kind="resource"></ui-icon>
+        <strong class="icon-code">Research Application</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='self-provisioning-portal'">
+        <ui-icon class="text-charcoal-50" icon="self-provisioning-portal" kind="resource"></ui-icon>
+        <strong class="icon-code">Self Provisioning Portal</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='settings-management'">
+        <ui-icon class="text-charcoal-50" icon="settings-management" kind="resource"></ui-icon>
+        <strong class="icon-code">Settings Management</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='support-tool'">
+        <ui-icon class="text-charcoal-50" icon="support-tool" kind="resource"></ui-icon>
+        <strong class="icon-code">Support Tool</strong>
+      </div>
+
+      <div class="ui-icon" data-tooltip="icon='vendor-marketplace'">
+        <ui-icon class="text-charcoal-50" icon="vendor-marketplace" kind="resource"></ui-icon>
+        <strong class="icon-code">Vendor Marketplace</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<%- include('/partials/footer', {
+  additionalScripts: [
+    'js/raul-plugin-icons/raul-plugin-icons.js',
+  ],
+}) %>

@@ -1,0 +1,303 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'forms',
+  page: 'Forms',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <p>
+      Forms are now built on top of Bootstrap's form components. At some point RAUL only supported
+      custom classes and markup structures. If your product has already developed with this
+      structure, you can continue to use it. It will be available throughout RAUL version 2. In
+      general, since we require the Bootstrap library for RAUL, v2 will try to take as much
+      advantage of it as possible.
+    </p>
+
+    <h2>Basic Form Example</h2>
+
+    <p>
+      Below is an example of a basic form with a couple basic elements. Inputs and checkboxes.
+      If you are trying to relate these in the Bootstrap documentation, the inputs are basic
+      form-controls, while the checkboxes are custom-controls.
+    </p>
+
+    <div class="raul-card">
+      <%- include('/components/partials/forms/html/basic-form-example') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/forms/html/basic-form-example')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Dropdown and Input Example</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/forms/html/dropdown-and-input-example') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include('/components/partials/forms/html/dropdown-and-input-example')
+      %></code></pre>
+    </div>
+
+    <div class="d-none">
+      <h2>Complex Form Example</h2>
+
+      <p>
+        An example of a slightly more complex form
+      </p>
+
+      <div class="raul-card">
+        <%- include('/components/partials/forms/html/complex-form-example') %>
+      </div>
+
+      <div class="raul-card mb-5 p-0">
+        <pre class="mb-0"><code class="language-markup"><%=
+         include('/components/partials/forms/html/complex-form-example')
+        %></code></pre>
+      </div>
+    </div>
+
+    <p>
+      The following are a series of elements you can use to build your team's forms.
+      It is genrally best practice to discuss layouts with design and devs when developing visual
+      solutions to product requirements. Designers can help guide through best practices and
+      proposed layouts.
+    </p>
+
+    <%
+    ;[
+      {title: 'Text Inputs with Label', partial: 'text-inputs-with-label'},
+      {title: 'Text Inputs without Label', partial: 'text-inputs-without-label'},
+      {title: 'Text Inputs Disabled', partial: 'text-inputs-disabled'},
+      {title: 'Text Inputs Required', partial: 'text-inputs-required'},
+      {title: 'Text Inputs Optional', partial: 'text-inputs-optional'},
+      {title: 'Toggle', partial: 'toggle'},
+      {title: 'Toggle left aligned', partial: 'toggle-left-aligned'},
+      {title: 'Toggle without text', partial: 'toggle-without-text'},
+      {title: 'Radio Buttons', partial: 'radio-buttons'},
+      {title: 'Checkboxes', partial: 'checkboxes'},
+    ].forEach((section) => {
+      const title = `${section.title}`
+      const partial = `/components/partials/forms/html/${section.partial}`
+    %>
+    <h2 class="mb-3"><%= title %></h2>
+
+    <div class="raul-card">
+      <%- include(partial) %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+        include(partial)
+      %></code></pre>
+    </div>
+    <% }) %>
+
+    <h2 class="mb-3">Check All</h2>
+
+    <div class="mb-5">
+      <p>You can link checkboxes to create check-all functionality. This is availeble via
+        data-attributes and javascript API.</p>
+
+      <h4 class="mb-0">Check All via Data Attributes</h4>
+      Use a shared group name to link the main check-all checkbox to secondary checkboxes.
+
+      <ul>
+        <li>Main checkbox attribute: <code>data-check-all-main="group-name"</code></li>
+        <li>Secondary checkboxs attribute: <code>data-check-all-secondary="group-name"</code></li>
+      </ul>
+
+      <div class="d-md-flex pt-3 mb-5 align-items-stretch">
+        <div class="col-12 col-md-4 raul-card">
+          <%- include('/components/partials/check-all/basic-example') %>
+        </div>
+
+        <div class="col-12 col-md-8 raul-card p-0">
+          <pre class="mb-0"><code class="language-markup"><%=
+              include('/components/partials/check-all/basic-example')
+              %></code></pre>
+        </div>
+      </div>
+
+      <h4 class="mb-0">Check All via JavaScript API</h4>
+
+      <p>
+        As an alternative to data-attributes, you can use the following javascript API.
+      </p>
+
+      <h3>Methods</h3>
+
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>Method</th>
+          <th>Syntax</th>
+          <th>Parameters</th>
+          <th>Description</th>
+          <th>Returned value</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+          <th class="text-nowrap">
+            <code>&lt;constructor&gt;</code>
+          </th>
+
+          <td>
+            <code>
+              new RAUL.CheckAll(secondaryCheckboxesSelector,
+              mainCheckboxSelector, searchWithinElement)
+            </code>
+          </td>
+
+          <td class="text-nowrap">
+            <p>- required <code>secondaryCheckboxesSelector</code></p>
+            <p>- required <code>mainCheckboxesSelector</code></p>
+            <p class="mb-0">
+              - optional <code>searchWithinElement</code> (HTML element)
+            </p>
+          </td>
+
+          <td>
+            <p>Creates a new check-all instance.</p>
+          </td>
+
+          <td>
+            New check-all instance
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>#areAllCheckboxChecked</code>
+          </th>
+
+          <td>
+            <code>checkAll.areAllCheckboxChecked()</code>
+          </td>
+
+          <td>
+            N/A
+          </td>
+
+          <td>
+            Returns a boolean value specifying if all of the
+            secondary checkboxes are checked.
+          </td>
+
+          <td>
+            boolean
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>#isAnyCheckboxChecked</code>
+          </th>
+
+          <td>
+            <code>checkAll.isAnyCheckboxChecked()</code>
+          </td>
+
+          <td>
+            N/A
+          </td>
+
+          <td>
+            Returns a boolean value specifying if at least one
+            of the secondary checkboxes are checked.
+          </td>
+
+          <td>
+            boolean
+          </td>
+        </tr>
+
+        <tr>
+          <th class="text-nowrap">
+            <code>#markCheckboxesAs</code>
+          </th>
+
+          <td>
+            <code>checkAll.markCheckboxesAs(value)</code>
+          </td>
+
+          <td>
+            - required <code>value</code> (boolean)
+          </td>
+
+          <td>
+            If <code>value</code> is <code>true</code>, marks all checkboxes as checked.
+            If <code>value</code> is <code>false</code>, marks all checkboxes as unchecked.
+          </td>
+
+          <td>
+            N/A
+          </td>
+        </tr>
+        </tbody>
+
+        <tfoot>
+        <tr>
+          <td colspan="5">
+            <code>&lt;</code>fn<code>&gt;</code> = contructor method
+            <code>#</code>fn = instance method
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <%
+    ;[
+      {title: 'Search Inputs', partial: 'search-inputs'},
+      {title: 'Select Inputs', partial: 'select-inputs'},
+      {title: 'Inputs with Info Icon', partial: 'inputs-with-info-icon'},
+      {title: 'Textareas', partial: 'textareas'},
+      {title: 'Form Validations', partial: 'form-validations'},
+    ].forEach((section) => {
+      const title = `${section.title}`
+      const partial = `/components/partials/forms/html/${section.partial}`
+    %>
+    <h2 class="mb-3"><%= title %></h2>
+
+    <div class="raul-card">
+      <%- include(partial) %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%=
+          include(partial)
+          %></code></pre>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+
+<%- include('/partials/footer') %>

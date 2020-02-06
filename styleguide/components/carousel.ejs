@@ -1,0 +1,282 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'carousel',
+  page: 'Carousel',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          aria-controls="home"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#custom-element-version"
+          aria-controls="profile"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Custom element version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <h2 class="mb-3">Row carousel</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/carousel/html/carousel-row') %>
+    </div>
+
+    <div class="raul-card p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/carousel/html/carousel-row')
+      %></code></pre>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-js"><%= (`
+       const rowCarousel = new BasicCarousel(document.querySelector('#raul-carousel'));
+      `) %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Grid carousel</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/carousel/html/carousel-grid') %>
+    </div>
+
+    <div class="raul-card p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/carousel/html/carousel-grid')
+      %></code></pre>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-js"><%= (`
+        const gridCarousel = new BasicCarousel(document.querySelector('#raul-carousel-grid'));
+      `) %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Card carousel</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/carousel/html/carousel-card') %>
+    </div>
+
+    <div class="raul-card p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/carousel/html/carousel-card')
+      %></code></pre>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-js"><%= (`
+       const cardCarousel = new CardCarousel(document.querySelector('#raul-carousel-cards'));
+      `) %></code></pre>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="custom-element-version">
+
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <h2 class="mb-3">Row carousel</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/carousel/custom-elements/carousel-row') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/carousel/custom-elements/carousel-row')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Grid carousel</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/carousel/custom-elements/carousel-grid') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/carousel/custom-elements/carousel-grid')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Cards carousel</h2>
+
+    <div class="raul-card">
+      <%- include('/components/partials/carousel/custom-elements/carousel-card') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/carousel/custom-elements/carousel-card')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Options List</h2>
+
+    <table class="table raul-table table-bordered mb-5">
+      <thead>
+        <tr>
+          <th>Custom element</th>
+
+          <th>Attribute</th>
+
+          <th>Value Type</th>
+
+          <th>Default Value</th>
+
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td rowspan="3">
+            <code>ui-carousel</code>
+          </td>
+
+          <td>
+            <code>carousel-title</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the carousel title text.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>grey-background</code>
+          </td>
+
+          <td>
+            <code>Boolean</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Adds a grey background to the carousel if present.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>type</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the type of the carousel. Expects 'grid' or 'cards'. If no value is added a row
+            carousel will be created.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>ui-carousel-slide</code>
+          </td>
+
+          <td>
+            <code>index</code>
+          </td>
+
+          <td>
+            <code>Number</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the index for each slide. This is necessary only for cards carousel.
+          </td>
+        </tr>
+
+        <tr>
+          <td rowspan="2">
+            <code>ui-carousel-item</code>
+          </td>
+
+          <td>
+            <code>item-title</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the carousel item title.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <code>item-description</code>
+          </td>
+
+          <td>
+            <code>String</code>
+          </td>
+
+          <td>
+            <em>None</em>
+          </td>
+
+          <td>
+            Sets the carousel item description.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

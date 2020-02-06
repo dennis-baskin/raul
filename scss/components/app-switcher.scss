@@ -1,0 +1,266 @@
+.ui-notifications-context,
+.ui-shopping-context  {
+  box-shadow: rgba(0, 0, 0, 0.2) 4px 0 16px 0;
+  position: absolute;
+
+  &::before {
+    border-bottom: solid 10px $lightest;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+    content: '';
+    height: 0;
+    position: absolute;
+    right: 40px;
+    top: 0;
+    width: 0;
+  }
+}
+
+.ui-notifications-context-content,
+.ui-shopping-context-content {
+  background-color: $lightest;
+  box-shadow: rgba(0, 0, 0, 0.2) 4px 0 16px 0;
+  box-sizing: border-box;
+  color: $charcoal-80;
+  margin-top: 10px;
+  min-height: 280px;
+  padding: 15px;
+  width: 420px;
+  z-index: 300;
+}
+
+.raul-switcher-context {
+  background-color: $lightest;
+  box-shadow: rgba(0, 0, 0, 0.2) 4px 0 16px 0;
+  box-sizing: border-box;
+  color: $charcoal-80;
+  font-family: 'Roboto', Arial, sans-serif;
+  min-height: 280px;
+  padding: 15px;
+  position: absolute;
+  width: 420px;
+  z-index: 300;
+
+  &::before {
+    border-bottom: solid 10px $lightest;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+    content: '';
+    height: 0;
+    position: absolute;
+    right: 40px;
+    top: -10px;
+    width: 0;
+  }
+
+  & .raul-tab-content {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  @at-root .raul-header-more-context & {
+    padding: 0;
+  }
+
+  .family-name {
+    height: 40px;
+    margin: 0;
+    padding: 0 5px;
+  }
+
+  .family-icon {
+    color: $primary-60;
+    font-size: 35px;
+    line-height: 40px;
+    padding: 0 6px 0 0;
+    vertical-align: middle;
+  }
+
+  .family-text {
+    line-height: 40px;
+    vertical-align: middle;
+  }
+
+  .product-url {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24%;
+  }
+
+  .product-url:hover {
+    text-decoration: none;
+  }
+
+  .product {
+    background-color: $charcoal-05;
+    box-shadow: 1px 1px 0 rgba(163, 175, 181, 0.5);
+    display: block;
+    font-size: 11px;
+    height: 85px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+  }
+
+  .product-icon {
+    color: $primary-60;
+    display: block;
+    font-size: 25px;
+    padding: 7px 0 0;
+  }
+
+  .product-name {
+    align-items: center;
+    color: $charcoal-80;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+  }
+
+  .family-icon::before,
+  .product-icon::before {
+    background-size: 25px 25px;
+    content: '';
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+  }
+
+  // 'ENUM Key': ('class-name', 'image-name-without-extension'),
+
+  //  ---------------------------------------------
+  //  DO PRODUCT FAMILY MAPPINGS
+  //  ---------------------------------------------
+
+  $family-class-icons: (
+    'AssetOptimization': ('asset-optimization', 'asset-optimization'),
+    'LeaseManagement': ('lease-management', 'lease-management'),
+    'PropertyManagement': ('property-management', 'property-management'),
+    'ResidentServices': ('resident-services', 'resident-services'),
+    'AssetAndInvestmentManagement': (
+      'asset-and-investment-management', 'asset-and-investment-management'
+    ),
+  );
+
+  @each $family, $class-icon in $family-class-icons {
+    .#{nth($class-icon, 1)} .family-icon::before {
+      background-image: url('#{$images-cdn-url}families/#{nth($class-icon, 2)}.svg');
+    }
+  }
+
+  //  ---------------------------------------------
+  //  DO PRODUCT MAPPINGS
+  //  ---------------------------------------------
+
+  // Missing product icons
+  // 'OpsBid': ('opsbid', '----MISSING-ICON----'),
+  // 'Social': ('social', '----MISSING-ICON----'),
+
+  $product-class-icons: (
+    'Accounting': ('realpage-accounting', 'realpage-accounting'),
+    // Not in greenbook
+    'ActiveBuilding': ('active-building', 'monitor-with-user'),
+    // Not in greenbook
+    'AmenityAnalysis': ('amenity-analysis', 'amenity-analysis'),
+    'AssetOptimizer': ('asset-optimizer', 'asset-optimization'),
+    'Axiometrics': ('axiometrics', 'axiometrics'),
+    // Not in greenbook
+    'BusinessIntelligence': ('business-intelligence', 'business-intelligence'),
+    // Not in greenbook
+    'DepositIQ': ('deposit-iq', 'deposit-iq'),
+    // Not in greenbook
+    'EasyLMS': ('easy-lms', 'easy-lms'),
+    'GetWork': ('get-work', 'get-work'),
+    'Insurance': ('renters-insurance', 'renters-insurance'),
+    // Not in greenbook
+    'IntelligentLeadManagement': ('intelligent-lead-management', 'intelligent-lead-management'),
+    'IlmLeasingAnalytics': ('ilm-leasing-analytics', 'ilm-leasing-analytics'),
+    // Not in greenbook
+    'InvestmentAnalytics': ('investment-analytics', 'investment-analytics'),
+    // Not in greenbook
+    'Kigo': ('kigo', 'kigo'),
+    'Lead2Lease': ('lead2lease', 'lead2lease'),
+    'LeadAnalytics': ('lead-analytics', 'lead-analytics'),
+    'LRO': ('lro', 'lro'),
+    // Not in greenbook
+    'MarketComps': ('market-comps', 'market-comps'),
+    // Not in greenbook
+    'MarketCompsEnterprise': ('market-comps-enterprise', 'market-comps'),
+    'MarketingCenter': ('websites-syndication', 'marketing-center'),
+    // assumes omnichannel = rentjoy crm
+    'OmniChannel': ('rentjoy-contact-center', 'rentjoy-crm'),
+    'OneSite': ('onesite', 'onesite'),
+    // Not in greenbook
+    'OneSiteScreening': ('onesite-screening', 'onesite-screening'),
+    'OnlineLeasing': ('online-leasing', 'online-leasing'),
+    'OnSite': ('on-site', 'on-site'),
+    'OpsBuyer': ('spend-management', 'spend-management'),
+    'RPDocumentManagement': ('realpage-document-management', 'document-management'),
+    // Not in greenbook
+    'Payments': ('payments', 'payments'),
+    // Not in greenbook
+    'PerformanceAnalytics': ('performance-analytics', 'performance-analytics'),
+    // Not in greenbook
+    'PortfolioAssetManagement': ('portfolio-asset-management', 'portfolio-asset-management'),
+    'ProspectContactCenter': ('prospect-contact-center', 'prospect-contact-center'),
+    'Propertyware': ('propertyware', 'propertyware'),
+    'RealpageDocumentManagement': ('realpage-document-management', 'realpage-document-management'),
+    // Not in greenbook
+    'RealpagePortfolioManagement': (
+      'realpage-portfolio-management', 'realpage-portfolio-management'
+    ),
+    'RentersInsurance': ('renters-insurance', 'renters-insurance'),
+    // Not in greenbook
+    'Relate247': ('relate-24-7', 'relate-24-7'),
+    'ResidentPortal': ('resident-portal', 'resident-portals'),
+    // Not in greenbook
+    'RevenueForecaster': ('revenue-forecaster', 'revenue-forecaster'),
+    // Not in greenbook
+    'RevenueManagement': ('revenue-management', 'revenue-management'),
+    // Not in greenbook
+    'SpendManagement': ('spend-management', 'spend-management'),
+    'UnderwritingAnalytics': ('underwriting-analytics', 'underwriting-analytics'),
+    'UnifiedAmenities': ('unified-amenities', 'unified-amenities'),
+    'UtilityManagement': ('utility-management', 'utility-management'),
+    // Not in greenbook
+    'VendorMarketplace': ('vendor-marketplace', 'vendor-marketplace'),
+    'VendorServices': ('vendor-services', 'vendor-services'),
+    // Not in greenbook
+    'WindsorConsulting': ('windsor-consulting', 'windsor-consulting'),
+    'Yieldstar': ('yieldstar', 'yieldstar'),
+  );
+
+  @each $product, $class-icon in $product-class-icons {
+    .#{nth($class-icon, 1)} .product-icon::before {
+      background-image: url('#{$images-cdn-url}products/#{nth($class-icon, 2)}.svg');
+    }
+  }
+
+  //  --------------------------------------------------
+  //  DO RESOURCE MAPPINGS - unused (for reference only)
+  //  --------------------------------------------------
+
+  // Missing Resource Icons
+  // // Greenbook has this
+  // 'SelfProvisioningPortal': ('self-provisioning-portal', '----MISSING-ICON----'),
+  // 'UnifiedLogin': ('unified-platform', '----MISSING-ICON----'), // Greenbook has this
+  // 'UnifiedUI': ('unified-ui', '----MISSING-ICON----'), // Greenbook has this
+
+  $resource-class-icons: (
+    'ClientPortal': ('client-portal', 'client-portal'),
+    // Not in greenbook
+    'Greystar': ('greystar', 'greystar'),
+    // Not in greenbook
+    'ImplementationPortal': ('implementation-portal', 'implementation-portal'),
+    // Not in greenbook
+    'IntegrationMarketplace': ('integration-marketplace', 'integration-marketplace'),
+    'MigrationTool': ('migration-tool', 'migration-tool'),
+    'OneSiteConversions': ('leasing-rents-conversion-tool', 'leasing-and-rent-conversion-tool'),
+    // Resource in evernote
+    'ProductLearningPortal': ('product-learning-portal', 'product-learning-portal'),
+    'ProductUpdates': ('product-updates', 'product-updates'),
+    'ResearchApplication': ('research-application', 'research-application'),
+    // Not in greenbook
+    'SupportTool': ('support-tool', 'support-tool'),
+  );
+}

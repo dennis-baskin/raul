@@ -1,0 +1,101 @@
+@import 'node_modules/bootstrap/scss/forms';
+@import 'node_modules/bootstrap/scss/custom-forms';
+@import 'node_modules/bootstrap/scss/input-group';
+
+// Forms
+
+.form-group {
+  label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 0.3125rem;
+  }
+
+  &::placeholder {
+    opacity: 1;
+  }
+}
+
+.form-control {
+  height: 2.5rem;
+
+  &:disabled,
+  &[readonly] {
+    color: $charcoal-30;
+  }
+}
+
+// Input group
+
+.input-group-append {
+  margin-left: 0;
+}
+
+.input-group-text {
+  border-left: 0;
+  padding: 0 $input-padding-x;
+}
+
+// Custom forms
+
+.custom-control {
+  cursor: auto;
+
+  & + & {
+    margin-left: 0;
+  }
+}
+
+.custom-control-label,
+.custom-control-input {
+  cursor: pointer;
+
+  &:disabled,
+  &:disabled ~ .custom-control-label {
+    cursor: auto;
+  }
+}
+
+.custom-control-label {
+  position: relative;
+
+  &::before,
+  &::after {
+    left: 0;
+    top: 0.0625rem;
+  }
+
+  &::before {
+    border: 2px solid $charcoal-20;
+  }
+}
+
+.custom-control-input {
+  &:checked ~ .custom-control-label::before {
+    border-color: $primary-60;
+  }
+
+  &:active ~ .custom-control-label::before {
+    border-color: $primary-60;
+  }
+
+  &:disabled ~ .custom-control-label::before  {
+    border-color: $charcoal-20;
+  }
+}
+
+.custom-radio .custom-control-input:checked~.custom-control-label::after {
+  background-size: 45% 45%;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+  background-size: 70% 70%;
+}
+
+.custom-checkbox .custom-control-input-indeterminate:checked~.custom-control-label::after {
+  background-image: $custom-checkbox-indicator-icon-indeterminate;
+}
+
+select.form-control:not([size]):not([multiple]) {
+  height: 2.5rem;
+}

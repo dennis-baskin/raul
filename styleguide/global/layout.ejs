@@ -1,0 +1,94 @@
+<%- include('/partials/header', {
+  domain: 'Utilities',
+  id: 'layout',
+  page: 'Layout',
+}) %>
+
+<h2>Layout Utilities</h2>
+
+<p>
+  RAUL currently relies on Bootstrap for it's layout needs. This makes it very easy for products
+  to add layouts based on a grid system, already provided in the Bootstrap 4 framework. For
+  detailed documentation please visit
+
+  <a class="button button-default" href="https://getbootstrap.com/docs/4.0/layout/grid/">
+    Bootstrap Grid
+  </a>
+
+  page, as we work on additional documentation.
+</p>
+
+<p>
+  Bootstrap also comes with a handy set of utilities for layout, which
+  includes display, flexbox, spacing, and visibility utilites. You can find them all at
+
+  <a
+    class="button button-default"
+    href="https://getbootstrap.com/docs/4.0/layout/utilities-for-layout/"
+  >
+    Bootstrap Utilities for Layout
+  </a>
+
+  page. Or individually:
+</p>
+
+<table class="table table-striped table-bordered">
+  <tbody>
+    <tr>
+      <td class="text-nowrap">
+        Display
+      </td>
+
+      <td>
+        <a href="https://getbootstrap.com/docs/4.0/utilities/display/">
+          https://getbootstrap.com/docs/4.0/utilities/display/
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="text-nowrap">
+        Flex
+      </td>
+
+      <td>
+        <a href="https://getbootstrap.com/docs/4.0/utilities/flex/">
+          https://getbootstrap.com/docs/4.0/utilities/flex/
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="text-nowrap">
+        Spacing
+      </td>
+
+      <td>
+        <a href="https://getbootstrap.com/docs/4.0/utilities/spacing/">
+          https://getbootstrap.com/docs/4.0/utilities/spacing/
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="text-nowrap">
+        Visibility
+      </td>
+
+      <td>
+        <a href="https://getbootstrap.com/docs/4.0/utilities/visibility/">
+          https://getbootstrap.com/docs/4.0/utilities/visibility/
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'XSS Filtering',
+      url: 'utilities/xss-filtering.html',
+    },
+  ],
+}) %>

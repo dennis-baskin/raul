@@ -1,0 +1,584 @@
+// RAUL Header
+// --------------------------------------------
+.raul-header {
+  background-color: $header;
+  font-size: 14px;
+  height: 56px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  .raul-header-home,
+  .raul-header-app-switcher,
+  .raul-header-help,
+  .raul-header-notifications,
+  .raul-header-shopping,
+  .raul-header-custom-icon {
+    color: $lightest;
+    cursor: pointer;
+    float: left;
+    margin: 18px 10px;
+    position: relative;
+  }
+
+  .raul-header-home {
+    font-size: 20px;
+  }
+
+  .raul-header-app-switcher {
+    font-size: 20px;
+  }
+
+  .raul-header-help {
+    font-size: 24px;
+    margin: 16px 10px;
+  }
+
+  .raul-header-notifications {
+    font-size: 19px;
+    margin: 18px 18px 18px 10px;
+  }
+
+  .raul-header-shopping {
+    font-size: 22px;
+    margin: 18px 10px 16px 10px;
+  }
+
+  .raul-header-custom-icon {
+    font-size: 22px;
+    margin: 16px 10px;
+  }
+
+  ui-icon {
+    &.raul-header-home {
+      font-size: 17px;
+    }
+
+    &.raul-header-app-switcher {
+      font-size: 17px;
+    }
+
+    &.raul-header-help {
+      font-size: 20px;
+    }
+
+    &.raul-header-custom-icon {
+      font-size: 19px;
+    }
+
+    &.raul-header-notifications {
+      font-size: 16px;
+    }
+
+    &.raul-header-shopping {
+      font-size: 18px;
+    }
+
+    &.raul-header-search-icon,
+    &.raul-header-search-icon-mobile {
+      font-size: 16px;
+      padding: 4px 10px 5px;
+    }
+  }
+
+  .raul-header-notifications,
+  .raul-header-shopping {
+    &::after {
+      background-color: $accent-50;
+      border-radius: 10px;
+      content: attr(data-badge);
+      font: bold 12px Arial;
+      left: 12px;
+      padding: 2px;
+      position: absolute;
+      text-align: center;
+      top: -6px;
+    }
+  }
+
+  .raul-header-custom-icons {
+    float: left;
+  }
+
+  .raul-header-user {
+    color: $lightest;
+    cursor: pointer;
+    float: right;
+    position: relative;
+  }
+}
+
+.raul-header::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.raul-header-menu-button {
+  color: $lightest;
+  cursor: pointer;
+  float: left;
+  font-size: 20px;
+  padding: 18px;
+  top: 0;
+
+  @at-root ui-icon#{&} {
+    font-size: 16px;
+  }
+}
+
+.raul-header-logo {
+  float: left;
+}
+
+.raul-header-logo-desktop {
+  height: 40px;
+  margin: 8px;
+  width: 180px;
+}
+
+.raul-header-logo-mobile {
+  height: 22px;
+  margin: 17px 8px;
+  width: auto;
+}
+
+.raul-header-title {
+  color: $lightest;
+  float: left;
+  margin: 21px 12px;
+}
+
+.raul-header-title.has-sub-info {
+  margin: 12px 12px 8px 12px;
+}
+
+.raul-header-product,
+.raul-header-company {
+  margin: 0;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.raul-header-product {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: -2px 0 -3px;
+}
+
+.raul-header-company {
+  color: $charcoal-20;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  vertical-align: middle;
+}
+
+.raul-header-divider {
+  color: $charcoal-20;
+  font-size: 12px;
+  margin: 0 4px;
+  vertical-align: middle;
+}
+
+.raul-header-properties {
+  color: $charcoal-20;
+  display: inline-block;
+  font-size: 12px;
+  max-width: 120px;
+  position: relative;
+  vertical-align: middle;
+}
+
+@media (max-width: 1200px) {
+  .raul-header-product,
+  .raul-header-company {
+    max-width: 230px;
+  }
+}
+
+@media (max-width: 768px) {
+  .raul-header-product,
+  .raul-header-company {
+    max-width: 125px;
+  }
+
+  .raul-header-title {
+    margin: 21px 5px 0 5px;
+  }
+
+  .raul-header-title.has-sub-info {
+    margin: 12px 5px 0 5px;
+  }
+
+  .raul-header-properties {
+    max-width: 80px;
+  }
+}
+
+.raul-header-properties select {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: $charcoal-20;
+  cursor: pointer;
+  display: inline-block;
+  outline: 0;
+  padding: 0 12px 0 0;
+  width: 100%;
+}
+
+.raul-header-properties select:disabled {
+  pointer-events: none;
+}
+
+.raul-header-properties .raul-header-properties-select-arrow {
+  border-color: $charcoal-20 transparent transparent transparent;
+  border-style: solid;
+  border-width: 6px 4px 0 4px;
+  height: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 6px;
+  width: 0;
+}
+
+.raul-header-properties select:disabled ~ .raul-header-properties-select-arrow {
+  border: 0;
+}
+
+.raul-header-search {
+  float: right;
+  margin: 13px 10px;
+  position: relative;
+}
+
+.raul-header-search-mobile {
+  margin: 13px 10px;
+  text-align: right;
+}
+
+.raul-header-search-input,
+.raul-header-search-input-mobile {
+  border: 0;
+  border-radius: 1.125rem;
+  height: 1.875rem;
+  line-height: 1.875rem;
+  padding: 0 2.8125rem 0 0.625rem;
+  width: 12.5rem;
+
+  &::placeholder {
+    color: $charcoal-20;
+  }
+
+  // sass-lint:disable no-vendor-prefixes
+  &::-ms-clear {
+    display: none;
+  }
+  // sass-lint:enable no-vendor-prefixes
+}
+
+.raul-header-search-input-mobile {
+  overflow: hidden;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+  width: 0;
+}
+
+.raul-header-icon-wrap,
+.unified-navbar {
+  float: right;
+}
+
+.icon-container,
+.unified-navbar-item {
+  float: left;
+  position: relative;
+}
+
+.raul-header-search-input:focus,
+.raul-header-search-input-mobile:focus {
+  outline: none;
+}
+
+.raul-header-search-icon,
+.raul-header-search-icon-mobile {
+  color: $lightest;
+  cursor: pointer;
+  float: right;
+  font-size: 20px;
+  right: 9px;
+}
+
+.raul-header-search-icon-mobile {
+  padding: 5px 14px 7px;
+}
+
+.raul-header-search-icon {
+  background-color: $lightest;
+  border: 1px solid $charcoal-20;
+  border-radius: 180px;
+  color: $charcoal-20;
+  padding: 4px 10px 3px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.raul-header-search-icon::before,
+.raul-header-home::before,
+.raul-header-app-switcher::before,
+.raul-header-notifications::before,
+.raul-header-custom-icon::before {
+  vertical-align: middle;
+}
+
+.raul-header .raul-header-help::before {
+  vertical-align: top;
+}
+
+.raul-header-user-info {
+  // Forcing inline-flex display to allow backwards compatibility for MVP header item
+  // In the future, class helpers will most likely be preferred
+  display: inline-flex !important;
+  flex-direction: column;
+  float: left;
+  font-size: 12px;
+  font-weight: bold;
+  height: 56px;
+  justify-content: center;
+  line-height: 16px;
+  text-align: right;
+}
+
+.raul-header-user-handle,
+.raul-header-user-title {
+  font-size: 11px;
+  font-weight: normal;
+}
+
+.raul-header-user-avatar {
+  background: $primary-60;
+  border-radius: 50%;
+  bottom: 8px;
+  color: $lightest;
+  float: left;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  height: 32px;
+  letter-spacing: 1px;
+  line-height: 32px;
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 32px;
+}
+
+.raul-header-user-handle {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.raul-header-user-title {
+  color: $charcoal-20;
+}
+
+.raul-header-user-angle {
+  color: $lightest;
+  cursor: pointer;
+  float: left;
+  font-size: 20px;
+  margin: 18px 20px 18px 0;
+}
+
+.raul-header-more {
+  float: right;
+}
+
+.raul-header-more .raul-header-more-icon {
+  color: $lightest;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 17px 10px;
+  text-align: center;
+  width: 22px;
+}
+
+.raul-header-more ui-icon.raul-header-more-icon {
+  font-size: 18px;
+}
+
+.raul-header-more-context {
+  background-color: $lightest;
+  bottom: 0;
+  min-height: 400px;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 54px;
+  transition: 0.5s;
+  width: 0;
+  z-index: 90;
+
+  .more-context-item i,
+  .raul-header-context-home .raul-header-home,
+  .raul-header-context-help .raul-header-help,
+  .raul-header-context-custom .raul-header-custom-icon,
+  .raul-header-context-shopping .raul-header-shopping,
+  .raul-header-context-notifications .raul-header-notifications {
+    margin-right: 10px;
+  }
+}
+
+.raul-header-more-context .raul-header-more-context-inner {
+  width: 300px;
+}
+
+.raul-header-more-context .raul-header-more-context-inner a,
+.raul-header-more-context .raul-header-more-context-inner .more-context-item {
+  border: 0;
+  border-bottom: solid 1px $charcoal-10;
+  border-radius: 0;
+  color: $charcoal-80;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 10px;
+  text-decoration: none;
+  width: 300px;
+}
+
+.raul-header-more-context .raul-header-user {
+  border-bottom: 1px solid $charcoal-10;
+  display: flex;
+  padding: 10px;
+}
+
+.raul-header-more-context .raul-header-user-info {
+  text-align: left;
+}
+
+.raul-header-more-context .raul-header-user-title {
+  color: $charcoal-80;
+}
+
+.raul-header-more-context .raul-header-user-angle {
+  color: inherit;
+  margin: 18px 0 18px 20px;
+}
+
+.raul-user-context {
+  background-color: $lightest;
+  box-shadow: rgba(0, 0, 0, 0.2) 4px 0 16px 0;
+  box-sizing: border-box;
+  color: $charcoal-90;
+  display: none;
+  font-family: 'Roboto', Arial, sans-serif;
+  position: relative;
+  width: 240px;
+  z-index: 1;
+
+  a {
+    color: $charcoal-90;
+    text-decoration: none;
+  }
+}
+
+.raul-user-context .list-group-item {
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 0;
+  border-right: 0;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 576px) {
+  .raul-switcher-context::before {
+    right: 50px;
+  }
+
+  .raul-switcher-context {
+    left: 10px !important;
+    position: fixed !important;
+    right: 10px !important;
+    top: 56px !important;
+    width: auto;
+  }
+
+  .ui-notifications-context-content,
+  .ui-shopping-context-content {
+    left: 10px !important;
+    position: fixed !important;
+    right: 10px !important;
+    top: 46px !important;
+    width: auto;
+  }
+}
+
+.toggle-switch {
+  line-height: 24px;
+  width: 100%;
+
+  [icon='omnibar-toggle-off'] {
+    color: $charcoal-30;
+  }
+
+  [icon='omnibar-toggle-on'] {
+    color: $success;
+  }
+
+  i {
+    float: right;
+    font-size: 26px;
+
+    &.fa-toggle-off {
+      color: $charcoal-30;
+    }
+
+    &.fa-toggle-on {
+      color: $success;
+    }
+  }
+
+  ui-icon {
+    float: right;
+    font-size: 24px;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .raul-header-menu-button {
+    padding: 18px 5px 18px 15px;
+  }
+
+  .raul-header-properties {
+    top: 0;
+  }
+
+  .raul-header-title {
+    max-width: 100px;
+  }
+
+  .raul-header {
+    .raul-header-app-switcher {
+      margin: 18px 5px;
+    }
+
+    .raul-header-notifications {
+      margin: 18px 5px;
+    }
+  }
+
+  .raul-header-more .raul-header-more-icon {
+    margin: 17px 5px 17px 0;
+  }
+}

@@ -1,0 +1,76 @@
+<%- include('/partials/header', {
+  domain: 'Introduction',
+  id: 'images',
+  page: 'Image Usage',
+}) %>
+
+<h2>Realpage Image CDN</h2>
+
+<p>
+  On April 25th, 2018, RealPage has added an additional CDN endpoint to host static images. RAUL
+  will now be pulling all images from this CDN in order to help centralize static assets. This will
+  help our product teams in the technical implementation of our UI library, avoiding the necessity
+  of hosting images relative to their application.
+</p>
+
+<p>
+  The image CDN is hosted at <a>https://cdn.realpage.com/images/</a><code>image_name...</code>.
+  An example could be seen with the RealPage dots logo
+  <a href="https://cdn.realpage.com/images/rp-logo-dots.svg" target="_cdn">
+    https://cdn.realpage.com/images/rp-logo-dots.svg
+  </a>
+</p>
+
+<h2>Logos</h2>
+
+<p class="alert alert-warning">
+  First three logos are shown on a dark background as an example of how they should be used.
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <td>Image</td>
+
+      <td>Link</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% [
+      ['rp-logo-dots.svg', 'background-charcoal'],
+      ['rp-logo-white-outperform.svg', 'background-charcoal'],
+      ['rp-logo-white.svg', 'background-charcoal'],
+      ['rp-logo.svg', ''],
+    ].forEach(image => { %>
+      <tr>
+        <td>
+          <img
+            alt="image <%= image[0] %>"
+            class="p-3 <%= image[1] %>"
+            src="https://cdn.realpage.com/images/<%= image[0] %>"
+          />
+        </td>
+
+        <td>
+          <a href="https://cdn.realpage.com/images/<%= image[0] %>" target="_cdn">
+            https://cdn.realpage.com/images/<%= image[0] %>
+          </a>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Project Contribution',
+      url: 'introduction/contributing.html',
+    },
+    {
+      title: 'Header',
+      url: 'shell/header.html',
+    },
+  ],
+}) %>

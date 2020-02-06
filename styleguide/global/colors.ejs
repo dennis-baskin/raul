@@ -1,0 +1,100 @@
+<% const cleanupMarkupRegex = /^\s+|\s+$|<!--.*-->|color-block\s*/g %>
+
+<%- include('/partials/header', {
+  domain: 'Global Content',
+  id: 'colors',
+  page: 'Colors',
+}) %>
+
+<h2>Primary Color Scheme</h2>
+
+<%
+  [
+    {type: 'primary', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-dark', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-light', inverseBackground: 'charcoal-dark', inverseText: ''},
+  ].forEach((colorOptions) => {
+    %><%- include('/global/partials/colors/color.ejs', colorOptions) %><%
+  })
+%>
+
+<pre class="my-3"><code class="language-markup"><%
+  [
+    {type: 'primary', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-dark', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-light', inverseBackground: 'charcoal-dark', inverseText: ''},
+  ].forEach((colorOptions) => { %><%=
+    include('/global/partials/colors/color.ejs', colorOptions).replace(cleanupMarkupRegex, '')
+%><% })%></code></pre>
+
+<h2>RAUL theme colors</h2>
+
+<p>Theme colors apply to info, warning, danger / error, and success.</p>
+
+<%
+  [
+    {type: 'primary', inverseBackground: '', inverseText: 'white'},
+    {type: 'info', inverseBackground: '', inverseText: 'white'},
+    {type: 'success', inverseBackground: '', inverseText: 'white'},
+    {type: 'warning', inverseBackground: '', inverseText: 'white'},
+    {type: 'error', inverseBackground: '', inverseText: 'white'},
+    {type: 'danger', inverseBackground: '', inverseText: 'white'},
+  ].forEach((colorOptions) => {
+    %><%- include('/global/partials/colors/color.ejs', colorOptions) %><%
+  })
+%>
+
+<pre class="my-3"><code class="language-markup"><%
+  [
+    {type: 'primary', inverseBackground: '', inverseText: 'white'},
+    {type: 'info', inverseBackground: '', inverseText: 'white'},
+    {type: 'success', inverseBackground: '', inverseText: 'white'},
+    {type: 'warning', inverseBackground: '', inverseText: 'white'},
+    {type: 'error', inverseBackground: '', inverseText: 'white'},
+    {type: 'danger', inverseBackground: '', inverseText: 'white'},
+  ].forEach((colorOptions) => { %><%=
+    include('/global/partials/colors/color.ejs', colorOptions).replace(cleanupMarkupRegex, '')
+%><% }) %></code></pre>
+
+<h2>Gray Values</h2>
+
+<%
+  [
+    {type: 'charcoal-90', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-80', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-70', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-50', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-30', inverseBackground: 'charcoal-70', inverseText: ''},
+    {type: 'charcoal-20', inverseBackground: 'charcoal-70', inverseText: ''},
+    {type: 'charcoal-10', inverseBackground: 'charcoal-70', inverseText: ''},
+    {type: 'charcoal-05', inverseBackground: 'charcoal-70', inverseText: ''},
+    {type: 'white', inverseBackground: 'charcoal-70', inverseText: ''},
+  ].forEach((colorOptions) => {
+    %><%- include('/global/partials/colors/color.ejs', colorOptions) %><%
+  })
+%>
+
+<pre class="my-3"><code class="language-markup"><%
+  [
+    {type: 'charcoal-90', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-80', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-70', inverseBackground: '', inverseText: 'white'},
+    {type: 'charcoal-30', inverseBackground: 'charcoal-70', inverseText: ''},
+    {type: 'charcoal-20', inverseBackground: 'charcoal-70', inverseText: ''},
+    {type: 'charcoal-10', inverseBackground: 'charcoal-70', inverseText: ''},
+    {type: 'charcoal-05', inverseBackground: 'charcoal-70', inverseText: ''},
+    {type: 'white', inverseBackground: 'charcoal-70', inverseText: ''},
+  ].forEach((colorOptions) => { %><%=
+    include('/global/partials/colors/color.ejs', colorOptions).replace(cleanupMarkupRegex, '')
+%><% }) %></code></pre>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Buttons',
+      url: 'global/buttons.html',
+    },
+  ],
+}) %>

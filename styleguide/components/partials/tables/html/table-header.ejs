@@ -1,0 +1,76 @@
+<div class="table-filter">
+  <div class="filter-header-wrapper">
+    <ul class="filter-header">
+      <li class="list-left-side">
+        <div class="list-left-item">
+          <a href="#">
+            <i class="fa fa-plus list-icon blue-icon"></i> Global Action
+          </a>
+        </div>
+
+        <div class="list-left-item">
+          <a href="#">
+            <i class="fa fa-plus list-icon blue-icon"></i> Global Action
+          </a>
+        </div>
+      </li>
+
+      <li class="list-right-side">
+        <div class="list-right-item filter-search">
+          <div class="filter-search-icon-wrapper" data-tooltip="Search">
+            <i class="fa fa-search list-icon filter-search-icon" aria-hidden="true"></i>
+          </div>
+
+          <input class="form-control filter-search-input" placeholder="Search">
+        </div>
+
+        <div class="list-right-item" data-tooltip="Download">
+          <i class="fa fa-download list-icon" aria-hidden="true"></i>
+        </div>
+
+        <div class="list-right-item" data-tooltip="Settings">
+          <i class="fa fa-cog list-icon" aria-hidden="true"></i>
+        </div>
+
+        <div class="list-right-item" data-tooltip="Filters">
+          <i class="fa fa-filter list-icon"
+             aria-hidden="true"
+             data-toggle="collapse"
+             href="#filters-content-wrapper-collapse"
+             aria-expanded="false"></i>
+        </div>
+
+        <div class="list-right-item" data-tooltip="Edit" data-tooltip-pos="top-left">
+          <i class="fa fa-pencil list-icon" aria-hidden="true"></i>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="filter-content-wrapper collapse" id="filters-content-wrapper-collapse">
+    <div class="form-row filter-content">
+      <div class="col-6 col-md-4 col-xl-3 filter-content-item">
+        <%- include('/components/partials/dropdowns/html/single-select', {additionalClasses: ''}) %>
+      </div>
+
+      <div class="col-6 col-md-4 col-xl-3 filter-content-item">
+        <div class="form-group">
+          <div class="form-control-wrapper">
+            <div class="form-control">
+              <div class="custom-control custom-checkbox custom-control-right">
+                <input type="checkbox" class="custom-control-input" id="filter-custom-check-1">
+                <label class="custom-control-label" for="filter-custom-check-1">Unchecked</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-xl-3 filter-content-item filter-content-actions-item">
+        <a href="#" class="filter-content-clear-filters">CLEAR</a>
+
+        <a href="#" class="filter-content-apply-filters">APPLY</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+@import 'node_modules/bootstrap/scss/nav';
+
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  &,
+  &:hover {
+    color: $charcoal-80;
+  }
+
+  &:focus {
+    box-shadow: 0;
+  }
+}
+
+.nav-tabs {
+  &.flex-column {
+    border-bottom: 0;
+
+    .nav-item {
+      margin-bottom: 0;
+    }
+
+    .nav-link {
+      border-bottom-width: 0;
+      border-right-width: 0;
+      border-top-width: 0;
+    }
+  }
+}

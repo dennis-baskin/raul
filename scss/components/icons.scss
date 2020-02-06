@@ -1,0 +1,71 @@
+ui-icon {
+  box-sizing: content-box;
+  display: inline-block;
+  height: 1.2em;
+  position: relative;
+  vertical-align: middle;
+  width: 1.2em;
+
+  & > i,
+  & > i > svg {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+  }
+
+  & > i > svg {
+    margin-top: -0.07em;
+  }
+
+  & > i > svg > path {
+    fill: currentColor;
+  }
+
+  &.icon-big {
+    font-size: 1.4em;
+  }
+
+  &.icon-bigger {
+    font-size: 1.8em;
+  }
+
+  &.icon-biggest {
+    font-size: 2.4em;
+  }
+
+  &.icon-responsive {
+    &,
+    i,
+    svg {
+      display: block;
+      height: auto;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  // sass-lint:disable id-name-format
+  svg { // all other ui-icons
+    g[fill='none'] {
+      circle,
+      ellipse,
+      path,
+      polygon,
+      polyline,
+      rect {
+        fill: inherit;
+      }
+    }
+
+    circle:not([fill='none']),
+    ellipse:not([fill='none']),
+    path:not([fill='none']),
+    polygon:not([fill='none']),
+    polyline:not([fill='none']),
+    rect:not([fill='none']) {
+      fill: currentColor;
+    }
+  }
+  // sass-lint:enable id-name-format
+}
+

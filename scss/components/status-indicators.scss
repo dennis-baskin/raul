@@ -1,0 +1,30 @@
+.raul-status-indicator {
+  color: $charcoal-80;
+  display: inline-block;
+  font-family: 'Roboto';
+  font-size: 14px;
+  line-height: 22px;
+  margin: 6px;
+  text-transform: capitalize;
+}
+
+.raul-status-indicator span::before {
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 10px;
+  margin-right: 6px;
+  width: 10px;
+}
+
+.raul-status-indicator.raul-status-indicator-warning span::before {
+  background-color: $error;
+}
+
+.raul-status-indicator.raul-status-indicator-success span::before {
+  background-color: $success;
+}
+
+.raul-status-indicator.raul-status-indicator-pending span::before {
+  background-color: $warning;
+}

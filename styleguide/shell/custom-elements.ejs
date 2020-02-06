@@ -1,0 +1,1231 @@
+<%- include('/partials/header', {
+  domain: 'RAUL Shell',
+  id: 'custom-elements',
+  page: 'Custom Elements',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-4">
+    <h1>Custom Elements</h1>
+
+    <p>
+      Custom elements are a new way to implement the RAUL shell and in-page components.
+      Custom elements simplify markup and provide a way to bind with various frameworks within
+      the RealPage technology ecosystem.
+    </p>
+
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#intro"
+          aria-controls="intro"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          Introduction
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#ui-shell"
+          aria-controls="ui-shell"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          UI-Shell
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#ui-shell-api"
+          aria-controls="ui-shell-api"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          API
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- htmllint line-max-len="false" -->
+
+<div class="row mt-3">
+  <div class="col-12">
+    <!-- Tab panes -->
+    <div class="raul-tab-content tab-content">
+      <div role="tabpanel" class="tab-pane active" id="intro">
+        <h2>Introduction to Custom Elements in RAUL</h2>
+
+        <p>
+          RAUL's main mission is to help get all of our products onto a unified look. This is in order to
+          help our customers feel like they are using one product. In the past we were able to provide the
+          styles via CSS and functionality via JavaScript. However HTML layout, structure, the correct
+          classes, and properties was always the responsibility of the team implementing the library.
+        </p>
+
+        <p>
+          This has many disadvantageous limitiations. The most prevelant being change management. Every time
+          we need to make a change to the HTML to fix something or improve it, our teams have to go through
+          documentation all over again and try to understand the changes, and then restructure the HTML on
+          their side.
+        </p>
+
+        <p>
+          With the use of Autonomous Custom Elements (and some custom bindings) we are able to encapsulate
+          the HTML structures on the library side. This abstracts the HTML implementation for the user and
+          creates a custom interface for our teams.
+        </p>
+
+        <p>
+          Below is some information and background on Custom Elements, followed by implementation examples.
+          If you are familiar with custom elements, please feel free to skip past the introduction section.
+        </p>
+
+        <h3 class="my-3">What are Custom Elements?</h3>
+
+        <div class="raul-card mb-3">
+          <blockquote>
+            One of the key features of the Web Components standard is the ability to create Custom Elements
+            that encapsulate your functionality on an HTML page, rather than having to make do with a long,
+            nested batch of elements that together provide a custom page feature.
+          </blockquote>
+
+          <cite>
+            -
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements">
+              MDN Documentation
+            </a>
+          </cite>
+        </div>
+
+        <p>
+          Custom Elements are generally utilized when creating Web Components in order to create a tightly
+          encapsulated abstraction of HTML structures. RAUL provides the benefits of using Custom Elements
+          and the abstraction of Web Components, without the encapsulation caveats.
+        </p>
+
+        <h3 class="my-3">Why not Web Components?</h3>
+
+        <div class="raul-card mb-3">
+          <blockquote>
+            <p>
+              Web components are a set of web platform APIs that allow you to create new custom, reusable,
+              encapsulated HTML tags to use in web pages and web apps. Custom components and widgets build
+              on the Web Component standards, will work across modern browsers, and can be used with any
+              JavaScript library or framework that works with HTML.
+            </p>
+
+            <p>
+              Web components are based on existing web standards. Features to support web components are
+              currently being added to the HTML and DOM specs, letting web developers easily extend HTML
+              with new elements with encapsulated styling and custom behavior.
+            </p>
+          </blockquote>
+
+          <cite>
+            -
+            <a href="https://www.webcomponents.org/introduction">
+              webcomponents.org
+            </a>
+          </cite>
+        </div>
+
+        <p>
+          One of the most common questions asked is why are we not using Web Components. And on the surface
+          this makes a lot of sense. Custom Elements together with Web Components can provide a nice
+          wrapper for HTML structures. But as we explored that route, we have learned that Web Components
+          are not ready or just simply not right for what we are trying to accomplish.
+        </p>
+
+        <p>
+          As far as browser compatability, Web Components can be implemented using polyfills. There is a
+          performance cost in browsers with non-native implementation, especially in IE11. While this
+          is not the end of the world, it is not ideal either.
+        </p>
+
+        <p>
+          The real problem happens to be with the Shadow DOM and its implementation. The Shadow DOM is
+          tightly encapsulated with it's own root, and it functions autonomously within a its host. This
+          means that very few things can cross the Shadow DOM boundry. Something as simple as common shared
+          CSS helper classes do not cross the bounds and must be re-included in each component. This is okay
+          when creating completely autonomous components for distribution on the web, but becomes
+          problematic when you are creating a helper library.
+        </p>
+
+        <p>
+          Another problem with the Shadow DOM is that simple form elements such inputs, and selects, do not
+          cross the shadow boundry either. As an example imagine we need to create a login wrapper
+          containing username and password input fields. When implemented as a Web Component and included
+          inside of a form on a page, the inputs' values are not visible. Meaning that when the form
+          submits, it does not pick up the necessary values.
+        </p>
+
+        <p>
+          These are just some of the reasons why we are currently not fully investing into Web Components.
+          However, we are simulating the abstarction, and some of the encapsulation, by wrapping our
+          implementation using Vue, Custom Element extension for Vue, and custom RAUL bindings. This is
+          completely encapsulated from the user, and allows us to mimic Web Components, without the
+          negative caveats.
+        </p>
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="ui-shell">
+        <h2>UI Shell (alpha)</h2>
+
+        <p>
+          The first major use of Custom Elements inside RAUL is the UI shell. The UI shell consists of the
+          main header at the top of each page, the left navigation, the page header (bread crumbs area), and
+          a wrapper for the main content.
+        </p>
+
+        <p>
+          <strong>A note on alpha:</strong> since this is still new and we are working the kinks out as we
+          go, the APIs are subject to change as needed. While we do not forsee any APIs changing, there is a
+          chance they still might to simplify usage or to better help users. The first real beta is
+          scheduled in the pre-release versions of RAUL v3. A beta version will have the APIs solidified and
+          will further focus on improvements and fixes. At this time all legacy APIs and code will be marked
+          deprecated and scheduled for removal in RAUL v3. The finalized API is expected to be included in
+          the release of RAUL v3 and all deprecated APIs / code will be removed.
+        </p>
+
+        <h3 class="my-3">Shell Components</h3>
+
+        <p>
+          The header is one of the major pieces that unifies all of our products together. The most obvious
+          way is with the style, but also with integration across all of our products via our Unity APIs as
+          they become more available. The left nav is contextual to the product. The page header
+          (breadcrumbs) describes the current product contextual page the user is on. And finally the main
+          content wrapper is simply a shallow wrap around the page content presented by each product.
+        </p>
+
+        <p>
+          One of the biggest benefits of using the new RAUL shell implementation is actually under the hood.
+          Each of the Shell sections are able to access a common data store, which allows us to better
+          communicate between the various shell components.
+        </p>
+
+        <p>
+          Another big benefit is that it works across various tech stacks and front-end frameworks. We
+          also support Modern browsers and IE11. <strong>Note:</strong> as a company we do not support
+          IE10 and below due to security reasons.
+        </p>
+
+        <h3 class="my-3">ui-shell</h3>
+
+        <p>
+          Below is an example of the UI Shell and various attributes you can set. The attributes will create
+          properties on the element in the DOM. This tag will generate all the necessary html based on the
+          options specified via the property list.
+        </p>
+
+        <pre><code class="language-html"><%= (`
+          <ui-shell
+            product-name="RAUL UI Library"
+            company-name="Styleguide"
+            property-name="v2"
+
+            user-name="Logged In User"
+            user-title="Logged In User Role"
+
+            help-link="#help"
+            home-link="#home"
+            logout-link="#logout"
+            settings-link="#settings"
+            user-settings-link="#user-settings"
+
+            notifications-link=""
+            notifications-count="5"
+
+            shopping-link=""
+            shopping-cart-count="5"
+
+            show-app-switcher
+            show-help-link
+            show-home-link
+            show-notifications
+            show-settings-link
+            show-shopping
+            show-search
+
+            domain="Styleguide"
+            page="Shell"
+            subpage="Custom Elements"
+
+            page-content-id="custom-elements-page"
+          ></ui-shell>
+        `) %></code></pre>
+
+        <h3 class="my-3">Composable shell parts</h3>
+
+        <p>
+          The ui-shell tag is just a wrapper around various Shell components. There are cases where teams
+          need to implement different sections in different files. To do this, you can just use the custom
+          shell tags seperately, shown belown.
+        </p>
+
+        <pre><code class="language-html"><%= (`
+          <ui-header
+            product-name="RAUL UI Library"
+            company-name="Styleguide"
+            property-name="v2"
+
+            user-name="Logged In User"
+            user-title="Logged In User Role"
+
+            help-link="#help"
+            home-link="#home"
+            logout-link="#logout"
+            settings-link="#settings"
+            user-settings-link="#user-settings"
+
+            notifications-link=""
+            notifications-count="5"
+
+            shopping-link=""
+            shopping-cart-count="5"
+
+            show-app-switcher
+            show-help-link
+            show-home-link
+            show-notifications
+            show-settings-link
+            show-shopping
+            show-search
+          ></ui-header>
+
+          <ui-left-nav></ui-left-nav>
+
+          <ui-page-header domain="Styleguide" page="Shell" subpage="Custom Elements"></ui-page-header>
+
+          <ui-main-content></ui-main-content>
+        `) %></code></pre>
+
+        <p>
+          It is possible that your team might want to utilize a RAUL layout without a side navigation in
+          certain situations. This can possibly be a one off generated internal form or some other context.
+          Whenever your team needs this capability, they can add the <code>hide-left-nav</code> property on
+          the <code>ui-shell</code> tag or <code>ui-header</code> tag, depending on which is used.
+        </p>
+
+        <pre><code class="language-html"><%= (`
+          <ui-shell
+            ...
+            hide-left-nav
+            ...
+          ></ui-shell>
+        `) %></code></pre>
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="ui-shell-api">
+        <ul class="raul-nav nav nav-tabs raul-nav-underline mb-3" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="#ui-shell-api-attributes"
+              role="tab"
+              data-toggle="tab"
+              aria-expanded="true"
+            >
+              Attributes
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#ui-shell-api-methods"
+              role="tab"
+              data-toggle="tab"
+              aria-expanded="false"
+            >
+              Methods
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#ui-shell-api-templates-and-slots"
+              role="tab"
+              data-toggle="tab"
+              aria-expanded="false"
+            >
+              Templates and Slots
+            </a>
+          </li>
+        </ul>
+
+        <div class="raul-tab-content tab-content">
+          <div role="tabpanel" class="tab-pane active" id="ui-shell-api-attributes">
+            <p>
+              Below are the attributes you can set per shell component. When using <code>ui-shell</code> tag,
+              you can combine the attributes onto it from the various components.
+            </p>
+
+            <h3 class="mb-3">Header</h3>
+
+            <p class="mb-3">Tag: <code>&lt;ui-header&gt;</code></p>
+
+            <table class="table table-bordered raul-table">
+              <thead>
+                <tr>
+                  <th>Attribute</th>
+                  <th>Type</th>
+                  <th class="text-nowrap">Default Value</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+
+              <thead>
+                <tr>
+                  <th colspan="4">Product Details</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="text-nowrap"><code>product-name</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty string</td>
+
+                  <td>
+                    <p>
+                      Sets the product name. This attribute is required and will show <code>null</code> if
+                      missing.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>company-name</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty string</td>
+
+                  <td>
+                    <p>
+                      Sets the company name or other contexts, depending on the team implementing the header.
+                      This attribute can be omitted and will remove the section gracefully.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>property-name</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty string</td>
+
+                  <td>
+                    <p>
+                      Sets the property name or other contexts, depending on the team implementing the header.
+                      This attribute can be omitted and will remove the section gracefully.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+
+              <thead>
+                <tr>
+                  <th colspan="4">User Details</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="text-nowrap"><code>user-name</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the user name of the current logged in user. If attribute is omitted the entire user
+                      information section is removed.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>user-title</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the user title or role for the currently logged in user. This attribute can be
+                      omitted and will gracefully remove itself from the UI.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>user-settings-class</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">"log-out"</td>
+
+                  <td>
+                    <p>
+                      Sets the class name for the user settings link that is added under the user context dropdown.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>user-settings-link</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the link for the user settings link that is added under the user context dropdown.
+                      This is currently required, and if omitted will have a null as the link pointer.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute should remove link from UI.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>logout-class</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">"log-out"</td>
+
+                  <td>
+                    <p>
+                      Sets the class name for the log out link that is added under the user context dropdown.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>logout-link</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the link for the log out link that is added under the user context dropdown.
+                      This is currently required, and if omitted will have a null as the link pointer.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute should remove link from UI.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan 2:</strong> add an API to allow javascript to allow a javascript
+                      hook when link is clicked.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+
+              <thead>
+                <tr>
+                  <th colspan="4">Unified Navbar Section</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="text-nowrap"><code>help-link</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the link help icon in the unified navbar section of the header. This is currently
+                      required, and if omitted will have a null as the link pointer.
+                    </p>
+
+                    <p>
+                      To show the link in the UI you must use the boolean attribute <code>show-help-link</code>.
+                      Omit that attribute to hide this link.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute should remove link from UI.
+                      Remove the additional boolean.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan 2:</strong> add an API to allow javascript to allow a javascript
+                      hook when link is clicked.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>home-link</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the link help icon in the unified navbar section of the header. This is currently
+                      required, and if omitted will have a null as the link pointer.
+                    </p>
+
+                    <p>
+                      To show the link in the UI you must use the boolean attribute <code>show-home-link</code>.
+                      Omit that attribute to hide this link.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute should remove link from UI.
+                      Remove the additional boolean.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan 2:</strong> add an API to allow javascript to allow a javascript
+                      hook when link is clicked.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>settings-link</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the link settings icon in the unified navbar section of the header. This is currently
+                      required, and if omitted will have a null as the link pointer.
+                    </p>
+
+                    <p>
+                      To show the link in the UI you must use the boolean attribute
+                      <code>show-settings-link</code>. Omit that attribute to hide this link.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute should remove link from UI.
+                      Remove the additional boolean.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan 2:</strong> add an API to allow javascript to allow a javascript
+                      hook when link is clicked.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>notifications-link</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the link notifications icon in the unified navbar section of the header.
+                      This is currently required, and if omitted will have a null as the link pointer.
+                    </p>
+
+                    <p>
+                      To show the link in the UI you must use the boolean attribute
+                      <code>show-notifications-link</code>. Omit that attribute to hide this link.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute should remove link from UI.
+                      Remove the additional boolean.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan 2:</strong> add an API to allow javascript to allow a javascript
+                      hook when link is clicked.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>shopping-link</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the link help icon in the unified navbar section of the header. This is currently
+                      required, and if omitted will have a null as the link pointer.
+                    </p>
+
+                    <p>
+                      To show the link in the UI you must use the boolean attribute <code>show-home-link</code>.
+                      Omit that attribute to hide this link.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute should remove link from UI.
+                      Remove the additional boolean.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan 2:</strong> add an API to allow javascript to allow a javascript
+                      hook when link is clicked.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>notifications-count</code></td>
+
+                  <td>Number</td>
+
+                  <td class="text-nowrap">0</td>
+
+                  <td>
+                    <p>
+                      Sets the badge showing the number of notifications on the notification icon in the unified
+                      navbar. If omitted or does not set a value, then the default (0) is used.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute should remove the badge from UI.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>shopping-cart-count</code></td>
+
+                  <td>Number</td>
+
+                  <td class="text-nowrap">0</td>
+
+                  <td>
+                    <p>
+                      Sets the badge showing the number of shopping cart items on the shopping icon in the
+                      unified navbar. If omitted or does not set a value, then the default (0) is used.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute should remove the badge from UI.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>show-app-switcher</code></td>
+
+                  <td>Boolean</td>
+
+                  <td class="text-nowrap">True</td>
+
+                  <td>
+                    <p>
+                      If attribute exists the App Switcher icon will show up in the header. This attribute does
+                      not require a value and if is not added will remove the UI for App Switcher
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>show-help-link</code></td>
+
+                  <td>Boolean</td>
+
+                  <td class="text-nowrap">True</td>
+
+                  <td>
+                    <p>
+                      If attribute exists the help icon in unified navbar will show up in the header. Otherwise
+                      help link is hidden in the UI.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute <code>help-link</code> should
+                      remove link from UI. Remove this boolean.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>show-home-link</code></td>
+
+                  <td>Boolean</td>
+
+                  <td class="text-nowrap">True</td>
+
+                  <td>
+                    <p>
+                      If attribute exists the home icon in unified navbar will show up in the header. Otherwise
+                      home link is hidden in the UI.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute <code>home-link</code> should
+                      remove link from UI. Remove this boolean.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>show-notifications</code></td>
+
+                  <td>Boolean</td>
+
+                  <td class="text-nowrap">True</td>
+
+                  <td>
+                    <p>
+                      If attribute exists the notifications icon in unified navbar will show up in the header.
+                      Otherwise notifications link is hidden in the UI.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute <code>notification-link</code>
+                      should remove link from UI. Remove this boolean.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>show-settings-link</code></td>
+
+                  <td>Boolean</td>
+
+                  <td class="text-nowrap">True</td>
+
+                  <td>
+                    <p>
+                      If attribute exists the settings icon in unified navbar will show up in the header.
+                      Otherwise settings link is hidden in the UI.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute <code>settings-link</code> should
+                      remove link from UI. Remove this boolean.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>show-shopping</code></td>
+
+                  <td>Boolean</td>
+
+                  <td class="text-nowrap">True</td>
+
+                  <td>
+                    <p>
+                      If attribute exists the shopping icon in unified navbar will show up in the header.
+                      Otherwise shopping link is hidden in the UI.
+                    </p>
+
+                    <p>
+                      <strong>Post Alpha Plan:</strong> removing the attribute <code>shopping-link</code> should
+                      remove link from UI. Remove this boolean.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+
+              <thead>
+                <tr>
+                  <th colspan="4">Search</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="text-nowrap"><code>show-search</code></td>
+
+                  <td>Boolean</td>
+
+                  <td class="text-nowrap">True</td>
+
+                  <td>
+                    <p>
+                      If attribute exists the search bar will be shown. Otherwise search will be removed from
+                      the UI.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+
+              <thead>
+                <tr>
+                  <th colspan="4">Left Nav</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="text-nowrap"><code>hide-left-nav</code></td>
+
+                  <td>Boolean</td>
+
+                  <td class="text-nowrap">False</td>
+
+                  <td>
+                    <p>
+                      If attribute exists the left-nav related items will be hidden. Otherwise left-nav items
+                      will exist in the UI.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 class="mt-5 mb-3">Left Navgation</h3>
+
+            <p class="mb-3">Tag: <code>&lt;ui-left-nav&gt;</code></p>
+
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Attribute</th>
+                  <th>Type</th>
+                  <th class="text-nowrap">Default Value</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+
+              <thead>
+                <tr>
+                  <th colspan="4">Thre are currently no attributes to be added on this tag</th>
+                </tr>
+              </thead>
+            </table>
+
+            <h3 class="mt-5 mb-3">Page Header</h3>
+
+            <p class="mb-3">Tag: <code>&lt;ui-page-header&gt;</code></p>
+
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Attribute</th>
+                  <th>Type</th>
+                  <th class="text-nowrap">Default Value</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="text-nowrap"><code>domain</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the domain context of the page. This could be an specific section within a product,
+                      such as "Users" as an example.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>Page</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the page context for page. Uner the example of "Users" as domain, the page
+                      could be "User".
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>Subpage</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the subpage context for page. Uner the example of "Users" as domain, and "User" as
+                      page, the subpage could be "Edit".
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 class="mt-5 mb-3">Main Content</h3>
+
+            <p class="mb-3">Tag: <code>&lt;ui-main-content&gt;</code></p>
+
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Attribute</th>
+                  <th>Type</th>
+                  <th class="text-nowrap">Default Value</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="text-nowrap"><code>page-content-id</code></td>
+
+                  <td>String</td>
+
+                  <td class="text-nowrap">Empty String</td>
+
+                  <td>
+                    <p>
+                      Sets the custom id attribute for main content wrapper.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>no-content-padding</code></td>
+
+                  <td>Boolean</td>
+
+                  <td class="text-nowrap">False</td>
+
+                  <td>
+                    <p>
+                      If attribute exists, there is no space between the page header and
+                      <code>.raul-page-container</code> This is useful when the entire page has a grey
+                      background, or there are dark tabs at the top of the page. By default page content will
+                      have breathing room from the page header.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="ui-shell-api-methods">
+            <p>
+              The API is attached directly to the custom element. You can use it by accessing the
+              DOM element and using the api property to call methods. The following is a quick
+              example of how to do this:
+            </p>
+
+            <div class="raul-card mb-5 p-0">
+              <pre class="mb-0"><code class="language-javascript"><%= (`
+                var header = document.querySelector('ui-header');
+                header.api.onLogOut = function() {
+                  // do something when log out button is clicked
+                };
+              `) %></code></pre>
+            </div>
+
+            <table class="table raul-table table-bordered mb-5">
+              <thead>
+                <tr>
+                  <th>Methods</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+
+              <thead>
+                <tr>
+                  <th colspan="2">Header</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="text-nowrap"><code>header.api.onLogOut</code></td>
+                  <td>
+                    Gets the function attached to the click event on log out button.
+                    Default value is an empty function.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap">
+                    <code>
+                      header.api.onLogOut = function() { // do something when log out button is clicked }
+                    </code>
+                  </td>
+                  <td>Sets the function attached to the click event on log out button.</td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap"><code>header.api.onUserSettings</code></td>
+                  <td>
+                    Gets the function attached to the click event on user settings button.
+                    Default value is an empty function.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-nowrap">
+                    <code>
+                      header.api.onUserSettings = function() { // do something when user settings button is clicked }
+                    </code>
+                  </td>
+                  <td>Sets the function attached to the click event on user settings button.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="ui-shell-api-templates-and-slots">
+            <h2 class="mb-3">Templates and slots</h2>
+
+            <p>
+              When you need to provide custom content, you can use templates and slots. Slots are are assigned
+              internally as placeholders for content. You can designate which slot gets which content in two
+              ways. The first is by simply adding your content inside the component tag. This will delegate the
+              content to the default slot. Otherise, you can target named slots using template tag syntax.
+            </p>
+
+            <p>
+              The template tag syntax requires an attribute named <code>slot</code> and an <code>id</code>
+              attribute with the name of the slot. When the content is delegated the template will be removed.
+              Adding the <code>v-cloak</code> attribute will prevent the content from being visible before
+              the section is fully loaded and ready.
+            </p>
+
+            <pre><code class="language-html"><%= (`
+              <!-- Example of targeting default slots -->
+
+              <ui-main-content>
+                <h2>My Page Title</h2>
+                <p>My custom content</p>
+              </ui-main-content>
+
+              <!-- Example of targeting named slots using templates -->
+
+              <ui-shell
+                ...attributes
+              >
+                <template slot id="left-nav" v-cloak>
+                  <ul>
+                    ...
+                  </ul>
+                </template>
+
+                <template slot id="content" v-cloak>
+                  <h2>My Page Title</h2>
+                  <p>My custom content</p>
+                </template>
+              </ui-shell>
+            `) %></code></pre>
+
+            <h3 class="my-3">Angular6 and UI Shell</h3>
+
+            <p>
+              There is a caveat and a change of API when using slots in Angular 6. The component tag needs to
+              have the <code>slots</code> attribute set. The value should be the name of the names of all slots
+              used, seperated by a comma (<code>slots="left-nav,content"</code>). The default slot will always
+              be added as long as the attribute is added and the value is at least empty
+              (<code>slots=""</code>). Internally custom placeholders named <code>slot-template</code> are used
+              in order to acheive the desired outcome. For the most part these are cleaned up, but if any
+              artifacts remain, they are harmless, yet worthwhile to know what they are.
+            </p>
+
+            <p>
+              The API for the template tag changes as well. Instead of splitting attributes into
+              <code>slot</code> and <code>id</code>, you should just set the named value onto the slot
+              attribute (<code>slot="left-nav"</code>).
+            </p>
+
+            <pre><code class="language-html"><%= (`
+              <!-- Example of targeting default slots -->
+
+              <ui-main-content slots="">
+                <h2>My Page Title</h2>
+                <p>My custom content</p>
+              </ui-main-content>
+
+              <!-- Example of targeting named slots using templates -->
+
+              <ui-shell
+                ...attributes
+
+                slots="content,left-nav"
+              >
+                <template slot="left-nav" v-cloak>
+                  <ul>
+                    ...
+                  </ul>
+                </template>
+
+                <template slot="content" v-cloak>
+                  <h2>My Page Title</h2>
+                  <p>My custom content</p>
+                </template>
+              </ui-shell>
+            `) %></code></pre>
+
+            <h3 class="my-3">Example pages using popular frameworks</h3>
+
+            <ul>
+              <li>
+                <a href="../angular1/index.html">Angular 1 / AngularJS</a>
+              </li>
+
+              <li>
+                <a href="../angular6/index.html">Angular 6</a>
+              </li>
+
+              <li>
+                <a href="../react/index.html">React</a>
+              </li>
+
+              <li>
+                <a href="../vue/index.html">Vue</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- htmllint line-max-len="100" -->
+
+<%- include('/partials/footer') %>

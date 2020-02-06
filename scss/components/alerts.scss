@@ -1,0 +1,63 @@
+.alert {
+  border: $alert-border-width solid transparent;
+  border-left-width: 40px;
+  border-radius: $alert-border-radius;
+  color: $charcoal-90;
+  margin-bottom: $alert-margin-bottom;
+  padding: $alert-padding-y $alert-padding-x;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    font-family: FontAwesome;
+    font-size: 22px;
+    height: 100%;
+    left: -40px;
+    line-height: 1;
+    padding: $alert-padding-y $alert-padding-x;
+    position: absolute;
+    top: 0;
+    width: 40px;
+  }
+
+  &-heading {
+    color: inherit;
+    margin-bottom: 0.5rem;
+    padding: 4px 0 0;
+  }
+
+  &-link {
+    font-weight: $alert-link-font-weight;
+  }
+
+  .close {
+    color: inherit;
+    padding: $alert-padding-y $alert-padding-x;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+$alert-icons: (
+  'error': '#{$images-cdn-url}danger.svg',
+  'danger': '#{$images-cdn-url}danger.svg',
+  'info': '#{$images-cdn-url}info.svg',
+  'success': '#{$images-cdn-url}success.svg',
+  'warning': '#{$images-cdn-url}warning.svg',
+);
+
+@each $color, $value in $alert-colors {
+  .alert-#{$color} {
+    background-color: nth($value, 2);
+    border-color: nth($value, 1);
+    color: nth($value, 3);
+
+    &::before {
+      background-image: url(map-get($alert-icons, $color));
+      background-position: center 8px;
+      background-repeat: no-repeat;
+    }
+  }
+}

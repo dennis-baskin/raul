@@ -1,0 +1,32 @@
+<%- include('/partials/header', {
+  domain: 'Shell Components',
+  id: 'page-header',
+  page: 'Page Header',
+}) %>
+
+<iframe
+  style="border:1px solid #cecece;min-height:300px;width:100%;"
+  src="../inline-demos/page-header.html"
+></iframe>
+
+<p>
+  <a class="button button-default" href="../inline-demos/page-header.html" target="_blank">
+    <i class="fa fa-external-link"></i>
+    Open demo in full screen
+  </a>
+</p>
+
+<h3>Code Snippets</h3>
+
+<pre class="language-markup"><code><%=
+  include('/shell/partials/page-header/page-header')
+%></code></pre>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Typography',
+      url: 'shell/typography.html',
+    },
+  ],
+}) %>

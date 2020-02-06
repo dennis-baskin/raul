@@ -1,0 +1,66 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'modals',
+  page: 'Modals',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <p>
+      RAUL modals are simply a skin of Bootstrap modals. If triggered by a button, by default,
+      the modal is dismissible by cicking on the backdrop. This can be turned off by adding
+      <code>data-backdrop="static"</code> to the button. In the same fashion, by default you
+      can close the modal by hitting the escape key. This can be changed by adding
+      <code>data-keyboard="false"</code> to the button.
+      Also, the right top corner close button does not exist as a default option, but it can
+      be added if needed.
+    </p>
+
+    <%
+      [
+        {title: 'Modal with left aligned content', partial: 'modal'},
+        {title: 'Modal with centered content', partial: 'centered-modal'},
+        {title: 'Single Aside Modal', partial: 'single-aside'},
+        {title: 'Double Aside Modal', partial: 'double-aside'},
+        {title: 'Single Aside Modal with tabs', partial: 'tabbed-single-aside'},
+        {title: 'Double Aside Modal with tabs', partial: 'tabbed-double-aside'},
+        {title: 'Modal with close button', partial: 'with-close-button'},
+      ].forEach((section) => {
+        const title = `${section.title}`
+        const partial = `/components/partials/modals/html/${section.partial}`
+    %>
+      <h2 class="mb-3"><%= title %></h2>
+
+      <div class="raul-card">
+        <%- include(partial) %>
+      </div>
+
+      <div class="raul-card mb-5 p-0">
+        <pre class="mb-0"><code class="language-markup"><%=
+          include(partial)
+        %></code></pre>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

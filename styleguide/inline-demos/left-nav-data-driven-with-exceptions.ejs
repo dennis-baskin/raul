@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+  <html>
+  <!-- htmllint head-req-title="false" -->
+  <head>
+    <%- include('/partials/head-content') %>
+  </head>
+
+  <body class="raul-left-navigation-expanded">
+    <ui-header
+      product-name="Left Navigation"
+      user-name="RAUL User"
+    ></ui-header>
+
+    <ui-left-nav id="left-nav-data-driven-with-exceptions"></ui-left-nav>
+
+    <%- include('/partials/footer', {
+      additionalScripts: [
+        'js/left-nav-data-driven-with-exceptions.js',
+      ],
+    }) %>
+
+    <main class="raul-page-container">
+      <section class="container-fluid position-relative">
+        <h1>Exceptions</h1>
+
+        <p class="alert alert-danger">
+          Do not use these exceptions unless you've applied and
+          received permission for your product!
+        </p>
+
+        <div class="mt-3">
+          <h3>Submenu Icons</h3>
+
+          <p class="m-0">
+            If you were granted an excpetion to have icons on submenu items,
+            add <code>'icon': 'fa fa-th'</code> or <code>'icon': 'ui-icon-file-name'</code>
+            to the submenu item in the json.
+          </p>
+        </div>
+
+        <div class="mt-3">
+          <h3>Badges on Top Level and Submenu Items</h3>
+
+          <p class="m-0">
+            If you were granted an excpetion to have counters on top-level icons, or
+            submenu items, add the following: <code>'counts': '5'</code>
+          </p>
+        </div>
+
+        <div class="mt-3">
+          <h3>Custom Text and Icon Color</h3>
+
+          <p class="m-0">
+            If you were granted an excpetion to change menu item text and color,
+            apply a text color css class thusly: <code>'colorClass': 'text-danger'</code>
+          </p>
+
+          <p class="m-0">
+            More on RAUL colors' classes can be found
+            <a href="../global/colors.html" target="_blank">here</a>.
+          </p>
+        </div>
+
+        <div class="raul-card p-0 my-3">
+          <pre class="mb-0"><code class="language-html"><%= (`
+            <ui-left-nav id="left-nav-data-driven"><ui-left-nav>
+          `) %></code></pre>
+
+          <pre class="mb-0"><code class="language-js"><%= (`
+            const leftNavStructure = [
+              {
+                'title': 'Home',
+                'icon': 'places-home-3',
+                'url': '#',
+              },
+              {
+                'title': 'Company',
+                'icon': 'building-16',
+                'counts': '1',
+                'active': true,
+                'items': [
+                  {
+                    'title': 'Company Search',
+                    'icon': 'real-estate-search',
+                    'url': '#',
+                    'active': true,
+                  },
+                  {
+                    'title': 'Company Details',
+                    'icon': 'real-estate-information',
+                    'url': '#',
+                    'counts': '1',
+                  },
+                ],
+              },
+              {
+                'title': 'Properties',
+                'icon': 'building-hotel',
+                'colorClass': 'text-danger',
+                'items': [
+                  {
+                    'title': 'Property Subitem Level 1',
+                    'items': [
+                      {
+                        'title': 'Property Subitem Level 2',
+                        'items': [
+                          {
+                            'title': 'Property Subitem Level 3',
+                            'items': [
+                              {
+                                'title': 'Property Subitem Level 4',
+                                'items': [
+                                  {
+                                    'title': 'Property Subitem Level 5',
+                                    'icon': 'real-estate-address-book-1',
+                                    'url': '#',
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    'title': 'Property Search',
+                    'url': '#',
+                    'colorClass': 'text-danger',
+                  },
+                  {
+                    'title': 'Property Details',
+                    'url': '#',
+                  },
+                ],
+              },
+              {
+                'title': 'Products',
+                'icon': 'fa fa-th',
+                'counts': '18',
+                'items': [
+                  {
+                    'title': 'Product 1',
+                    'icon': 'fa fa-laptop',
+                    'url': '#',
+                    'counts': '5',
+                  },
+                  {
+                    'title': 'Product 2',
+                    'url': '#',
+                    'counts': '4',
+                  },
+                  {
+                    'title': 'Product 3',
+                    'url': '#',
+                    'counts': '9',
+                  },
+                ],
+              },
+            ]
+
+            const leftNavDataDriven = document.getElementById('left-nav-data-driven-with-exceptions')
+
+            leftNavDataDriven.api.items = leftNavStructure
+          `) %></code></pre>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

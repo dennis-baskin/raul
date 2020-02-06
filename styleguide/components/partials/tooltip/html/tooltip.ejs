@@ -1,0 +1,16 @@
+<%
+  var buttonText = locals.text || 'Show Me!';
+  var styleAttr = locals.style ? ('style="' + locals.style + '"') : '';
+  var dataSize = locals.size ? ('data-tooltip-size="' + locals.size + '"' ) : '';
+%>
+
+<button
+  class="button button-default"
+  aria-label="<%= locals.tooltip %>"
+  data-tooltip="<%= locals.tooltip %>"
+  data-tooltip-pos="<%= locals.position %>"
+  <%- dataSize %>
+  <%- styleAttr %>
+>
+  <%= buttonText %>
+</button>

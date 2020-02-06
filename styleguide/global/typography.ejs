@@ -1,0 +1,43 @@
+<%- include('/partials/header', {
+  domain: 'Global Content',
+  id: 'typography',
+  page: 'Typography',
+}) %>
+
+<p class="alert alert-info">
+  RAUL Typography has a default font-family of Roboto, a free google font.
+</p>
+
+<h2>Headings</h2>
+
+<table class="table simple-table table-striped">
+  <thead></thead>
+  <tbody>
+    <%-
+      Array.from({length: 5}, (_, i) => {
+        const tag = `h${i + 1}`
+
+        return (`
+          <tr>
+            <td>
+              <code>&lt;${tag}&gt;&lt;/${tag}&gt;</code>
+            </td>
+
+            <td>
+              <${tag}>${tag} Header Example</${tag}>
+            </td>
+          </tr>
+        `)
+      }).join('')
+    %>
+  </tbody>
+</table>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Colors',
+      url: 'global/colors.html',
+    },
+  ],
+}) %>

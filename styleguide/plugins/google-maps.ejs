@@ -1,0 +1,283 @@
+<%- include('/partials/header', {
+  domain: 'Plugins',
+  id: 'raul-plugin-google-maps',
+  page: 'Google Maps',
+}) %>
+
+<h2>Google Maps Documentation</h2>
+
+<p>
+  In addition to RAUL-specific instruction found here,
+  more information is available from Google Maps at:
+  <a href="https://developers.google.com/maps/documentation/javascript/tutorial">
+    https://developers.google.com/maps/documentation/javascript/tutorial
+  </a>.
+</p>
+
+<p class="alert alert-warning">
+  Google Maps plugin is not included in raul.js file.
+  You will have to add it separately if you want
+  to use it. Below you can see an example of how to
+  include Google Maps to your project.
+</p>
+
+<h2>Installation</h2>
+
+<div class="raul-card mb-5 p-0">
+  <pre class="mb-0"><code class="language-html"><%= (`
+    <link
+      href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/raul.min.css"
+      rel="stylesheet"
+    />
+    <!-- Add the plugin after raul -->
+    <link
+      href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/plugins/raul-plugin-google-maps.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Code on page -->
+
+    <!-- Add Map Dependency Script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+
+    <!-- Add Marker Clustering Dependency -->
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+    <script src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/raul.min.gz.js"></script>
+
+    <!-- Add the plugin after raul -->
+    <script src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/plugins/raul-plugin-google-maps.min.js"></script>
+  `) %></code></pre>
+</div>
+
+<h2>RAUL-themed Google Map</h2>
+
+<div class="raul-card mb-3">
+  <div id="map" style="height: 500px;"></div>
+</div>
+
+<h2>Main Example</h2>
+
+<p>
+  The google maps plugin for RAUL is a series of style wrappers and helper functions.
+  The goal is to provide shallow wrappers taht one can use as helpers to style their project.
+  We have intentionally omitted complex abstractions in order to be able to facilitate a way
+  of working with the already provided APIs from google, while integrating with our design and
+  style choices.
+</p>
+
+<p>
+  To start working with the maps plugin, you follow the standard Google Maps JavaScript API.
+  First adding the HTML element which will house the map:
+</p>
+
+<div class="raul-card p-0 mb-3">
+  <pre class="mb-0"><code class="language-html"><%= (`
+    <div id="map" style="height: 500px;"></div>
+  `) %></code></pre>
+</div>
+
+<p>
+  The following is code from the example Map on this page, and shows the use of all hepers:
+</p>
+
+<div class="raul-card mb-3 p-0">
+  <pre class="mb-0"><code class="language-javascript"><%= (`
+    var mapHelpers = RAUL.plugins.maps.google
+
+    var locations = [
+      {lat: 39.463276, lng: -116.563480, info: 'This is info window 1'},
+      {lat: 39.718234, lng: -110.363181, info: 'This is info window 2'},
+      {lat: 38.727111, lng: -110.371124, info: 'This is info window 3'},
+      {lat: 43.848588, lng: -111.209834, info: 'This is info window 4'},
+      {lat: 43.851702, lng: -111.216968, info: 'This is info window 5'},
+      {lat: 44.671264, lng: -100.863657, info: 'This is info window 6'},
+      {lat: 45.304724, lng: -118.662905, info: 'This is info window 7'},
+      {lat: 46.817685, lng: -115.699196, info: 'This is info window 8'},
+      {lat: 46.828611, lng: -115.790222, info: 'This is info window 9'},
+      {lat: 47.750000, lng: -115.116667, info: 'This is info window 10'},
+      {lat: 40.759859, lng: -115.128708, info: 'This is info window 11'},
+      {lat: 42.765015, lng: -115.133858, info: 'This is info window 12'},
+      {
+        lat: 41.770104,
+        lng: -105.143299,
+        info: '<h2>Custom InfoBox</h2><p>This is info window 13</p>'
+      },
+      {lat: 39.773700, lng: -115.145187, info: 'This is info window 14'},
+      {lat: 37.774785, lng: -115.137978, info: 'This is info window 15'},
+      {lat: 37.819616, lng: -104.968119, info: 'This is info window 16'},
+      {lat: 38.330766, lng: -114.695692, info: 'This is info window 17'},
+      {lat: 39.927193, lng: -115.053218, info: 'This is info window 18'},
+      {lat: 41.330162, lng: -114.865694, info: 'This is info window 19'},
+      {lat: 42.734358, lng: -117.439506, info: 'This is info window 20'},
+    ]
+
+    var map = new window.google.maps.Map(
+      document.getElementById('map'),
+      {
+        center: mapHelpers.averageLatLng(locations),
+        zoom: 5,
+      }
+    )
+
+    var markers = locations.map(function(location, i) {
+      const marker = mapHelpers.createMarker({
+        map: map,
+        lat: location.lat,
+        lng: location.lng,
+        info: '<div class="p-3">' + location.info + '</div>',
+        zIndex: i,
+      })
+
+      RAUL.plugins.maps.google.InfoBox.fromMarker(marker)
+
+      return marker
+    })
+
+    mapHelpers.createMarkerClusterer({map: map, markers: markers})
+  `) %></code></pre>
+</div>
+
+<h2>Helper Methods</h2>
+
+<p>The following are the available helpers and how to use them.</p>
+
+<h3>RAUL.plugins.maps.google.InfoBox</h3>
+
+<p>
+  <code>InfoBox</code> is an extension of the <code>google.maps.OverlayView class</code>.
+  It is added to the <code>floatPane</code> on the map. It is intended to replace and emulate
+  <code>google.maps.InfoWindow</code>, and add extensibility at the same time.
+</p>
+
+<p>
+  There are two approaches to creating an <code>InfoBox</code>. The first
+</p>
+
+<div class="raul-card mb-3 p-0">
+  <pre class="mb-0"><code class="language-javascript"><%= (`
+    var location = { lat: 42.765015, lng: -115.133858 };
+    var info = 'Custom text';
+
+    var map = new window.google.maps.Map(document.getElementById('map'), {
+      center: location,
+      zoom: 5,
+    })
+
+    var marker = RAUL.plugins.maps.google.createMarker({
+      map: map,
+      lat: location.lat,
+      lng: location.lng,
+      info: info,
+      zIndex: i,
+    })
+
+    // Simply build from marker
+    var infoBox = RAUL.plugins.maps.google.InfoBox.fromMarker(marker)
+    // or use constructor for flexibility
+    // var infoBox = new RAUL.plugins.maps.google.InfoBox(map, marker, info)
+  `) %></code></pre>
+</div>
+
+<h3>RAUL.plugins.maps.google.averageLatLng()</h3>
+
+<p>
+  This method is helpful when determining the centerpoint of you markers. It takes in an array
+  of LatLng objects or Lat/Lng object literals. It returns a Lat/Lng object literal.
+</p>
+
+<div class="raul-card mb-3 p-0">
+  <pre class="mb-0"><code class="language-javascript"><%= (`
+    var map = new window.google.maps.Map(
+      document.getElementById('map'),
+      {
+        center: RAUL.plugins.maps.google.averageLatLng.averageLatLng(locations),
+        zoom: 5,
+      }
+    )
+  `) %></code></pre>
+</div>
+
+<h3>RAUL.plugins.maps.google.createMarker(params)</h3>
+
+<p>
+  Creates and returns google Marker objects based on options and provided defaults.
+</p>
+
+<div class="mb-3">
+  <div>
+    <code>map</code> {object} - Should be the map object instance.
+  </div>
+
+  <div>
+    <code>lat</code> {number} - Sets the lat coordinate of the marker.
+  </div>
+
+  <div>
+    <code>lng</code> {number} - Sets the lng coordinate of the marker.
+  </div>
+
+  <div>
+    <code>label</code> {string || null} (default value is null)
+    - Changes marker icon and adds a label with the
+    <code>label</code>'s value inside. This could be used to show the index of the marker.
+    If no value is set marker will use the default icon.
+  </div>
+
+  <div>
+    <code>info</code> {string || null} (default value is null)
+    - <code>info</code>'s value will be added to the marker's info box.
+    If no value is set the info box will not be opened for the associated marker.
+  </div>
+
+  <div>
+    <code>zIndex</code> {number || null} (default value is null) -
+    Places markers on top of others if value is higher.
+  </div>
+</div>
+
+<div class="raul-card mb-3 p-0">
+  <pre class="mb-0"><code class="language-javascript"><%= (`
+    RAUL.plugins.maps.google.createMarker({
+      map: map,
+      lat: location.lat,
+      lng: location.lng,
+      info: location.info,
+      zIndex: i,
+    })
+  `) %></code></pre>
+</div>
+
+<h3>RAUL.plugins.maps.google.createMarkerClusterer(params)</h3>
+
+<p>
+  Creates MarkerClusterer if you chose to use itthe additional dependency. By default it uses the
+  styled icons based on RAUL design. You can override all options by providing a key named options.
+</p>
+
+<div class="mb-3">
+  <div>
+    <code>map</code> {object} - Should be the map object instance.
+  </div>
+  <div>
+    <code>markers</code> {Array} - Should be an array of markers instances.
+  </div>
+
+  <div>
+    <code>options</code> {object} (optional)
+    - Marker clusterer options.
+  </div>
+</div>
+
+<div class="raul-card mb-3 p-0">
+  <pre class="mb-0"><code class="language-javascript"><%= (`
+    RAUL.plugins.maps.google.createMarkerClusterer({map: map, markers: markers})
+  `) %></code></pre>
+</div>
+
+<%- include('/partials/footer', {
+  additionalScripts: [
+    '../js/plugins/raul-plugin-google-maps.min.js',
+    'js/raul-plugin-google-maps.js',
+  ],
+}) %>

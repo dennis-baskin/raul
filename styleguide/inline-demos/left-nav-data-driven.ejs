@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+  <html>
+  <!-- htmllint head-req-title="false" -->
+  <head>
+    <%- include('/partials/head-content') %>
+  </head>
+
+  <body class="raul-left-navigation-expanded">
+    <ui-header
+      product-name="Left Navigation"
+      user-name="RAUL User"
+    ></ui-header>
+
+    <ui-page-header></ui-page-header>
+
+    <ui-left-nav id="left-nav-data-driven"></ui-left-nav>
+
+    <ui-main-content></ui-main-content>
+
+    <%- include('/partials/footer', {
+      additionalScripts: [
+        'js/left-nav-data-driven.js',
+      ],
+    }) %>
+
+  </body>
+</html>

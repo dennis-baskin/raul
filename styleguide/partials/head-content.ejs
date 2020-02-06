@@ -1,0 +1,26 @@
+<% const url = (page) => `${locals.index ? './' : '../'}${page}` %>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Live Styleguide</title>
+<link rel="shortcut icon" href="https://s.realpage.com/favicon.ico">
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<link rel="stylesheet" href="<%= url('css/raul.min.css') %>" />
+<link rel="stylesheet" href="<%= url('../css/plugins/raul-plugin-ag-grid.css') %>" />
+<link rel="stylesheet" href="<%= url('../css/plugins/raul-plugin-summernote.css') %>" />
+<link rel="stylesheet" href="<%= url('../css/plugins/raul-plugin-highcharts.css') %>" />
+<link rel="stylesheet" href="<%= url('../css/plugins/raul-plugin-google-maps.css') %>" />
+<link rel="stylesheet" href="<%= url('../css/plugins/raul-plugin-dropzone.css') %>" />
+<link rel="stylesheet" href="<%= url('../css/plugins/raul-plugin-step-tracker.css') %>" />
+
+<link meta="styleguide-only" rel="stylesheet" href="<%= url('css/vendor/prism.css') %>" />
+<link meta="styleguide-only" rel="stylesheet" href="<%= url('css/styleguide.css') %>" />

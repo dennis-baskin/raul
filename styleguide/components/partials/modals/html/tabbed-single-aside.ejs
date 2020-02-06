@@ -1,0 +1,76 @@
+<!-- Modal Trigger Button -->
+<button
+  class="right-modal button button-default"
+  data-toggle="modal"
+  data-target="#single-tabbed-aside"
+>
+  Launch single aside modal with tabs
+</button>
+
+<!-- Modal -->
+<div
+  class="modal right slide raul-aside-modal raul-aside-modal-tabbed raul-single-aside pr-0"
+  id="single-tabbed-aside"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="example-modal-label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Single aside modal title</h5>
+
+        <span class="modal-subheader">Subline text goes here</span>
+      </div>
+
+      <div class="modal-body">
+        <!-- Nav tabs -->
+        <ul class="raul-nav nav nav-tabs raul-nav-underline nav-justified" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link nav-dark active"
+              href="#tab-1"
+              aria-controls="home"
+              role="tab"
+              data-toggle="tab"
+              aria-expanded="false"
+            >
+              tab option 1
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link nav-dark"
+              href="#tab-2"
+              aria-controls="profile"
+              role="tab"
+              data-toggle="tab"
+              aria-expanded="false"
+            >
+              tab option 2
+            </a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="raul-tab-content tab-content">
+          <div role="tabpanel" class="tab-pane active" id="tab-1">tab1 content...</div>
+          <div role="tabpanel" class="tab-pane" id="tab-2">tab2 content...</div>
+        </div>
+      </div>
+
+      <div class="modal-footer clearfix">
+        <button
+          type="button"
+          class="button button-primary button-outline"
+          data-dismiss="modal"
+        >
+          Dismiss
+        </button>
+        <button type="button" class="button button-primary" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+$timeline-icons: (
+  'danger': '#{$images-cdn-url}danger.svg',
+  'success': '#{$images-cdn-url}success.svg',
+  'warning': '#{$images-cdn-url}warning.svg',
+);
+
+.raul-timeline {
+  .timeline-row {
+    position: relative;
+
+    .row-left-bar {
+      height: 100%;
+      margin-left: 1.25rem;
+      margin-right: 1.25rem;
+      position: absolute;
+
+      &::after {
+        border-left: 1px solid $charcoal-30;
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 100%;
+        left: 50%;
+        position: absolute;
+        top: 0;
+        transform: translateX(-50%);
+      }
+
+      &::before {
+        border-radius: 50%;
+        content: '';
+        height: 1.25rem;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 1.25rem;
+        z-index: 1;
+      }
+
+      &.neutral::before {
+        background-color: $charcoal-30;
+        height: 0.625rem;
+        width: 0.625rem;
+      }
+
+      @each $type, $url in $timeline-icons {
+        &.#{$type}::before {
+          background: map-get($theme-colors, $type) url($url) no-repeat center;
+          background-size: 70%;
+        }
+      }
+    }
+
+
+    &:first-child .row-left-bar {
+      &::after {
+        height: 50%;
+        top: 50%;
+      }
+    }
+
+    &:last-child .row-left-bar {
+      &::after {
+        height: 50%;
+        top: 0;
+      }
+    }
+
+    .row-content {
+      padding: 0.625rem 0.625rem 0.625rem 2.5rem;
+    }
+  }
+}

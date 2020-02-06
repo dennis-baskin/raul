@@ -1,0 +1,318 @@
+<%- include('/partials/header', {
+  domain: 'Global Content',
+  id: 'buttons',
+  page: 'Buttons',
+}) %>
+  <h2>Button Default</h2>
+
+  <p class="alert alert-info">
+    Please note that now all buttons will support the <code>.btn</code> classes, as well as
+    <code>.button</code>.  This is done deliberately to support products already using bootstrap.
+  </p>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <button class="button button-default">Default</button>
+    </div>
+
+    <div class="col-9">
+      <button class="button button-default">Stretches with really long button text</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button class="button button-default button-block">Expands to fill container</button>
+    </div>
+  </div>
+
+  <pre class="mb-3"><code class="language-markup"><%= (`
+    <button class="button button-default">Default</button>
+    <button class="button button-default">Stretches with really long button text</button>
+    <button class="button button-default button-block">Expands to fill container</button>
+  `) %></code></pre>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <button class="button button-default button-sm">Smaller</button>
+    </div>
+
+    <div class="col-9">
+      <button class="button button-default button-sm">
+        Stretches with really long button text
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button class="button button-default button-block button-sm">
+        Expands to fill container
+      </button>
+    </div>
+  </div>
+
+  <pre class="mb-3"><code class="language-markup"><%= (`
+    <button class="button button-default button-sm">Smaller</button>
+
+    <button class="button button-default button-sm">
+      Stretches with really long button text
+    </button>
+
+    <button class="button button-default button-block button-sm">
+      Expands to fill container
+    </button>
+  `) %></code></pre>
+
+  <h3>Button Primary</h3>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <button class="button button-primary">Primary</button>
+    </div>
+
+    <div class="col-3">
+      <button class="button button-primary">
+        Stretches with really long button text
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button class="button button-primary button-block">
+        Expands to fill container
+      </button>
+    </div>
+  </div>
+
+  <pre class="mb-3"><code class="language-markup"><%= (`
+    <button class="button button-primary">Primary</button>
+
+    <button class="button button-primary">
+      Stretches with really long button text
+    </button>
+
+    <button class="button button-primary button-block">
+      Expands to fill container
+    </button>
+  `) %></code></pre>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <button class="button button-primary button-sm">
+        Micro
+      </button>
+    </div>
+
+    <div class="col-3">
+      <button class="button button-primary button-sm">
+        Stretches with really long button text
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button class="button button-primary button-block button-sm">
+        Expands to fill container
+      </button>
+    </div>
+  </div>
+
+  <pre class="mb-3"><code class="language-markup"><%= (`
+    <button class="button button-primary button-sm">
+      Micro
+    </button>
+
+    <button class="button button-primary button-sm">
+      Stretches with really long button text
+    </button>
+
+    <button class="button button-primary button-block button-sm">
+      Expands to fill container
+    </button>
+  `) %></code></pre>
+
+  <h3>Button Outline</h3>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <button class="button button-primary button-outline">Outline</button>
+    </div>
+
+    <div class="col-3">
+      <button class="button button-primary button-outline">
+        Stretches with really long button text
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button class="button button-primary button-block button-outline">
+        Expands to fill container
+      </button>
+    </div>
+  </div>
+
+  <pre class="mb-3"><code class="language-markup"><%= (`
+    <button class="button button-primary button-outline">Outline</button>
+
+    <button class="button button-primary button-outline">
+      Stretches with really long button text
+    </button>
+
+    <button class="button button-primary button-block button-outline">
+      Expands to fill container
+    </button>
+  `) %></code></pre>
+
+  <h3>Primary Button Disabled</h3>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <button class="button button-primary" disabled>Primary</button>
+    </div>
+
+    <div class="col-3">
+      <button class="button button-primary disabled">
+        Stretches with really long button text
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button class="button button-primary button-block disabled">
+        Expands to fill container
+      </button>
+    </div>
+  </div>
+
+  <pre class="mb-3"><code class="language-markup"><%= (`
+    <button class="button button-primary" disabled>Primary</button>
+
+    <button class="button button-primary disabled">
+      Stretches with really long button text
+    </button>
+
+    <button class="button button-primary button-block disabled">
+      Expands to fill container
+    </button>
+  `) %></code></pre>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <button class="button button-accent button-sm disabled">
+        Micro
+      </button>
+    </div>
+
+    <div class="col-3">
+      <button class="button button-accent button-sm disabled">
+        Stretches with really long button text
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button class="button button-accent button-block button-sm disabled">
+        Expands to fill container
+      </button>
+    </div>
+  </div>
+
+  <pre class="mb-3"><code class="language-markup"><%= (`
+    <button class="button button-accent button-sm disabled">
+      Micro
+    </button>
+
+    <button class="button button-accent button-sm disabled">
+      Stretches with really long button text
+    </button>
+
+    <button class="button button-accent button-block button-sm disabled">
+      Expands to fill container
+    </button>
+  `) %></code></pre>
+
+  <h3>Button Default or Outline Disabled</h3>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <button class="button button-primary button-outline" disabled>Outline</button>
+    </div>
+
+    <div class="col-3">
+      <button class="button button-primary button-outline disabled">
+        Stretches with really long button text
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button class="button button-primary button-block button-outline disabled">
+        Expands to fill container
+      </button>
+    </div>
+  </div>
+
+  <pre class="mb-3"><code class="language-markup"><%= (`
+    <button class="button button-primary button-outline" disabled>Outline</button>
+
+    <button class="button button-primary button-outline disabled">
+      Stretches with really long button text
+    </button>
+
+    <button class="button button-primary button-block button-outline disabled">
+      Expands to fill container
+    </button>
+  `) %></code></pre>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <button class="button button-accent button-outline button-sm disabled">
+        Micro
+      </button>
+    </div>
+
+    <div class="col-3">
+      <button class="button button-accent button-outline button-sm disabled">
+        Stretches with really long button text
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button class="button button-accent button-block button-outline button-sm disabled">
+        Expands to fill container
+      </button>
+    </div>
+  </div>
+
+  <pre class="mb-3"><code class="language-markup"><%= (`
+    <button class="button button-accent button-outline button-sm disabled">
+      Micro
+    </button>
+
+    <button class="button button-accent button-outline button-sm disabled">
+      Stretches with really long button text
+    </button>
+
+    <button class="button button-accent button-block button-outline button-sm disabled">
+      Expands to fill container
+    </button>
+  `) %></code></pre>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Home',
+      url: 'index.html',
+    },
+  ],
+}) %>

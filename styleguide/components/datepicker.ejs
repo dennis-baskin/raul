@@ -1,0 +1,552 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'datepicker',
+  page: 'Datepicker',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <h1>Datepicker</h1>
+
+    <p>Datepicker is using Bootstrap Datepicker 1.8.0 and is included in raul.js. In addition to
+      RAUL-specific instruction found here, more information is available from Datepicker at:
+      <a
+        href="https://bootstrap-datepicker.readthedocs.io/en/latest/index.html"
+        target="_blank"
+      >
+        https://bootstrap-datepicker.readthedocs.io/en/latest/index.html
+      </a>.
+    </p>
+
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#javascript-api"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          JavaScript API
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#custom-element-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Custom element version
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#custom-element-api"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="false"
+        >
+          Custom Element API
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <h2>Simple Datepicker</h2>
+
+    <p>The following datepicker shows the most basic usage.</p>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <%- include('/components/partials/datepicker/html/basic-datepicker') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/datepicker/html/basic-datepicker')
+      %></code></pre>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        $('#raul-simple-datepicker').datepicker({
+          format: 'M. d, yyyy',
+          autoclose: true
+        });
+      `) %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Inline Datepicker</h2>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <%- include('/components/partials/datepicker/html/inline-datepicker') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/datepicker/html/inline-datepicker')
+      %></code></pre>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        $('#raul-inline-datepicker').datepicker({
+          format: 'M. d, yyyy'
+        });
+        $('#raul-inline-datepicker').on('changeDate', function() {
+          $('#raul-inline-datepicker-input').val(
+            $('#raul-inline-datepicker').datepicker('getFormattedDate');
+          );
+        });
+      `) %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Date Range Picker</h2>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <%- include('/components/partials/datepicker/html/date-range-picker') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/datepicker/html/date-range-picker')
+      %></code></pre>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        $('#raul-date-range-picker').datepicker({
+          format: 'M. d, yyyy',
+          autoclose: true,
+          inputs: $('#raul-date-range-picker').find('.datepicker-range-start, .datepicker-range-end'),
+          keepEmptyValues: true
+        }).on('changeDate', function() {
+          var startDateInput = $(this).find('.datepicker-range-start')
+          var endDateInput = $(this).find('.datepicker-range-end')
+
+          if (startDateInput.val() &&
+              endDateInput.val()
+          ) return
+
+          if (startDateInput.val()) {
+            endDateInput.focus()
+          } else {
+            startDateInput.focus()
+          }
+        });
+      `) %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Date Range Picker Grouped</h2>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <%- include('/components/partials/datepicker/html/date-range-picker-grouped') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/datepicker/html/date-range-picker-grouped')
+      %></code></pre>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        $('#raul-date-range-picker-grouped').datepicker({
+          format: 'M. d, yyyy',
+          autoclose: true,
+          inputs: $('#raul-date-range-picker-grouped').find('.datepicker-range-start, .datepicker-range-end'),
+          keepEmptyValues: true
+        }).on('changeDate', function() {
+          var startDateInput = $(this).find('.datepicker-range-start')
+          var endDateInput = $(this).find('.datepicker-range-end')
+
+          if (startDateInput.val() &&
+              endDateInput.val()
+          ) return
+
+          if (startDateInput.val()) {
+            endDateInput.focus()
+          } else {
+            startDateInput.focus()
+          }
+        });
+      `) %></code></pre>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="javascript-api">
+    <p>All information about the datepicker JavaScript API can be found
+      <a
+        href="https://bootstrap-datepicker.readthedocs.io/en/latest/index.html"
+        target="_blank"
+      >
+        here
+      </a>.
+    </p>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="custom-element-version">
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <h2>Simple Datepicker</h2>
+
+    <p>
+      The following datepicker shows the most basic usage by just adding the tag.
+      A custom id is generated dynamically and does not persist on page refresh. The
+      name attribute is also omitted.
+    </p>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <%- include('/components/partials/datepicker/custom-elements/basic-datepicker') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/datepicker/custom-elements/basic-datepicker')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Inline Datepicker</h2>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <ui-datepicker inline></ui-datepicker>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%= (`
+        <ui-datepicker inline></ui-datepicker>
+      `) %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Date Range Picker</h2>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <ui-datepicker date-range></ui-datepicker>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%= (`
+        <ui-datepicker date-range></ui-datepicker>
+      `) %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Date Range Picker Grouped</h2>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <ui-datepicker date-range date-range-group></ui-datepicker>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%= (`
+        <ui-datepicker date-range date-range-group></ui-datepicker>
+      `) %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Inline Date Range Picker</h2>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <ui-datepicker inline date-range></ui-datepicker>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%= (`
+        <ui-datepicker inline date-range></ui-datepicker>
+      `) %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Datepicker With All Options</h2>
+
+    <p>
+      The following is an example of all available options for this component.
+    </p>
+
+    <div class="raul-card">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <%- include('/components/partials/datepicker/custom-elements/datepicker-with-all-options') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-html"><%=
+        include('/components/partials/datepicker/custom-elements/datepicker-with-all-options')
+      %></code></pre>
+    </div>
+
+    <h2 class="mb-3">Options List</h2>
+
+    <table class="table raul-table table-bordered mb-5">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Value Type</th>
+          <th>Default Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="text-nowrap"><code>input-id</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>internally generated</em></td>
+          <td>Sets the <code>id</code> attribute on the date input</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>input-name</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>internally generated</em></td>
+          <td>Sets the <code>name</code> attribute on the date input</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>title</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>None</em></td>
+          <td>Sets the <code>label</code> text</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>placeholder</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><code>"Please Pick a Date"</code></td>
+          <td>Sets the <code>placeholder</code> attribute on the date input</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>default-date</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>None</em></td>
+          <td>Sets a date when passed a <code>'mm/dd/yyyy'</code> format</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>group</code></td>
+          <td class="text-nowrap"><code>Boolean</code></td>
+          <td><em>This option is valueless</em></td>
+          <td>Adds form-group wrapper classes for forms</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>orientation</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><code>"bottom left"</code></td>
+          <td>
+            Sets the position of the picker popup. All the other
+            available values for orientation can be found
+            <a
+              href="http://bootstrap-datepicker.readthedocs.io/en/latest/options.html#orientation"
+              target="_blank"
+            >
+              here
+            </a>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>z-index</code></td>
+          <td class="text-nowrap"><code>Number</code></td>
+          <td><code>100</code></td>
+          <td>
+            Sets the CSS z-index
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>max-date</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>None</em></td>
+          <td>
+            The latest date that may be selected; all later dates will be disabled.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>min-date</code></td>
+          <td class="text-nowrap"><code>String</code></td>
+          <td><em>None</em></td>
+          <td>
+            The earliest date that may be selected; all earlier dates will be disabled.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>autoclose</code></td>
+          <td class="text-nowrap"><code>Boolean</code></td>
+          <td><code>true</code></td>
+          <td>
+            Whether or not to close the datepicker immediately when a date is selected.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>autofocus</code></td>
+          <td class="text-nowrap"><code>Boolean</code></td>
+          <td><code>true</code></td>
+          <td>
+            Whether or not to focus the start/end date input after selecting one of them. This is
+            only available for date range pickers.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="custom-element-api">
+    <div class="alert alert-danger">
+      Custom elements are in alpha.
+    </div>
+
+    <p>
+      The API is attached directly to the custom element. You can use it by accessing the DOM
+      element and using the <code>api</code> property to call methods. The following is a quick
+      example of how to do this:
+    </p>
+
+    <div class="raul-card p-0">
+      <pre class="mb-0"><code class="language-html"><%= (`
+        <ui-datepicker id="ui-datepicker-id"></ui-datepicker>
+      `) %></code></pre>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-javascript"><%= (`
+        var datepicker = document.getElementById('ui-datepicker-id');
+        datepicker.api.date = '9-25-2018';
+      `) %></code></pre>
+    </div>
+
+    <table class="table raul-table table-bordered mb-5">
+      <thead>
+        <tr>
+          <th>Methods</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="text-nowrap"><code>api.date</code></td>
+          <td>Gets the date.</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>api.date = '5/5/2018'</code></td>
+          <td>Sets the date. Strings must be parsable with format <code>'mm/dd/yyyy'.</code></td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>api.minDate</code></td>
+          <td>Gets the min date.</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>api.minDate = '5/5/2000'</code></td>
+          <td>
+            Sets the min date. Strings must be parsable with format <code>'mm/dd/yyyy'.</code>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>api.maxDate</code></td>
+          <td>Gets the max date.</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>api.maxDate = '5/5/2000'</code></td>
+          <td>
+            Sets the max date. Strings must be parsable with format <code>'mm/dd/yyyy'.</code>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>api.startDate</code></td>
+          <td>Gets the start date. This only works for date range pickers.</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>api.startDate = '5/5/2018'</code></td>
+          <td>
+            Sets the start date. Strings must be parsable with format <code>'mm/dd/yyyy'</code>.
+            This only works for date range pickers.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>api.endDate</code></td>
+          <td>Gets the end date. This only works for date range pickers.</td>
+        </tr>
+
+        <tr>
+          <td class="text-nowrap"><code>api.endDate = '6/5/2018'</code></td>
+          <td>
+            Sets the end date. Strings must be parsable with format <code>'mm/dd/yyyy'</code>.
+            This only works for date range pickers.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('/partials/footer', {additionalScripts: ['js/raul-datepicker.js']}) %>

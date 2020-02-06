@@ -1,0 +1,286 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'tooltip',
+  page: 'Tooltip',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <p>
+      Tooltips should be used to help users understand unknown or unfamiliar objects that aren’t
+      described directly in the user interface.
+    </p>
+
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+
+
+
+    <h2>Basic tooltips</h2>
+
+    <p>Hover over the bolded text below to see tooltips:</p>
+
+    <div class="raul-card mb-0">
+      Lorem <strong data-tooltip="Basic Tooltip!">ipsum</strong> dolor sit
+      amet, consectetur adipiscing
+      <strong data-tooltip="Basic Tooltip!">elit</strong>, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      <strong data-tooltip="Basic Tooltip!">veniam</strong>, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+      deserunt mollit anim id <strong data-tooltip="Basic Tooltip!">est</strong> laborum.
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        Lorem <strong data-tooltip="Basic Tooltip!">ipsum</strong> dolor sit
+        amet, consectetur adipiscing
+        <strong data-tooltip="Basic Tooltip!">elit</strong>, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        <strong data-tooltip="Basic Tooltip!">veniam</strong>, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id <strong data-tooltip="Basic Tooltip!">est</strong> laborum.
+      `) %></code></pre>
+    </div>
+
+    <h2>Sizes</h2>
+
+    <p>Tooltip can have any fixed size or can be set to have the same width as the target.</p>
+
+    <div class="raul-card mb-0">
+      <%- include('/components/partials/tooltip/html/tooltip-width', {size: 100}) %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-width', {size: 150}) %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-width', {size: 200}) %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-width', {size: 250}) %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-full') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup">
+        <%= include('/components/partials/tooltip/html/tooltip-width', {size: 100}).trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-width', {size: 150}).trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-width', {size: 200}).trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-width', {size: 250}).trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-full').trim() %>
+      </code></pre>
+    </div>
+
+    <h2 class="mb-3">Directions</h2>
+
+    <div class="raul-card mb-0">
+      <%- include('/components/partials/tooltip/html/tooltip-top-left') %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-top-right') %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-bottom-left') %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-bottom-right') %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-left') %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-top') %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-bottom') %>
+
+      <%- include('/components/partials/tooltip/html/tooltip-right') %>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup">
+        <%= include('/components/partials/tooltip/html/tooltip-top-left').trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-top-right').trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-bottom-left').trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-bottom-right').trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-left').trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-top').trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-bottom').trim() %>
+
+        <%= include('/components/partials/tooltip/html/tooltip-right').trim() %>
+      </code></pre>
+    </div>
+
+    <h2 class="mb-3">Always Show</h2>
+
+    <div class="raul-card mb-0">
+      <button
+        class="button button-default"
+        aria-label="Left Tooltip!"
+        data-tooltip="Left Tooltip!"
+        data-tooltip-pos="left"
+        data-tooltip-show
+      >
+        Always Show!
+      </button>
+
+      <button
+        class="button button-default"
+        aria-label="Bottom Tooltip!"
+        data-tooltip="Bottom Tooltip!"
+        data-tooltip-pos="down"
+        data-tooltip-show
+      >
+        Always Show!
+      </button>
+
+      <button
+        class="button button-default"
+        aria-label="Top Tooltip!"
+        data-tooltip="Top Tooltip!"
+        data-tooltip-pos="up"
+        data-tooltip-show
+      >
+        Always Show!
+      </button>
+
+      <button
+        class="button button-default"
+        aria-label="Right Tooltip!"
+        data-tooltip="Right Tooltip!"
+        data-tooltip-pos="right"
+        data-tooltip-show
+      >
+        Always Show!
+      </button>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <button
+          class="button button-default"
+          aria-label="Left Tooltip!"
+          data-tooltip="Left Tooltip!"
+          data-tooltip-pos="left"
+          data-tooltip-show
+        >
+          Always Show!
+        </button>
+
+        <button
+          class="button button-default"
+          aria-label="Bottom Tooltip!"
+          data-tooltip="Bottom Tooltip!"
+          data-tooltip-pos="down"
+          data-tooltip-show
+        >
+          Always Show!
+        </button>
+
+        <button
+          class="button button-default"
+          aria-label="Top Tooltip!"
+          data-tooltip="Top Tooltip!"
+          data-tooltip-pos="up"
+          data-tooltip-show
+        >
+          Always Show!
+        </button>
+
+        <button
+          class="button button-default"
+          aria-label="Right Tooltip!"
+          data-tooltip="Right Tooltip!"
+          data-tooltip-pos="right"
+          data-tooltip-show
+        >
+          Always Show!
+        </button>
+      `)%></code></pre>
+    </div>
+
+
+    <h2>Long content</h2>
+
+    <p>
+      If you need to add a large amount of content the tooltip should have a fixed width to work.
+      This can be achieved using <code>data-tooltip-size="200"</code> (200 is the width in px)
+      or <code>data-tooltip-size="fit"</code> (fit means that the tooltip will have the same width
+      as the target).
+    </p>
+
+    <div class="raul-card mb-0">
+      <button
+        class="button button-default"
+        data-tooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper
+        erat id urna vulputate interdum. Pellentesque non cursus libero. Nam vehicula nisl sem,
+        vitae ultrices est convallis vitae. Maecenas maximus, odio sit amet congue elementum, sem
+        sapien porta orci, sit amet cursus nulla ante vitae lacus. Etiam id dolor neque. Vestibulum
+        aliquam euismod suscipit."
+        data-tooltip-size="250"
+      >
+        Long content!
+      </button>
+
+      <button
+        class="button button-default"
+        data-tooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper
+        erat id urna vulputate interdum. Pellentesque non cursus libero. Nam vehicula nisl sem,
+        vitae ultrices est convallis vitae."
+        data-tooltip-size="fit"
+      >
+        Long content!
+      </button>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <button
+          class="button button-default"
+          data-tooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper erat
+          id urna vulputate interdum. Pellentesque non cursus libero. Nam vehicula nisl sem, vitae
+          ultrices est convallis vitae. Maecenas maximus, odio sit amet congue elementum, sem sapien
+          porta orci, sit amet cursus nulla ante vitae lacus. Etiam id dolor neque. Vestibulum aliquam
+          euismod suscipit."
+          data-tooltip-size="250"
+        >
+          Long content!
+        </button>
+
+        <button
+          class="button button-default"
+          data-tooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper erat
+          id urna vulputate interdum. Pellentesque non cursus libero. Nam vehicula nisl sem, vitae
+          ultrices est convallis vitae."
+          data-tooltip-size="fit"
+        >
+          Long content!
+        </button>
+      `)%></code></pre>
+    </div>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

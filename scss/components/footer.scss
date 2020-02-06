@@ -1,0 +1,52 @@
+// RAUL Footer
+// --------------------------------------------
+
+footer.raul-footer {
+  background-color: $header;
+  color: $lightest;
+}
+
+footer.raul-footer .raul-footer-address,
+footer.raul-footer .raul-footer-phone,
+footer.raul-footer .raul-footer-copyright,
+footer.raul-footer .raul-footer-link {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+footer.raul-footer .raul-footer-phone,
+footer.raul-footer .raul-footer-link {
+  color: $lightest;
+}
+
+footer.raul-footer .raul-footer-copyright {
+  color: $charcoal-30;
+  text-align: center;
+}
+
+footer.raul-footer .raul-footer-social {
+  text-align: center;
+}
+
+footer.raul-footer .raul-footer-social i {
+  color: $lightest;
+  font-size: 20px;
+}
+
+footer.raul-footer .raul-footer-nav {
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  footer.raul-footer .raul-footer-copyright {
+    text-align: left;
+  }
+
+  footer.raul-footer .raul-footer-social {
+    text-align: right;
+  }
+
+  footer.raul-footer .raul-footer-nav {
+    text-align: right;
+  }
+}

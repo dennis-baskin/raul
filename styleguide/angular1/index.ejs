@@ -1,0 +1,185 @@
+<!-- htmllint preset="none" -->
+<!doctype html>
+<html ng-app="todoApp">
+  <head>
+    <title>RAUL / Angular</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../css/raul.css" />
+
+    <style>
+      .done-true {
+        text-decoration: line-through;
+        color: grey;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script>
+      var TodoListController = function() {
+        var todoList = this;
+
+        todoList.todos = [
+          {text:'learn AngularJS', done:true},
+          {text:'build an AngularJS app', done:false},
+        ];
+
+        todoList.addTodo = function() {
+          todoList.todos.push({text:todoList.todoText, done:false});
+          todoList.todoText = '';
+        };
+
+        todoList.remaining = function() {
+          var count = 0;
+
+          angular.forEach(todoList.todos, function(todo) {
+            count += todo.done ? 0 : 1;
+          });
+
+          return count;
+        };
+
+        todoList.archive = function() {
+          var oldTodos = todoList.todos;
+
+          todoList.todos = [];
+
+          angular.forEach(oldTodos, function(todo) {
+            if (!todo.done) todoList.todos.push(todo);
+          });
+        };
+      };
+
+      angular
+        .module('todoApp', [])
+        .controller('TodoListController', TodoListController);
+    </script>
+  </head>
+
+  <body>
+    <div id="my-app">
+      <ui-shell
+        product-name="RAUL UI Library"
+        company-name="Angular Test"
+        property-name="AngularJS / v1"
+
+        user-name="Some User"
+        user-title="Some Title"
+
+        help-link="#help"
+        home-link="#home"
+        logout-link="#logout"
+        settings-link="#settings"
+        user-settings-link="#user-settings"
+
+        show-help-link
+        show-home-link
+        show-settings-link
+        show-search
+
+        domain="RAUL"
+        page="AngularJS - v1 Test"
+      >
+        <template slot id="left-nav">
+          <%- include('../partials/left-nav') %>
+        </template>
+
+        <template slot id="content" v-cloak>
+          <div class="raul-box border p-4 mb-3">
+            <h2>Simple Angular Binding</h2>
+
+            <div class="form-group">
+              <label for="yourName">enter value:</label>
+
+              <input
+                class="form-control"
+                name="yourName"
+                type="text"
+                ng-model="yourName"
+                placeholder="Enter a name here"
+              />
+            </div>
+
+            <hr>
+
+            <div>[basic test] &gt; <code>{{yourName}}</code></div>
+          </div>
+
+          <div class="raul-box border p-4 mb-3">
+            <h2>Todo List Example</h2>
+
+            <div ng-controller="TodoListController as todoList">
+              <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+
+              [<a href="" ng-click="todoList.archive()">archive</a>]
+
+              <div class="raul-list-group mb-3">
+                <div class="raul-list-group-item">
+                  <ul>
+                    <li ng-repeat="todo in todoList.todos">
+                      <label>
+                        <div>
+                          <div class="raul-list-item-first-line done-{{todo.done}}">
+                            {{todo.text}}
+                          </div>
+                        </div>
+
+                        <div>
+                          <div class="custom-control custom-checkbox custom-control-no-text">
+                            <input
+                              type="checkbox"
+                              class="custom-control-input"
+                              id="custom-check-{{$index}}"
+                              ng-model="todo.done"
+                            >
+                            <label class="custom-control-label" for="custom-check-{{$index}}"></label>
+                          </div>
+                        </div>
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <form ng-submit="todoList.addTodo()">
+                <div class="form-group">
+                  <label>Enter TODO item</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    ng-model="todoList.todoText"
+                    size="30"
+                    placeholder="add new todo here"
+                  >
+                </div>
+
+                <input class="button button-primary" type="submit" value="add" />
+              </form>
+            </div>
+          </div>
+        </template>
+      </ui-shell>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
+    </script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../../js/raul.js"></script>
+  </body>
+</html>
+<!-- htmllint preset="default" -->

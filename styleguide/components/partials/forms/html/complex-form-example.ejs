@@ -1,0 +1,169 @@
+<h3 class="mb-3">Primary Guest</h3>
+
+<div class="primary-guest mb-3 row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label class="control-label text-nowrap" for="primary-first-name">
+        First Name <sup>*</sup>
+      </label>
+
+      <input
+        class="form-control first-name"
+        name="primary-first-name"
+        maxlength="40"
+        type="text"
+        value=""
+      />
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="primary-middle-initial">Middle Initial</label>
+      <input
+        class="form-control"
+        name="primary-middle-initial"
+        maxlength="1"
+        type="text"
+        value=""
+      />
+    </div>
+
+    <div class="form-group required-if-visible">
+      <label class="control-label text-nowrap" for="primary-last-name">
+        Last Name <sup>*</sup>
+      </label>
+
+      <input
+        class="form-control"
+        name="primary-last-name"
+        maxlength="40"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label class="control-label text-nowrap" for="primary-email">Email</label>
+      <input
+        class="email form-control"
+        name="primary-email"
+        maxlength="90"
+        type="text"
+        value=""
+      />
+    </div>
+
+    <div class="form-group">
+      <label class="control-label text-nowrap" for="primary-phone">Phone</label>
+      <input
+        class="form-control"
+        name="primary-phone"
+        maxlength="40"
+        type="text"
+        value=""
+      />
+      <span class="need-one-contact-error"></span>
+    </div>
+
+    <div class="form-group">
+      <div class="form-control-wrapper">
+        <select class="form-control custom-select" name="contact-type">
+          <option>Preferred Contact</option>
+          <option value="email">Email</option>
+          <option value="phone">Phone</option>
+          <option value="pigeon">IP over Carrier Pigeon</option>
+        </select>
+
+        <div class="form-icon-box">
+          <i class="fa fa-chevron-down form-icon form-icon-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="custom-control custom-switch custom-switch-space-between mb-3">
+  <input type="checkbox" class="custom-control-input" id="secondary-guest-switch" checked>
+  <h3 class="custom-switch-text">Secondary Guest</h3>
+  <label class="custom-control-label" for="secondary-guest-switch"></label>
+</div>
+
+<div class="secondary-guest mb-3 row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label class="control-label text-nowrap" for="secondary-first-name">
+        First Name <sup>*</sup>
+      </label>
+
+      <input
+        class="form-control first-name"
+        name="secondary-first-name"
+        maxlength="40"
+        type="text"
+        value=""
+      />
+    </div>
+
+    <div class="form-group">
+      <label class=" control-label" for="secondary-middle-initial">Middle Initial</label>
+      <input
+        class="form-control"
+        name="secondary-middle-initial"
+        maxlength="1"
+        type="text"
+        value=""
+      />
+    </div>
+
+    <div class="form-group required-if-visible">
+      <label class=" control-label text-nowrap" for="secondary-last-name">
+        Last Name <sup>*</sup>
+      </label>
+
+      <input
+        class="form-control"
+        name="secondary-last-name"
+        maxlength="40"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label class="control-label text-nowrap" for="secondary-email">Email</label>
+      <input
+        class="email form-control"
+        name="secondary-email"
+        maxlength="90"
+        type="text"
+        value=""
+      />
+    </div>
+
+    <div class="form-group">
+      <div class="form-control-wrapper">
+        <select class="form-control custom-select" name="secondary-relation">
+          <option>Relation to Primary Guest</option>
+          <option value="spouse">Spouse</option>
+          <option value="family">Family Member</option>
+          <option value="friend">Friend</option>
+        </select>
+
+        <div class="form-icon-box">
+          <i class="fa fa-chevron-down form-icon form-icon-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="button button-primary">
+  Save
+</button>
+
+<button type="button" class="button button-link">
+  Cancel
+</button>

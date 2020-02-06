@@ -1,0 +1,79 @@
+<%- include('/partials/header', {
+  domain: 'Introduction',
+  id: 'contributing',
+  page: 'Contributing',
+}) %>
+
+<h2>Project Contribution</h2>
+
+<p>
+  RAUL currently lives at
+  <a href="https://github.com/realpage-property-os/raul">
+    https://github.com/realpage-property-os/raul
+  </a>.  To access this repo, you will need credentials.  Please reach to
+  the project administrators for access to this repo.
+</p>
+
+<p>
+  We welcome any help or suggestions.  Our only constraint is that if you have
+  an idea that will create major changes, please discuss with the project
+  owners to make sure it is not already being done, or that it meets project
+  and business goals
+</p>
+
+<p>
+  Please read the README, CODE_OF_CONDUCT, and GIT_WORKFLOW documentation that
+  is included in the project repo.  A simplified project workflow is as
+  follows, but does replace the full documentation:
+</p>
+
+<ul>
+  <li>
+    Branches follow a <code>{project}-{ticket-number}-lowercase-dashed-descriptive-name</code>
+    naming
+  </li>
+
+  <li>
+    Commits are separated into small contextual pieces
+  </li>
+
+  <li>
+    Pull requests must be small or else subject to architectural conversations
+  </li>
+
+  <li>
+    Avoid epic branches
+  </li>
+
+  <li>
+    <code>raul</code> cli toolkit
+
+    <ul>
+      <li>
+        Install toolkit <code>npm run raul-init</code>
+      </li>
+
+      <li>
+        Run <code>raul build</code> (runs eslint and builds / compiles code)
+      </li>
+
+      <li>
+        Visual test locally by running <code>raul server</code>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    Build artifacts should be a separate commit always
+  </li>
+</ul>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Layout',
+      url: 'global/layout.html',
+    },
+  ],
+}) %>
+

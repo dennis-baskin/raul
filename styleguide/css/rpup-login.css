@@ -1,0 +1,64 @@
+.rpup-login {
+  display: block;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.rpup-login.rpup-login-right {
+  text-align: right;
+}
+
+.rpup-login.rpup-login-left {
+  text-align: left;
+}
+
+.rpup-login.rpup-login-full .rpup-button {
+  display: block;
+}
+
+.rpup-login-right .rpup-question {
+  display: inline-block;
+}
+
+.rpup-question {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 8px;
+}
+
+.rpup-button {
+  background: #f06000;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  flex: 0 0 auto;
+  font-size: 14px;
+  max-width: none;
+  padding: 5px 20px 5px 40px;
+  position: relative;
+  white-space:nowrap;
+  width: auto;
+}
+
+.rpup-button:hover {
+  background: #e05000;
+  color: #fff;
+  text-decoration: none;
+}
+
+.rpup-button::before {
+  background: url(https://cdn.realpage.com/images/rp-logo-dots-white.svg) no-repeat;
+  background-size: contain;
+  content: "";
+  display: inline-block;
+  height: 18px;
+  margin-left: -24px;
+  position: absolute;
+  top: 7px;
+  width: 18px;
+}
+
+.raul-radius {
+  border-radius: 100px;
+}

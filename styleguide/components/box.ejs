@@ -1,0 +1,73 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'box',
+  page: 'Box',
+}) %>
+
+<p>This component is dependent on Bootstrap 4 CSS/JS for toggles</p>
+
+<h2>Box Default</h2>
+
+<%- include('/components/partials/box/html/box') %>
+
+<pre class="my-3"><code class="language-markup"><%=
+  include('/components/partials/box/html/box')
+%></code></pre>
+
+<h2>Box Header (Primary)</h2>
+
+<%- include('/components/partials/box/html/box-header') %>
+
+<pre class="my-3"><code class="language-markup"><%=
+  include('/components/partials/box/html/box-header')
+%></code></pre>
+
+<h2>Box Header (Disabled)</h2>
+
+<%- include('/components/partials/box/html/box-header-disabled') %>
+
+<pre class="my-3"><code class="language-markup"><%=
+  include('/components/partials/box/html/box-header-disabled')
+%></code></pre>
+
+<h2>Box Footer</h2>
+
+<%- include('/components/partials/box/html/box-footer') %>
+
+<pre class="my-3"><code class="language-markup"><%=
+  include('/components/partials/box/html/box-footer')
+%></code></pre>
+
+<h2>Box Sub-header</h2>
+
+<%- include('/components/partials/box/html/box-header-sub') %>
+
+<pre class="my-3"><code class="language-markup"><%=
+  include('/components/partials/box/html/box-header-sub')
+%></code></pre>
+
+<%- include('/components/partials/box/html/box-header-sub-disabled') %>
+
+<pre class="my-3"><code class="language-markup"><%=
+  include('/components/partials/box/html/box-header-sub-disabled')
+%></code></pre>
+
+<h2>
+  Bootstrap 4
+  <a href="https://getbootstrap.com/docs/4.0/components/collapse/">Collapse</a>
+  Functions:
+</h2>
+
+<%- include('/components/partials/box/html/box-collapse-closed') %>
+
+<pre class="my-3"><code class="language-markup"><%=
+  include('/components/partials/box/html/box-collapse-closed')
+%></code></pre>
+
+<%- include('/components/partials/box/html/box-collapse-opened') %>
+
+<pre class="my-3"><code class="language-markup"><%=
+  include('/components/partials/box/html/box-collapse-opened')
+%></code></pre>
+
+<%- include('/partials/footer') %>

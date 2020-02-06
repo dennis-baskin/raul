@@ -1,0 +1,17 @@
+<%
+  const url = (page) => `${locals.index ? './' : '../'}${page}`
+  const additionalLinks = locals.additionalLinks || []
+%>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Live Styleguide</title>
+
+<%-
+  additionalLinks.map((link) => {
+    return `<link rel="stylesheet" href="${link}" />`
+  }).join('')
+%>
+
+<link rel="stylesheet" href="<%= url('../../css/raul-shell.min.css') %>" />

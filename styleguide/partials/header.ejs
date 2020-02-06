@@ -1,0 +1,115 @@
+<%
+  const domain = locals.domain || 'RAUL'
+  const page = locals.page || 'Welcome'
+  const subpage = locals.subpage || ''
+  const id = locals.id || ''
+  const index = locals.index || false
+  const noContentPadding = locals.noContentPadding || false
+%>
+
+<!-- htmllint tag-close="false" -->
+<!-- htmllint head-req-title="false" -->
+<!-- htmllint attr-name-style="false" -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('/partials/head-content', {index: index}) %>
+  </head>
+
+  <body class="raul-left-navigation-expanded">
+    <ui-shell
+      product-name="RAUL UI Library"
+      company-name="Style Guide"
+      property-name="<%= FRAMEWORK_VERSION %>"
+
+      user-name="Raul R Page"
+      user-title="UI Connoisseur"
+
+      help-link="#help"
+      home-link="#home"
+      logout-link="#logout"
+      settings-link="#settings"
+      user-settings-link="#user-settings"
+
+      notifications-link=""
+      notifications-count="5"
+
+      shopping-link=""
+      shopping-cart-count="5"
+
+      show-app-switcher
+      show-help-link
+      show-home-link
+      show-notifications
+      show-settings-link
+      show-shopping
+      show-search
+
+      domain="<%= domain %>"
+      page="<%= page %>"
+      subpage="<%= subpage %>"
+
+      page-content-id="<%= id %>"
+      no-content-padding="<%= noContentPadding %>"
+    >
+      <template slot id="notifications">
+        <h2>Custom content from product team</h2>
+      </template>
+
+      <template slot id="shopping-header">
+        <h2>Shopping</h2>
+
+        <p>Check with your designers to help you design this section</p>
+
+        <ul class="list-group">
+          <li class="list-group-item">
+            <ui-checkbox checked="true">
+              Item 1 <span>$5</span>
+            </ui-checkbox>
+          </li>
+
+          <li class="list-group-item">
+            <ui-checkbox checked="true">
+              Item 2 <span>$10</span>
+            </ui-checkbox>
+          </li>
+        </ul>
+      </template>
+
+      <template slot id="shopping-more-context">
+        <h2>Cart:</h2>
+
+        <p>Check with your designers to help you design this section</p>
+
+        <ul class="list-group">
+          <li class="list-group-item">
+            <ui-checkbox checked="true">
+              Item 1 <span>$5</span>
+            </ui-checkbox>
+          </li>
+
+          <li class="list-group-item">
+            <ui-checkbox checked="true">
+              Item 2 <span>$10</span>
+            </ui-checkbox>
+          </li>
+        </ul>
+      </template>
+
+      <template slot id="additional-user-links">
+        <ui-user-link href="#custom-one">
+          Custom Link In Header
+        </ui-user-link>
+      </template>
+
+      <template slot id="additional-user-links-more-context">
+        <ui-user-link href="#custom-two">
+          Custom Link In More Context
+        </ui-user-link>
+      </template>
+
+      <template slot id="left-nav" v-cloak>
+        <%- include('/partials/left-nav', {id: id, index: index}) %>
+      </template>
+
+      <template slot id="content" v-cloak>

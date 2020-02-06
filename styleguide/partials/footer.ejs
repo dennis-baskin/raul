@@ -1,0 +1,28 @@
+<%
+  const index = locals.index || false
+  const links = locals.nextLinks || []
+  const url = (page) => `${(locals.index ? './' : '../')}${page}`
+  const additionalScripts = locals.additionalScripts || []
+%>
+      <% if (links.length > 0) { %>
+        <hr class="mt-5" />
+
+        <h4>Where to go from here?</h4>
+
+        <p mb-5>
+          <% links.forEach(link => { %>
+            <a class="button button-primary button-outline" href="<%= url(link.url) %>">
+              <%= link.title %>
+            </a>
+          <% }) %>
+        </p>
+      <% } %>
+      </template>
+    </ui-shell>
+
+    <%- include('/partials/script-includes', {
+      index: index,
+      additionalScripts: additionalScripts,
+    }) %>
+  </body>
+</html>

@@ -1,0 +1,384 @@
+<%- include('/partials/header', {
+  domain: 'Plugins',
+  id: 'raul-plugin-step-tracker',
+  page: 'Step Tracker',
+}) %>
+
+<h2>Installation</h2>
+
+<p class="alert alert-warning">
+  Step Tracker uses <a href="http://vinceg.github.io/twitter-bootstrap-wizard/" target="_blank">
+  Twitter Bootstrap Wizard 1.4.2</a> and is not included in raul.js file.
+  You will have to add it separately if you want to use it. Below you can see an example of how to
+  include the Step Tracker to your project.
+</p>
+
+<div class="raul-card mb-5 p-0">
+  <pre class="mb-0"><code class="language-html"><%= (`
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+
+    <link
+      href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/raul.min.gz.css"
+      rel="stylesheet"
+    />
+
+    <!-- Add the plugin after raul -->
+    <link
+      href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/plugins/raul-plugin-step-tracker.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Code on page -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/raul.min.gz.js">
+    </script>
+
+    <!-- Add the plugin after raul -->
+    <script
+      src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/plugins/raul-plugin-step-tracker.min.js"
+    ></script>
+  `) %></code></pre>
+</div>
+
+<h2>Usage</h2>
+
+<div class="raul-card mb-5">
+  <%- include('/plugins/partials/step-tracker/step-tracker') %>
+</div>
+
+<p>
+  You can simply add the markup below with the <code>rootWizard</code> id on the wrapper and the
+  plugin will bind on document load.
+</p>
+
+<div class="raul-card mb-5 p-0">
+  <pre class="mb-0"><code class="language-html"><%=
+    include('/plugins/partials/step-tracker/step-tracker')
+  %></code></pre>
+</div>
+
+<h2>JavaScript</h2>
+
+<p>
+  You can also use a different ID and instantiate the tracker via a JavaScript API. This will allow
+  you to pass options for customization.
+</p>
+
+<div class="raul-card mb-5 p-0">
+  <pre class="mb-0"><code class="language-javascript"><%= (`
+    new RAUL.plugins.StepTracker('#my-id', { options })
+  `) %></code></pre>
+</div>
+
+<table class="raul-table table table-bordered">
+  <thead>
+    <tr>
+      <th>
+        Option
+      </th>
+
+      <th>
+        Type
+      </th>
+
+      <th>
+        Parameters (optional)
+      </th>
+
+      <th>
+        Default
+      </th>
+
+      <th>
+        Description
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        tabClass
+      </td>
+
+      <td>
+        <code>string</code>
+      </td>
+
+      <td></td>
+
+      <td>
+        <code>"nav-step-track"</code>
+      </td>
+
+      <td>
+        Is used to select it's <code>li</code> children and set their width equally.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        footerClass
+      </td>
+
+      <td>
+        <code>string</code>
+      </td>
+
+      <td></td>
+
+      <td>
+        <code>"nav-step-track-footer"</code>
+      </td>
+
+      <td>
+        Is used to toggle it's <code>'.prev'</code> children
+        if the active tab is not the first one.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        finishButtonText
+      </td>
+
+      <td>
+        <code>string</code>
+      </td>
+
+      <td></td>
+
+      <td>
+        <code>"done"</code>
+      </td>
+
+      <td>
+        Sets finish button text.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        onInit
+      </td>
+
+      <td>
+        <code>function</code>
+      </td>
+
+      <td>
+        tab, navigation, nextTabIndex
+      </td>
+
+      <td>
+        <em>None</em>
+      </td>
+
+      <td>
+        Fired when plugin is initialized.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        onShow
+      </td>
+
+      <td>
+        <code>function</code>
+      </td>
+
+      <td>
+        tab, navigation, nextTabIndex
+      </td>
+
+      <td>
+        <em>None</em>
+      </td>
+
+      <td>
+        Fired when plugin data is shown.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        onNext
+      </td>
+
+      <td>
+        <code>function</code>
+      </td>
+
+      <td>
+        tab, navigation, nextTabIndex
+      </td>
+
+      <td>
+        <em>None</em>
+      </td>
+
+      <td>
+        Fired when <code>next</code> (<code>.wizard li.next</code>)
+        button is clicked (return false to disable moving to the next step).
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        onPrevious
+      </td>
+
+      <td>
+        <code>function</code>
+      </td>
+
+      <td>
+        tab, navigation, nextTabIndex
+      </td>
+
+      <td>
+        <em>None</em>
+      </td>
+
+      <td>
+        Fired when <code>previous</code> (<code>.wizard li.previous</code>)
+        button is clicked (return false to disable moving to the previous step).
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        onFirst
+      </td>
+
+      <td>
+        <code>function</code>
+      </td>
+
+      <td>
+        tab, navigation, nextTabIndex
+      </td>
+
+      <td>
+        <em>None</em>
+      </td>
+
+      <td>
+        Fired when <code>first</code> (<code>.wizard li.first</code>)
+        button is clicked (return false to disable moving to the first step).
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        onLast
+      </td>
+
+      <td>
+        <code>function</code>
+      </td>
+
+      <td>
+        tab, navigation, nextTabIndex
+      </td>
+
+      <td>
+        <em>None</em>
+      </td>
+
+      <td>
+        Fired when <code>last</code> (<code>.wizard li.last</code>) button is clicked
+        (return false to disable moving to the last step).
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        onFinish
+      </td>
+
+      <td>
+        <code>function</code>
+      </td>
+
+      <td>
+        tab, navigation, nextTabIndex
+      </td>
+
+      <td>
+        <em>None</em>
+      </td>
+
+      <td>
+        Fired when <code>done</code> (<code>.wizard li.finish</code>) button is clicked.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        onTabClick
+      </td>
+
+      <td>
+        <code>function</code>
+      </td>
+
+      <td>
+        tab, navigation, index, clickedIndex
+      </td>
+
+      <td>
+        <em>None</em>
+      </td>
+
+      <td>
+        Fired when tab is clicked (return false to disable moving to the next step).
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        onTabChange
+      </td>
+
+      <td>
+        <code>function</code>
+      </td>
+
+      <td>
+        tab, navigation, index, clickedIndex
+      </td>
+
+      <td>
+        <em>None</em>
+      </td>
+
+      <td>
+        Fired when a tab is changed.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%- include('/partials/footer', {
+  additionalScripts: [
+    '../js/plugins/raul-plugin-step-tracker.min.js',
+  ],
+}) %>

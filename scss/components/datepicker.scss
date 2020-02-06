@@ -1,0 +1,276 @@
+.datepicker {
+  &.datepicker-inline {
+    width: 15rem;
+  }
+
+  &.dropdown-menu {
+    border: 1px solid $neutral-six;
+    border-radius: 0;
+    margin: 0;
+    padding: 0 0.5rem;
+    width: 15rem;
+
+    &.datepicker-orient-bottom,
+    &.datepicker-orient-top {
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &.dropdown-menu,
+  &.datepicker-inline {
+    td,
+    th {
+      padding: 0.35rem 0.25rem;
+    }
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0 0.2rem;
+    font-size: 0.75rem;
+    table-layout: fixed;
+    width: 100%;
+
+    thead tr:nth-child(2) th:hover {
+      background-color: $primary-05;
+    }
+
+    thead th,
+    tbody td,
+    tbody td span {
+      border: 0;
+      border-radius: 10rem;
+    }
+
+    tbody td {
+      &.range-start {
+        &:not(.range-end) {
+          position: relative;
+
+          &::after {
+            background-color: $primary-05;
+            content: '';
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50%;
+            z-index: -1;
+          }
+        }
+      }
+
+      &.range-end {
+        &:not(.range-start) {
+          position: relative;
+
+          &::before {
+            background-color: $primary-05;
+            content: '';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 50%;
+            z-index: -1;
+          }
+        }
+      }
+    }
+
+    tr {
+      th.dow {
+        background-color: $charcoal-05;
+        border-radius: 0;
+      }
+
+      td {
+        &.range {
+          &.active,
+          &.selected {
+            border-radius: 10rem;
+          }
+
+          &,
+          &.disabled,
+          &.disabled:hover,
+          &:hover {
+            background-color: $primary-05;
+          }
+
+          &.today,
+          &.today.disabled,
+          &.today.disabled:hover,
+          &.today:hover {
+            background-color: $charcoal-10;
+            background-image: none;
+          }
+
+          &.today {
+            &.active,
+            &.disabled,
+            &.disabled.active,
+            &.disabled.disabled,
+            &.disabled:active,
+            &.disabled:hover,
+            &.disabled:hover.active,
+            &.disabled:hover.disabled,
+            &.disabled:hover:active,
+            &.disabled:hover:hover,
+            &.disabled:hover[disabled],
+            &.disabled[disabled],
+            &:active,
+            &:hover,
+            &:hover.active,
+            &:hover.disabled,
+            &:hover:active,
+            &:hover:hover,
+            &:hover[disabled],
+            &[disabled] {
+              background-color: $charcoal-10;
+            }
+          }
+        }
+
+        &.day,
+        &.hour,
+        &.minute,
+        &.second,
+        span {
+          &:hover,
+          &.focused {
+            background-color: $primary-05;
+          }
+        }
+
+        &.selected {
+          &,
+          &.disabled,
+          &.disabled:hover,
+          &:hover,
+          &.active,
+          &.disabled.active,
+          &.disabled.disabled,
+          &.disabled:active,
+          &.disabled:hover,
+          &.disabled:hover.active,
+          &.disabled:hover.disabled,
+          &.disabled:hover:active,
+          &.disabled:hover:hover,
+          &.disabled:hover[disabled],
+          &.disabled[disabled],
+          &:active,
+          &:hover,
+          &:hover.active,
+          &:hover.disabled,
+          &:hover:active,
+          &:hover:hover,
+          &:hover[disabled],
+          &[disabled] {
+            background-color: $primary-60;
+            background-image: none;
+          }
+        }
+
+        &.today {
+          background-color: $charcoal-10;
+          background-image: none;
+
+          &.active,
+          &.disabled,
+          &.disabled.active,
+          &.disabled.disabled,
+          &.disabled:active,
+          &.disabled:hover,
+          &.disabled:hover.active,
+          &.disabled:hover.disabled,
+          &.disabled:hover:active,
+          &.disabled:hover:hover,
+          &.disabled:hover[disabled],
+          &.disabled[disabled],
+          &:active,
+          &:hover,
+          &:hover.active,
+          &:hover.disabled,
+          &:hover:active,
+          &:hover:hover,
+          &:hover[disabled],
+          &[disabled] {
+            background-color: $charcoal-10;
+            background-image: none;
+          }
+        }
+
+        &.active {
+          &.active,
+          &.disabled,
+          &.disabled.active,
+          &.disabled.disabled,
+          &.disabled:active,
+          &.disabled:hover,
+          &.disabled:hover.active,
+          &.disabled:hover.disabled,
+          &.disabled:hover:active,
+          &.disabled:hover:hover,
+          &.disabled:hover[disabled],
+          &.disabled[disabled],
+          &:active,
+          &:hover,
+          &:hover.active,
+          &:hover.disabled,
+          &:hover:active,
+          &:hover:hover,
+          &:hover[disabled],
+          &[disabled] {
+            background-color: $primary-60;
+            background-image: none;
+          }
+        }
+
+        span {
+          height: 2rem;
+          line-height: 2rem;
+
+          &.active {
+            &.active,
+            &.disabled,
+            &.disabled.active,
+            &.disabled.disabled,
+            &.disabled:active,
+            &.disabled:hover,
+            &.disabled:hover.active,
+            &.disabled:hover.disabled,
+            &.disabled:hover:active,
+            &.disabled:hover:hover,
+            &.disabled:hover[disabled],
+            &.disabled[disabled],
+            &:active,
+            &:hover,
+            &:hover.active,
+            &:hover.disabled,
+            &:hover:active,
+            &:hover:hover,
+            &:hover[disabled],
+            &[disabled] {
+              background-color: $primary-60;
+              background-image: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.input-daterange input {
+  text-align: left;
+}
+
+.datepicker-range-start,
+.datepicker-range-end {
+  position: relative;
+  z-index: 1;
+}

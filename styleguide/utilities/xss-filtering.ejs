@@ -1,0 +1,49 @@
+<%- include('/partials/header', {
+  domain: 'Utilities',
+  id: 'xss-filtering',
+  page: 'XSS Filtering',
+}) %>
+
+<h2>XSS Filtering Tools</h2>
+
+<p>
+  RAUL bundles with a lightweight XSS filtering toolkit. It is used internally but is also
+  available for usage outside of RAUL (Example usage with Alerts module). The toolkit is
+  <a href="https://github.com/leizongmin/js-xss">js-xss</a>. It allows you to sanitize untrusted
+  HTML (to prevent XSS) with a configuration specified by a Whitelist.
+
+  Below are the basic examples of usage, but more information can be found at:
+  <a href="https://github.com/leizongmin/js-xss">https://github.com/leizongmin/js-xss</a>
+</p>
+
+<p>Example of filtering using <code>filterXSS</code> function (available at global scope):</p>
+
+<pre class="mb-3"><code class="language-javascript"><%= (`
+  var html = filterXSS('<script>alert("xss");</scr' + 'ipt>');
+  alert(html);
+`) %></code></pre>
+
+<p>
+  The following is an example using a Whitelist passed to <code>filterXSS</code> function. The
+  Whitelist determines allowed tags and their attributes.
+</p>
+
+<pre class="mb-3"><code class="language-javascript"><%= (`
+  var text = '<div class="d-none"><span class="icon"><span> Msg<script>alert("hi")</script></div>'
+  var filtered = window.filterXSS(text, {
+    whiteList: {
+      div: ['class'],
+      span: ['class'],
+    }
+  })
+  console.log(filtered)
+`) %></code></pre>
+
+<%- include('/partials/footer', {
+  nextLinks: [
+    {
+      title: 'Header',
+      url: 'shell/header.html',
+    },
+  ],
+}) %>

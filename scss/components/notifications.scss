@@ -1,0 +1,201 @@
+// RAUL notifications
+// --------------------------------------------
+// Notification bars
+
+.raul-notification-container .raul-notification {
+  border-bottom: 1px solid $lightest;
+  box-sizing: border-box;
+  height: 100%;
+  left: 0;
+  padding: 0 10px;
+  position: absolute;
+  right: 0;
+  transform: translateY(-44px);
+  transition: 0.5s;
+
+  .raul-notification-wrapper {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    margin-left: 24px;
+    position: relative;
+
+    .raul-notification-content {
+      align-items: center;
+      display: flex;
+      margin-left: 16px;
+      margin-right: 130px;
+      width: 75%;
+
+      > * {
+        min-width: 64px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .raul-notification-title {
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 16px;
+        text-transform: capitalize;
+      }
+
+      .raul-notification-description {
+        margin-right: 16px;
+      }
+
+      .raul-notification-details {
+        color: $lightest;
+        font-size: 12px;
+        font-weight: bold;
+        text-decoration: underline;
+
+        &:hover {
+          color: $lightest;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .raul-notification-close {
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      font-size: 20px;
+      margin-left: auto;
+      margin-right: 6px;
+    }
+
+    &::before {
+      background-size: 100%;
+      content: '';
+      height: 24px;
+      left: -24px;
+      position: absolute;
+      width: 24px;
+    }
+  }
+
+  &.raul-info-notification {
+    background-color: $primary-60;
+
+    .raul-notification-wrapper::before {
+      background: url('#{$images-cdn-url}info.svg') no-repeat;
+    }
+  }
+
+  &.raul-warning-notification {
+    background-color: $warning-light;
+
+    .raul-notification-wrapper::before {
+      background: url('#{$images-cdn-url}warning.svg') no-repeat;
+    }
+  }
+
+  &.raul-danger-notification {
+    background-color: $error-light;
+
+    .raul-notification-wrapper::before {
+      background: url('#{$images-cdn-url}danger.svg') no-repeat;
+    }
+  }
+
+  &.raul-success-notification {
+    background-color: $success;
+
+    .raul-notification-wrapper::before {
+      background: url('#{$images-cdn-url}success.svg') no-repeat;
+    }
+  }
+
+  &.raul-notification-slide-show {
+    transform: translateY(0);
+    transition: 0.5s;
+  }
+}
+
+.raul-notification-container {
+  box-sizing: border-box;
+  color: $lightest;
+  font-family: 'Roboto';
+  font-size: 12px;
+  height: 44px;
+  left: 54px;
+  position: fixed;
+  right: 0;
+  top: 56px;
+  transform: translateY(0);
+  transition: all 0.5s;
+  z-index: 80;
+
+  .raul-left-navigation-expanded & {
+    left: 300px;
+  }
+
+  .no-left-navigation & {
+    left: 0;
+  }
+
+  .raul-notification-container-actions {
+    align-items: center;
+    display: none;
+    height: 100%;
+    position: absolute;
+    right: 30px;
+    z-index: 1;
+
+    span {
+      border: 1px solid $lightest;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-right: 4px;
+      padding: 4px;
+      text-align: center;
+      width: 65px;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .raul-left-navigation-expanded .raul-notification-container,
+  .raul-notification-container {
+    left: 0;
+  }
+
+  .raul-notification-container .raul-notification {
+    transform: translateY(-75px);
+    width: 100%;
+
+    .raul-notification-wrapper .raul-notification-content {
+      width: 70%;
+
+      > * {
+        max-width: 33%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .raul-left-navigation-expanded .raul-notification-container,
+  .raul-notification-container {
+    height: 75px;
+    padding: 0;
+  }
+
+  .raul-notification-container .raul-notification {
+    padding-left: 10px;
+    padding-right: 5px;
+
+    .raul-notification-wrapper .raul-notification-content {
+      align-items: flex-start;
+      flex-direction: column;
+      width: 50%;
+
+      > * {
+        max-width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<% var size = locals.size || '150' %>
+
+<%- include('./tooltip', {
+  position: 'fit',
+  text: 'Hover Me!',
+  tooltip: size + 'px',
+  size: size
+}) %>

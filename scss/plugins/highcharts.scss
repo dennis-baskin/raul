@@ -1,0 +1,30 @@
+@import '../variables';
+
+.highcharts-button-box {
+  fill: $lightest !important;
+}
+
+.highcharts-menu {
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 4px 8px 0 rgba(82, 97, 115, 0.18) !important;
+
+  hr {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .highcharts-menu-item {
+    background: $lightest !important;
+    color: $charcoal-80 !important;
+
+    &:hover {
+      background: $data-light-grey !important;
+    }
+  }
+}
+
+.highcharts-legend-item {
+  text {
+    font-weight: normal !important;
+  }
+}

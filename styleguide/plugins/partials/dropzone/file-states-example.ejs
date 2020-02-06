@@ -1,0 +1,83 @@
+<% const dummyImageSrc = 's.realpage.com/wp-content/themes/realpage/images/card-assets/news-9-24-2017.jpg' %>
+
+<div class="col-6">
+  <div class="raul-file">
+    <div class="raul-file-icon-wrapper">
+      <div class="raul-content-loader"></div>
+    </div>
+    <div class="raul-file-details">
+      <div class="raul-file-header">
+        <div class="raul-file-name">upload-in-progress.jpg</div>
+        <div class="raul-file-cancel"></div>
+      </div>
+      <div class="raul-file-footer">
+        <div class="raul-progress progress">
+          <div
+            class="raul-progress-bar progress-bar success"
+            role="progressbar"
+            aria-valuenow="30"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style="width:30%;"
+            data-dz-uploadprogress
+          >
+            30%
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-6">
+  <div class="raul-file dz-success dz-image-preview">
+    <div class="raul-file-icon-wrapper">
+      <img src="https://<%= dummyImageSrc %>" style="display: block;max-width: 200%;max-height: 200%;" alt="icon" data-dz-thumbnail>
+    </div>
+    <div class="raul-file-details">
+      <div class="raul-file-header">
+        <div class="raul-file-name">success-with-thumbnail.png</div>
+        <div class="raul-file-cancel"></div>
+      </div>
+      <div class="raul-file-footer">
+        <span>
+          <strong>20.0</strong> MB
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-6">
+  <div class="raul-file dz-error">
+    <div class="raul-file-icon-wrapper">
+    </div>
+    <div class="raul-file-details">
+      <div class="raul-file-header">
+        <div class="raul-file-name">not-uploaded.png</div>
+        <div class="raul-file-cancel"></div>
+      </div>
+      <div class="raul-file-footer">
+        Error uploading file
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-6">
+  <div class="raul-file dz-success">
+    <div class="raul-file-icon-wrapper">
+    </div>
+    <div class="raul-file-details">
+      <div class="raul-file-header">
+        <div class="raul-file-name">success-no-thumnail.xls</div>
+        <div class="raul-file-cancel"></div>
+      </div>
+      <div class="raul-file-footer">
+        <span>
+          <strong>20.0</strong> MB
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

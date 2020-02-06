@@ -1,0 +1,26 @@
+<%
+  const inverseBg = inverseBackground ? "background-" + inverseBackground : "";
+  const inverseTextColor = inverseText ? "text-" + inverseText : "";
+%>
+
+<!-- htmllint class-style="none" -->
+<!-- htmllint id-class-style="none" -->
+<div class="row mb-3">
+  <div class="col-sm-4">
+    <div class="color-block background-<%= type %> <%= inverseTextColor %>">
+      .background-<%= type %>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="color-block <%= inverseBg %> text-<%= type %>">
+      .text-<%= type %>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="color-block border border-<%= type %>">
+      .border-<%= type %>
+    </div>
+  </div>
+</div>

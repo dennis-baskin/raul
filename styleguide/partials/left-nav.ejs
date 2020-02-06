@@ -1,0 +1,424 @@
+<!-- htmllint preset="none" -->
+<%
+  const CLASS_ATTR = locals.react ? 'className' : 'class'
+
+  const url = (page) => `${(locals.index ? './' : '../')}${page}`
+
+  const activeItem = locals.id
+
+  const isActive = (navItem) => {
+    if (!activeItem) return false
+    // cheating :D
+    const haystack = JSON.stringify(navItem)
+    const needle = new RegExp(`"id":"${activeItem}"`, 'g')
+
+    return haystack.search(needle) !== -1
+  }
+
+  const hasSubnav = (navItem) => navItem.subnav.length > 0
+
+  const renderNavItem = (navItem, isTopLevel = false) => {
+    const subnavPresent = hasSubnav(navItem)
+    const icon = navItem.icon ?
+      `<i ${CLASS_ATTR}="raul-left-navigation-item-icon ${navItem.icon}"></i>` : ''
+    const subItemsClass = subnavPresent ? 'has-subitems' : 'no-subitems'
+    const navItemClass = isTopLevel ?
+      'raul-left-navigation-item' : 'raul-left-navigation-subitem'
+    const activeClass = isActive(navItem) ? 'selected active' : ''
+    const arrowUp = isActive(navItem) ? 'arrow-up' : ''
+
+    return (`
+      <li>
+        ${navItem.url ? `
+          <a
+            ${CLASS_ATTR}="${navItemClass} ${subItemsClass} ${activeClass}"
+            href="${navItem.url}"
+          >
+            ${icon}
+            <span ${CLASS_ATTR}="raul-left-navigation-item-display">${navItem.label}</span>
+          </a>
+        ` : `
+          <span ${CLASS_ATTR}="${navItemClass} ${subItemsClass} ${activeClass}">
+            <i ${CLASS_ATTR}="raul-left-navigation-item-arrow fa fa-angle-down ${arrowUp}"></i>
+            ${icon}
+            <span ${CLASS_ATTR}="raul-left-navigation-item-display">${navItem.label}</span>
+          </span>
+        `}
+
+        ${renderSubNav(navItem)}
+      </li>
+    `)
+  }
+
+  const renderSubNav = (navItem) => {
+    if (!hasSubnav(navItem)) return ''
+
+    const activeClass = isActive(navItem) ? 'subitems-open' : ''
+
+    return (`
+      <ul ${CLASS_ATTR}="raul-left-navigation-subitems ${activeClass}">
+        ${navItem.subnav.map(subNavItem => renderNavItem(subNavItem)).join('')}
+      </ul>
+    `)
+  }
+
+  const LEFT_NAV = [
+    {
+      icon: 'fa fa-home',
+      id: 'home',
+      label: "Home",
+      subnav: [],
+      url: url('index.html'),
+    },
+    {
+      icon: 'fa fa-info',
+      id: 'introduction',
+      label: 'Introduction',
+      subnav: [
+        {
+          id: 'installation',
+          label: "Installation",
+          subnav: [],
+          url: url('introduction/installation.html'),
+        },
+        {
+          id: 'dependencies',
+          label: "Dependencies",
+          subnav: [],
+          url: url('introduction/dependencies.html'),
+        },
+        {
+          id: 'images',
+          label: "Image Usage",
+          subnav: [],
+          url: url('introduction/images.html'),
+        },
+        {
+          id: 'frameworks',
+          label: 'Frameworks',
+          subnav: [
+            {
+              id: 'angularjs',
+              label: "AngularJS / Angular 1",
+              subnav: [],
+              url: url('angular1/index.html'),
+            },
+            {
+              id: 'angular6',
+              label: "Angular 6",
+              subnav: [],
+              url: url('angular6/index.html'),
+            },
+            {
+              id: 'react',
+              label: "React",
+              subnav: [],
+              url: url('react/index.html'),
+            },
+            {
+              id: 'vue',
+              label: "Vue",
+              subnav: [],
+              url: url('vue/index.html'),
+            },
+          ],
+          url: null,
+        },
+        {
+          id: 'contributing',
+          label: "Project Contribution",
+          subnav: [],
+          url: url('introduction/contributing.html'),
+        },
+      ],
+      url: null,
+    },
+    {
+      icon: 'fa fa-universal-access',
+      id: 'shell',
+      label: 'RAUL Shell',
+      subnav: [
+        {
+          id: 'custom-elements',
+          label: "Custom Elements",
+          subnav: [],
+          url: url('shell/custom-elements.html'),
+        },
+        {
+          id: 'shell',
+          label: "Shell",
+          subnav: [],
+          url: url('shell/shell.html'),
+        },
+        {
+          id: 'header',
+          label: "Header",
+          subnav: [],
+          url: url('shell/header.html'),
+        },
+        {
+          id: 'left-nav',
+          label: "Left Nav",
+          subnav: [],
+          url: url('shell/left-nav.html'),
+        },
+        {
+          id: 'page-header',
+          label: "Page Header",
+          subnav: [],
+          url: url('shell/page-header.html'),
+        },
+      ],
+      url: null,
+    },
+    {
+      icon: 'fa fa-globe',
+      id: 'global',
+      label: 'Global Content',
+      subnav: [
+        {
+          id: 'layout',
+          label: "Layout",
+          subnav: [],
+          url: url('global/layout.html'),
+        },
+        {
+          id: 'typography',
+          label: "Typography",
+          subnav: [],
+          url: url('global/typography.html'),
+        },
+        {
+          id: 'colors',
+          label: "Colors",
+          subnav: [],
+          url: url('global/colors.html'),
+        },
+        {
+          id: 'buttons',
+          label: "Buttons",
+          subnav: [],
+          url: url('global/buttons.html'),
+        },
+      ],
+      url: null,
+    },
+    {
+      icon: 'fa fa-cubes',
+      id: 'components',
+      label: 'Components',
+      subnav: [
+        {
+          id: 'accordions',
+          label: "Accordions",
+          subnav: [],
+          url: url('components/accordions.html'),
+        },
+        {
+          id: 'action-menus',
+          label: "Action menus",
+          subnav: [],
+          url: url('components/action-menus.html'),
+        },
+        {
+          id: 'alerts',
+          label: "Alerts",
+          subnav: [],
+          url: url('components/alerts.html'),
+        },
+        {
+          id: 'badges',
+          label: "Badges",
+          subnav: [],
+          url: url('components/badges.html'),
+        },
+        {
+          id: 'cards',
+          label: "Cards",
+          subnav: [],
+          url: url('components/cards.html'),
+        },
+        {
+          id: 'carousel',
+          label: "Carousel",
+          subnav: [],
+          url: url('components/carousel.html'),
+        },
+        {
+          id: 'datepicker',
+          label: "Datepicker",
+          subnav: [],
+          url: url('components/datepicker.html'),
+        },
+        {
+          id: 'dropdowns',
+          label: "Dropdowns",
+          subnav: [],
+          url: url('components/dropdowns.html'),
+        },
+        {
+          id: 'footer',
+          label: "Footer",
+          subnav: [],
+          url: url('components/footer.html'),
+        },
+        {
+          id: 'forms',
+          label: "Forms",
+          subnav: [],
+          url: url('components/forms.html'),
+        },
+        {
+          id: 'icons',
+          label: "Icons",
+          subnav: [],
+          url: url('components/icons.html'),
+        },
+        {
+          id: 'list-groups',
+          label: "List Groups",
+          subnav: [],
+          url: url('components/list-groups.html'),
+        },
+        {
+          id: 'loaders',
+          label: "Loaders",
+          subnav: [],
+          url: url('components/loaders.html'),
+        },
+        {
+          id: 'login',
+          label: "Login",
+          subnav: [],
+          url: url('components/login.html'),
+        },
+        {
+          id: 'modals',
+          label: "Modals",
+          subnav: [],
+          url: url('components/modals.html'),
+        },
+        {
+          id: 'nav',
+          label: "Nav",
+          subnav: [],
+          url: url('components/nav.html'),
+        },
+        {
+          id: 'notifications',
+          label: "Notifications",
+          subnav: [],
+          url: url('components/notifications.html'),
+        },
+        {
+          id: 'progress-bar',
+          label: "Progress Bar",
+          subnav: [],
+          url: url('components/progress-bar.html'),
+        },
+        {
+          id: 'sortable',
+          label: "Sortable",
+          subnav: [],
+          url: url('components/sortable.html'),
+        },
+        {
+          id: 'status-indicators',
+          label: "Status Indicators",
+          subnav: [],
+          url: url('components/status-indicators.html'),
+        },
+        {
+          id: 'tables',
+          label: "Tables",
+          subnav: [],
+          url: url('components/tables.html'),
+        },
+        {
+          id: 'text-editor',
+          label: "Text Editor",
+          subnav: [],
+          url: url('components/text-editor.html'),
+        },
+        {
+          id: 'timeline',
+          label: "Timeline",
+          subnav: [],
+          url: url('components/timeline.html'),
+        },
+        {
+          id: 'tooltip',
+          label: "Tooltip",
+          subnav: [],
+          url: url('components/tooltip.html'),
+        },
+      ],
+      url: null,
+    },
+    {
+      icon: 'fa fa-cogs',
+      id: 'utilities',
+      label: 'Utilities',
+      subnav: [
+        {
+          id: 'xss-filtering',
+          label: "XSS Filtering",
+          subnav: [],
+          url: url('utilities/xss-filtering.html'),
+        },
+      ],
+      url: null,
+    },
+    {
+      icon: 'fa fa-plug',
+      id: 'plugins',
+      label: 'Plugins',
+      subnav: [
+        {
+          id: 'raul-plugin-step-tracker',
+          label: 'Step Tracker (Bootstrap Wizard)',
+          subnav: [],
+          url: url('plugins/step-tracker.html'),
+        },
+        {
+          id: 'raul-plugin-ag-grid',
+          label: 'ag-Grid',
+          subnav: [],
+          url: url('plugins/ag-grid.html'),
+        },
+        {
+          id: 'raul-plugin-google-maps',
+          label: 'Google Maps',
+          subnav: [],
+          url: url('plugins/google-maps.html'),
+        },
+        {
+          id: 'raul-plugin-highcharts',
+          label: 'Highcharts',
+          subnav: [],
+          url: url('plugins/highcharts.html'),
+        },
+        {
+          id: 'raul-plugin-summernote',
+          label: 'Summernote Text Editor',
+          subnav: [],
+          url: url('plugins/summernote.html'),
+        },
+        {
+          id: 'raul-plugin-dropzone',
+          label: 'Dropzone (file uploader)',
+          subnav: [],
+          url: url('plugins/dropzone.html'),
+        },
+      ],
+      url: null,
+    },
+  ]
+
+  const nav = LEFT_NAV.map((navItem) => renderNavItem(navItem, true)).join('')
+%>
+
+<ul id="raul-left-navigation-items" <%= CLASS_ATTR %>="raul-left-navigation-items">
+  <%- nav %>
+</ul>
+<!-- htmllint preset="default" -->

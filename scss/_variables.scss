@@ -1,0 +1,19 @@
+// Bootstrap 4 stable imports
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/variables';
+
+// dependencies
+@import 'variables/colors';
+@import 'variables/images';
+@import 'variables/transitions';
+
+// base and components
+@import 'variables/alerts';
+@import 'variables/badges';
+@import 'variables/dropdowns';
+@import 'variables/forms';
+@import 'variables/list-group';
+@import 'variables/nav';
+@import 'variables/tables';
+@import 'variables/type';

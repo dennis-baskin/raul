@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<!-- htmllint head-req-title="false" -->
+  <head>
+    <%- include('/partials/shell-head-content', {
+      additionalLinks: [
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+      ],
+    }) %>
+  </head>
+
+  <body class="raul-left-navigation-expanded">
+    <%- include('/shell/partials/shell/html/shell') %>
+
+    <%- include('/partials/shell-script-includes') %>
+  </body>
+</html>

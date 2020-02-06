@@ -1,0 +1,184 @@
+<ui-shell
+  product-name="RAUL UI Library"
+  company-name="Angular Test"
+  property-name="Angular6"
+
+  user-name="Some User"
+  user-title="Some Title"
+
+  help-link="#help"
+  home-link="#home"
+  logout-link="#logout"
+  settings-link="#settings"
+  user-settings-link="#user-settings"
+
+  show-app-switcher
+  show-search
+  show-help-link
+  show-home-link
+  show-settings-link
+
+  domain="RAUL"
+  page="Angular 6"
+  slots="content,left-nav"
+>
+  <template slot="left-nav" v-cloak>
+    <ul id="raul-left-navigation-items" class="raul-left-navigation-items">
+      <li>
+        <a class="raul-left-navigation-item no-subitems" href="../index.html">
+          <i class="raul-left-navigation-item-icon fa fa-home"></i>
+
+          <span class="raul-left-navigation-item-display">Home</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="raul-left-navigation-item no-subitems" #topNav (click)="onNavClick($event, topNav)">
+          <i class="raul-left-navigation-item-icon fa fa-trophy"></i>
+
+          <span class="raul-left-navigation-item-display">Top Nav</span>
+        </a>
+      </li>
+
+      <li>
+        <span class="raul-left-navigation-item has-subitems" #topSubNav (click)="onNavClick($event, topSubNav)">
+          <i class="raul-left-navigation-item-arrow fa fa-angle-down"></i>
+
+          <i class="raul-left-navigation-item-icon fa fa-cogs"></i>
+
+          <span class="raul-left-navigation-item-display">Top With Sub</span>
+        </span>
+
+        <ul class="raul-left-navigation-subitems">
+          <li>
+            <a class="raul-left-navigation-subitem no-subitems" #subNav (click)="onNavClick($event, subNav)">
+              <span class="raul-left-navigation-item-display">Sub Nav</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </template>
+
+  <template slot="content" v-cloak>
+    <!--The content below is only a placeholder and can be replaced.-->
+    <div style="text-align:center">
+      <h1>
+        {{ title }}
+      </h1>
+
+      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    </div>
+
+    <h2>Click on an Top Nav or Sub Nav item in the left navigation</h2>
+
+    <div class="raul-card mb-3">
+      <code>
+        {{ clickedItem }}
+      </code>
+    </div>
+
+    <ui-checkbox checked slots>
+      Anything here
+    </ui-checkbox>
+
+    <ui-checkbox checked="true" slots>
+      Checked
+    </ui-checkbox>
+
+    <h2>Setup and Example</h2>
+
+    <p>
+      To have this work in your app you need to import CUSTOM_ELEMENTS_SCHEMA in app.module.ts, or
+      any module you need to use this in. Then you add it to schemas inside <code>@NgModule</code>.
+      <code>schemas: [CUSTOM_ELEMENTS_SCHEMA]</code>
+    </p>
+
+    <p>
+      The following is the example code used for this page. It was added inside
+      <code>app.component.html</code>.
+    </p>
+
+    <pre class="text-white background-charcoal-80 p-3 mb-3"><code ngNonBindable>
+&lt;ui-shell
+  product-name=&quot;RAUL UI Library&quot;
+  company-name=&quot;Angular Test&quot;
+  property-name=&quot;Angular6&quot;
+
+  user-name=&quot;Some User&quot;
+  user-title=&quot;Some Title&quot;
+
+  help-link=&quot;#help&quot;
+  home-link=&quot;#home&quot;
+  logout-link=&quot;#logout&quot;
+  settings-link=&quot;#settings&quot;
+  user-settings-link=&quot;#user-settings&quot;
+
+  show-app-switcher
+  show-search
+  show-help-link
+  show-home-link
+  show-settings-link
+
+  domain=&quot;RAUL&quot;
+  page=&quot;Angular 6&quot;
+  slots=&quot;content,left-nav&quot;
+&gt;
+  &lt;template slot=&quot;left-nav&quot; v-cloak&gt;
+    &lt;ul id=&quot;raul-left-navigation-items&quot; class=&quot;raul-left-navigation-items&quot;&gt;
+      &lt;li&gt;
+        &lt;a class=&quot;raul-left-navigation-item no-subitems&quot; #topNav (click)=&quot;onNavClick(topNav)&quot;&gt;
+          &lt;i class=&quot;raul-left-navigation-item-icon fa fa-home&quot;&gt;&lt;/i&gt;
+
+          &lt;span class=&quot;raul-left-navigation-item-display&quot;&gt;Top Nav&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;span class=&quot;raul-left-navigation-item has-subitems&quot; #topSubNav (click)=&quot;onNavClick(topSubNav)&quot;&gt;
+          &lt;i class=&quot;raul-left-navigation-item-arrow fa fa-angle-down&quot;&gt;&lt;/i&gt;
+
+          &lt;i class=&quot;raul-left-navigation-item-icon fa fa-cogs&quot;&gt;&lt;/i&gt;
+
+          &lt;span class=&quot;raul-left-navigation-item-display&quot;&gt;Top With Sub&lt;/span&gt;
+        &lt;/span&gt;
+
+        &lt;ul class=&quot;raul-left-navigation-subitems&quot;&gt;
+          &lt;li&gt;
+            &lt;a class=&quot;raul-left-navigation-subitem no-subitems&quot; #subNav (click)=&quot;onNavClick(subNav)&quot;&gt;
+              &lt;span class=&quot;raul-left-navigation-item-display&quot;&gt;Sub Nav&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/template&gt;
+
+  &lt;template slot=&quot;content&quot; v-cloak&gt;
+    &lt;!--The content below is only a placeholder and can be replaced.--&gt;
+    &lt;div style=&quot;text-align:center&quot;&gt;
+      &lt;h1&gt;
+        {{ title }}
+      &lt;/h1&gt;
+    &lt;/div&gt;
+
+    &lt;h2&gt;Click on an Top Nav or Sub Nav item in the left navigation&lt;/h2&gt;
+
+    &lt;div class=&quot;raul-card mb-3&quot;&gt;
+      &lt;code&gt;
+        {{ clickedItem }}
+      &lt;/code&gt;
+    &lt;/div&gt;
+
+    &lt;ui-checkbox checked slots&gt;
+      Anything here
+    &lt;/ui-checkbox&gt;
+
+    &lt;ui-checkbox checked=&quot;true&quot; slots&gt;
+      Checked
+    &lt;/ui-checkbox&gt;
+  &lt;/template&gt;
+&lt;/ui-shell&gt;
+    </code></pre>
+  </template>
+</ui-shell>

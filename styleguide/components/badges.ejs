@@ -1,0 +1,176 @@
+<%- include('/partials/header', {
+  domain: 'Components',
+  id: 'badges',
+  page: 'Badges',
+  noContentPadding: true,
+}) %>
+
+<div class="row">
+  <div class="col-12 background-light-grey pt-3">
+    <ul class="raul-nav nav nav-tabs raul-nav-underline" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="#html-version"
+          role="tab"
+          data-toggle="tab"
+          aria-expanded="true"
+        >
+          HTML version
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="raul-tab-content tab-content mt-3">
+  <div role="tabpanel" class="tab-pane active" id="html-version">
+    <h2>Styled Bootstrap badges</h2>
+
+    <p>
+      The following is the preferred way of adding markup for badges. Under the hood it is
+      just reusing available bootstrap badges with custom styling. This will be especially
+      helpful to teams that are already using bootstrap as part of their system.
+    </p>
+
+    <div class="raul-card">
+      <span class="badge badge-primary">33</span>
+      <span class="badge badge-primary">
+        <i class="fa fa-dribbble" aria-hidden="true"></i> 33
+      </span>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <span class="badge badge-primary">33</span>
+        <span class="badge badge-primary">
+          <i class="fa fa-dribbble" aria-hidden="true"></i> 33
+        </span>
+      `) %></code></pre>
+    </div>
+
+    <p>
+      For bootstrap compatibility, various theme colors are included. However, the design only
+      show that the primary is ever used. This needs clarification from design.
+    </p>
+
+    <div class="raul-card">
+      <span class="badge badge-primary">Primary</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-error">Error</span>
+      <span class="badge badge-danger">Danger</span>
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-info">Info</span>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-error">Error</span>
+        <span class="badge badge-danger">Danger</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-info">Info</span>
+      `) %></code></pre>
+    </div>
+
+    <h3 class="mb-3">With icons:</h3>
+
+    <div class="raul-card">
+      <span class="badge badge-primary">
+        <i class="fa fa-bell-o" aria-hidden="true"></i> Primary
+      </span>
+
+      <span class="badge badge-success">
+        <i class="fa fa-bell-o" aria-hidden="true"></i> Success
+      </span>
+
+      <span class="badge badge-error">
+        <i class="fa fa-bell-o" aria-hidden="true"></i> Error
+      </span>
+
+      <span class="badge badge-danger">
+        <i class="fa fa-bell-o" aria-hidden="true"></i> Danger
+      </span>
+
+      <span class="badge badge-warning">
+        <i class="fa fa-bell-o" aria-hidden="true"></i> Warning
+      </span>
+
+      <span class="badge badge-info">
+        <i class="fa fa-bell-o" aria-hidden="true"></i> Info
+      </span>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <span class="badge badge-primary">
+          <i class="fa fa-bell-o" aria-hidden="true"></i> Primary
+        </span>
+
+        <span class="badge badge-success">
+          <i class="fa fa-bell-o" aria-hidden="true"></i> Success
+        </span>
+
+        <span class="badge badge-error">
+          <i class="fa fa-bell-o" aria-hidden="true"></i> Error
+        </span>
+
+        <span class="badge badge-danger">
+          <i class="fa fa-bell-o" aria-hidden="true"></i> Danger
+        </span>
+
+        <span class="badge badge-warning">
+          <i class="fa fa-bell-o" aria-hidden="true"></i> Warning
+        </span>
+
+        <span class="badge badge-info">
+          <i class="fa fa-bell-o" aria-hidden="true"></i> Info
+        </span>
+      `) %></code></pre>
+    </div>
+
+    <h2>Backwards compatible RAUL badges</h2>
+
+    <p>
+      If you are already using the old RAUL markup for badges, then the original markup is still
+      available to use.
+    </p>
+
+    <div class="raul-card">
+      <div class="raul-badges-container">
+        <div class="raul-badge">
+          <span class="raul-badge-text">33</span>
+        </div>
+
+        <div class="raul-badge">
+          <span class="raul-badge-icon">
+            <i class="fa fa-dribbble" aria-hidden="true"></i>
+          </span>
+
+          <span class="raul-badge-text">33</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="raul-card mb-5 p-0">
+      <pre class="mb-0"><code class="language-markup"><%= (`
+        <div class="raul-badges-container">
+          <div class="raul-badge">
+            <span class="raul-badge-text">33</span>
+          </div>
+
+          <div class="raul-badge">
+            <span class="raul-badge-icon">
+              <i class="fa fa-dribbble" aria-hidden="true"></i>
+            </span>
+
+            <span class="raul-badge-text">33</span>
+          </div>
+        </div>
+      `) %></code></pre>
+    </div>
+  </div>
+</div>
+
+<%- include('/partials/footer') %>

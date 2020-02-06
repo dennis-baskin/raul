@@ -1,0 +1,105 @@
+@import '../../scss/variables';
+@import '../../scss/components/buttons';
+@import 'rpup-login';
+
+/*!
+ * Override for PrismJS size issue due to BS4 and PrismJS not playing well together
+ */
+.token.tag {
+  border-radius: inherit;
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: inherit;
+  text-align: inherit;
+  vertical-align: inherit;
+  white-space: inherit;
+}
+
+pre[class*='language-'] {
+  background: #f8f9fa;
+  margin-top: 0;
+  max-height: 300px;
+  padding-top: 40px;
+}
+
+.code-snippet-heading {
+  background: $charcoal-05;
+  font-size: 0.75rem;
+  left: 0;
+  line-height: 1;
+  padding: 10px;
+  position: absolute;
+  text-decoration: none;
+  text-shadow: none;
+  top: 0;
+  white-space: normal;
+  width: 100%;
+}
+
+div.code-toolbar > .toolbar {
+  opacity: 0.5;
+  right: 0.35rem;
+  top: 0.35rem;
+
+  & .toolbar-item {
+    & a,
+    & button,
+    & span {
+      @extend .button;
+      @extend .button-default;
+      @extend .button-sm;
+    }
+  }
+}
+
+.border {
+  border: 1px solid;
+}
+
+.color-block {
+  padding: 30px 10px;
+  text-align: center;
+}
+
+.push-bottom {
+  margin-bottom: 20px;
+}
+
+.raul-login-container {
+  background-image: url('https://cdn.realpage.com/images/rp-logo.svg');
+}
+
+.icon-list {
+  .ui-icon {
+    margin-bottom: 20px;
+
+    ui-icon {
+      display: inline-block;
+      height: auto;
+      margin: 0 10px 0 0;
+      text-align: center;
+      width: 100px;
+
+      i,
+      svg {
+        height: 60px;
+        width: 60px;
+      }
+
+    }
+
+    .icon-code {
+      display: block;
+      margin: 5px 10px 5px 0;
+      text-align: center;
+      width: 100px;
+    }
+  }
+}
+
+p.code {
+  color: $charcoal-50;
+  font-family: monospace;
+}

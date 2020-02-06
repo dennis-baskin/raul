@@ -1,0 +1,83 @@
+<%- include('/partials/header', {
+  domain: 'Plugins',
+  id: 'raul-plugin-summernote',
+  page: 'Summernote Text Editor',
+}) %>
+
+<h2>Plugin Example:</h2>
+
+<div class="mb-3">
+  <div id="summernote"></div>
+</div>
+
+<h3>Summernote Version 0.8.10</h3>
+
+<p>
+  If you use the id <code>summernote</code>, RAUL will automatically instatiate the plugin with
+  basic options on DOM load.
+</p>
+
+<pre><code class="language-html"><%= (`
+  <div id="summernote"></div>
+`) %></code></pre>
+
+<p>
+  You can customize and better constrol options by using a different id, or better yet, add a class
+  to the containers you want to load summernote into. Then you would use the API per summernote
+  documentation at <a href="https://summernote.org/">https://summernote.org/</a>. For example:
+</p>
+
+<pre><code class="language-html"><%= (`
+  <div class="text-editor"></div>
+`) %></code></pre>
+
+<pre><code class="language-javascript"><%= `
+  $('.text-ditor').summernote({
+    placeholder: 'Enter property description',
+    tabsize: 2,
+    minHeight: 100,
+  })
+` %></code></pre>
+
+<h3>Plugin Dependencies</h3>
+
+<p>
+  Summernote relies on Bootstrap 4 and jQuery. Unfortunately these libraries do introduce bulk,
+  but currently are also part of the hard dependencies for RAUL framework as well. The follwing
+  is an example of the <code>link</code> and <code>script</code> tags.
+</p>
+
+<pre class="mb-3"><code class="language-html"><%= (`
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    crossorigin="anonymous"
+  />
+  <link href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/raul.min.css" rel="stylesheet" />
+  <link
+    href="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/css/plugins/raul-plugin-summernote.min.css"
+    rel="stylesheet"
+  />
+
+  ......
+
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/raul.min.js"></script>
+  <script
+    src="https://cdn.realpage.com/raul/${FRAMEWORK_VERSION}/js/plugins/raul-plugin-summernote.min.js"
+  ></script>
+`) %></code></pre>
+
+<%- include('/partials/footer', {
+  additionalScripts: [
+    '../js/plugins/raul-plugin-summernote.min.js',
+  ],
+}) %>

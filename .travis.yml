@@ -1,0 +1,15 @@
+language: node_js
+env:
+  - VUE_NODE_ENV=production
+node_js:
+  - "lts/*"
+before_script:
+  - npm run raul-init
+script: raul build && raul test -u
+deploy:
+  - provider: script
+    script: gem install octokit && ruby github_release.rb && raul deploy
+    skip_cleanup: true
+    on:
+      condition: $CI = true
+      branch: release

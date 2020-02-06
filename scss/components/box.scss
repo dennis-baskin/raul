@@ -1,0 +1,81 @@
+// RAUL Box
+// --------------------------------------------
+
+.raul-box {
+  background-color: $lightest;
+  border-color: $charcoal-10;
+  border-left: 0;
+  border-radius: 0;
+  border-right: 0;
+  font-size: 14px;
+}
+
+.raul-box .raul-box-header {
+  background-color: $primary-60;
+  border: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: $lightest;
+  padding: 10px 15px;
+}
+
+.raul-box.raul-box-disabled .raul-box-header {
+  background-color: $charcoal-10;
+  color: inherit;
+}
+
+.raul-box .raul-box-header .raul-box-title {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.raul-box .raul-box-header .raul-box-sub {
+  font-size: 12px;
+  margin: 0;
+}
+
+.raul-box .raul-box-header .raul-box-action {
+  cursor: pointer;
+  float: right;
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+.raul-box .raul-box-block {
+  border-left: 1px solid $charcoal-10;
+  border-right: 1px solid $charcoal-10;
+  overflow: hidden;
+}
+
+.raul-box .raul-box-footer {
+  background-color: $charcoal-10;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top: 0;
+  padding: 10px 15px;
+}
+
+.raul-box .raul-box-block:first-of-type {
+  border-top: 1px solid $charcoal-10;
+}
+
+.raul-box .raul-box-block:last-of-type {
+  border-bottom: 1px solid $charcoal-10;
+}
+
+.raul-box [data-toggle='collapse']:hover {
+  cursor: pointer;
+}
+
+.raul-box [data-toggle='collapse']::before {
+  content: '\f106';
+  float: right;
+  font-family: 'FontAwesome';
+  font-size: 24px;
+  line-height: 16px;
+}
+
+.raul-box [data-toggle='collapse'].collapsed::before {
+  content: '\f107';
+}
