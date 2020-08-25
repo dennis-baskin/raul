@@ -64,7 +64,7 @@
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
     "gulp-zip": "^4.1.0",
-    "highcharts": "^6.1.0",
+    "highcharts": "^7.2.2",
     "inquirer": "^5.1.0",
     "jquery-bootstrap-wizard": "^1.4.2",
     "jsdom": "^11.7.0",
