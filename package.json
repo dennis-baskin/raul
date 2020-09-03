@@ -82,7 +82,7 @@
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-vue": "^4.1.0",
     "s3": "^4.4.0",
-    "serve": "^6.5.0",
+    "serve": "^10.1.2",
     "shelljs": "^0.8.1",
     "sortablejs": "^1.7.0",
     "summernote": "^0.8.10",
